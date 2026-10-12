@@ -10,5 +10,4 @@ export '/pages/auth/updateprofile/updateprofile_widget.dart'
 export '/pages/adminpages/addbook/addbook_widget.dart' show AddbookWidget;
 export '/pages/adminpages/adminhomepage/adminhomepage_widget.dart'
     show AdminhomepageWidget;
-export '/pages/customerpages/userhomepage/userhomepage_widget.dart'
-    show UserhomepageWidget;
+export '/userhomepage/userhomepage_widget.dart' show UserhomepageWidget;
