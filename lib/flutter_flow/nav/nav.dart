@@ -125,6 +125,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: UserhomepageWidget.routeName,
           path: UserhomepageWidget.routePath,
           builder: (context, params) => UserhomepageWidget(),
+        ),
+        FFRoute(
+          name: AdminprofilepageWidget.routeName,
+          path: AdminprofilepageWidget.routePath,
+          builder: (context, params) => AdminprofilepageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

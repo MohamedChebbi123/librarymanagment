@@ -11,3 +11,5 @@ export '/pages/adminpages/addbook/addbook_widget.dart' show AddbookWidget;
 export '/pages/adminpages/adminhomepage/adminhomepage_widget.dart'
     show AdminhomepageWidget;
 export '/userhomepage/userhomepage_widget.dart' show UserhomepageWidget;
+export '/pages/auth/adminprofilepage/adminprofilepage_widget.dart'
+    show AdminprofilepageWidget;
