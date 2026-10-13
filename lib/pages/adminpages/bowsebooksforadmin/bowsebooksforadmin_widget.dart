@@ -3,6 +3,7 @@ import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_debounce/easy_debounce.dart';
@@ -174,6 +175,289 @@ class _BowsebooksforadminWidgetState extends State<BowsebooksforadminWidget> {
                   ),
                 ),
               ),
+              Container(
+                child: Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment:
+                          (FFMainAxisAlignment.start).flutterValue,
+                      crossAxisAlignment:
+                          (FFCrossAxisAlignment.center).flutterValue,
+                      textBaseline: TextBaseline.alphabetic,
+                      children: [
+                        if (_model.categoryFilter == 'All')
+                          FFButtonWidget(
+                            onPressed: () {
+                              print('CategoryChip0On pressed ...');
+                            },
+                            text: 'All',
+                            options: FFButtonOptions(
+                              height: 36.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).primary,
+                              textStyle: TextStyle(
+                                color: Colors.white,
+                              ),
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                          ),
+                        if (!(_model.categoryFilter == 'All'))
+                          FFButtonWidget(
+                            onPressed: () async {
+                              _model.categoryFilter = 'All';
+                              safeSetState(() {});
+                            },
+                            text: 'All',
+                            options: FFButtonOptions(
+                              height: 36.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: Colors.transparent,
+                              textStyle: TextStyle(
+                                color: FlutterFlowTheme.of(context).primary,
+                              ),
+                              elevation: 0.0,
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primary,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                          ),
+                        if (_model.categoryFilter == 'Informatique')
+                          FFButtonWidget(
+                            onPressed: () {
+                              print('CategoryChip1On pressed ...');
+                            },
+                            text: 'Informatique',
+                            options: FFButtonOptions(
+                              height: 36.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).primary,
+                              textStyle: TextStyle(
+                                color: Colors.white,
+                              ),
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                          ),
+                        if (!(_model.categoryFilter == 'Informatique'))
+                          FFButtonWidget(
+                            onPressed: () async {
+                              _model.categoryFilter = 'Informatique';
+                              safeSetState(() {});
+                            },
+                            text: 'Informatique',
+                            options: FFButtonOptions(
+                              height: 36.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: Colors.transparent,
+                              textStyle: TextStyle(
+                                color: FlutterFlowTheme.of(context).primary,
+                              ),
+                              elevation: 0.0,
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primary,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                          ),
+                        if (_model.categoryFilter == 'Sciences')
+                          FFButtonWidget(
+                            onPressed: () {
+                              print('CategoryChip2On pressed ...');
+                            },
+                            text: 'Sciences',
+                            options: FFButtonOptions(
+                              height: 36.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).primary,
+                              textStyle: TextStyle(
+                                color: Colors.white,
+                              ),
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                          ),
+                        if (!(_model.categoryFilter == 'Sciences'))
+                          FFButtonWidget(
+                            onPressed: () async {
+                              _model.categoryFilter = 'Sciences';
+                              safeSetState(() {});
+                            },
+                            text: 'Sciences',
+                            options: FFButtonOptions(
+                              height: 36.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: Colors.transparent,
+                              textStyle: TextStyle(
+                                color: FlutterFlowTheme.of(context).primary,
+                              ),
+                              elevation: 0.0,
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primary,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                          ),
+                        if (_model.categoryFilter == 'Littérature')
+                          FFButtonWidget(
+                            onPressed: () {
+                              print('CategoryChip3On pressed ...');
+                            },
+                            text: 'Littérature',
+                            options: FFButtonOptions(
+                              height: 36.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).primary,
+                              textStyle: TextStyle(
+                                color: Colors.white,
+                              ),
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                          ),
+                        if (!(_model.categoryFilter == 'Littérature'))
+                          FFButtonWidget(
+                            onPressed: () async {
+                              _model.categoryFilter = 'Littérature';
+                              safeSetState(() {});
+                            },
+                            text: 'Littérature',
+                            options: FFButtonOptions(
+                              height: 36.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: Colors.transparent,
+                              textStyle: TextStyle(
+                                color: FlutterFlowTheme.of(context).primary,
+                              ),
+                              elevation: 0.0,
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primary,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                          ),
+                        if (_model.categoryFilter == 'Histoire')
+                          FFButtonWidget(
+                            onPressed: () {
+                              print('CategoryChip4On pressed ...');
+                            },
+                            text: 'Histoire',
+                            options: FFButtonOptions(
+                              height: 36.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).primary,
+                              textStyle: TextStyle(
+                                color: Colors.white,
+                              ),
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                          ),
+                        if (!(_model.categoryFilter == 'Histoire'))
+                          FFButtonWidget(
+                            onPressed: () async {
+                              _model.categoryFilter = 'Histoire';
+                              safeSetState(() {});
+                            },
+                            text: 'Histoire',
+                            options: FFButtonOptions(
+                              height: 36.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: Colors.transparent,
+                              textStyle: TextStyle(
+                                color: FlutterFlowTheme.of(context).primary,
+                              ),
+                              elevation: 0.0,
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primary,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                          ),
+                        if (_model.categoryFilter == 'Économie')
+                          FFButtonWidget(
+                            onPressed: () {
+                              print('CategoryChip5On pressed ...');
+                            },
+                            text: 'Économie',
+                            options: FFButtonOptions(
+                              height: 36.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).primary,
+                              textStyle: TextStyle(
+                                color: Colors.white,
+                              ),
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                          ),
+                        if (!(_model.categoryFilter == 'Économie'))
+                          FFButtonWidget(
+                            onPressed: () async {
+                              _model.categoryFilter = 'Économie';
+                              safeSetState(() {});
+                            },
+                            text: 'Économie',
+                            options: FFButtonOptions(
+                              height: 36.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: Colors.transparent,
+                              textStyle: TextStyle(
+                                color: FlutterFlowTheme.of(context).primary,
+                              ),
+                              elevation: 0.0,
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primary,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                          ),
+                      ].divide(SizedBox(width: 8.0)),
+                    ),
+                  ),
+                ),
+              ),
               Expanded(
                 flex: 1,
                 child: Padding(
@@ -191,14 +475,17 @@ class _BowsebooksforadminWidgetState extends State<BowsebooksforadminWidget> {
                         itemBuilder: (context, bookRowIndex) {
                           final bookRowItem = bookRow[bookRowIndex];
                           return Visibility(
-                            visible: ((String? q, String? t, String? a,
-                                        String? c) {
-                                  return (q ?? '').trim().isEmpty ||
-                                      [t, a, c].any((s) => (s ?? '')
-                                          .toLowerCase()
-                                          .contains(
-                                              (q ?? '').trim().toLowerCase()));
+                            visible: ((String? f, String? q, String? t,
+                                        String? a, String? c) {
+                                  return ((f ?? 'All') == 'All' || f == c) &&
+                                      ((q ?? '').trim().isEmpty ||
+                                          [t, a, c].any((s) => (s ?? '')
+                                              .toLowerCase()
+                                              .contains((q ?? '')
+                                                  .trim()
+                                                  .toLowerCase())));
                                 }(
+                                    _model.categoryFilter,
                                     _model.searchQuery,
                                     bookRowItem.title,
                                     bookRowItem.author,

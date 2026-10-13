@@ -19,6 +19,8 @@ class BowsebooksforadminModel
 
   String? searchQuery = '';
 
+  String? categoryFilter = 'All';
+
   ///  State fields for stateful widgets in this page.
 
   // Stores action output result for [Backend Call - Query Rows] action in bowsebooksforadmin widget.
