@@ -146,6 +146,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.SupabaseRow,
             ),
           ),
+        ),
+        FFRoute(
+          name: EditbookpageforadminWidget.routeName,
+          path: EditbookpageforadminWidget.routePath,
+          builder: (context, params) => EditbookpageforadminWidget(
+            book: params.getParam<BooksRow>(
+              'book',
+              ParamType.SupabaseRow,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

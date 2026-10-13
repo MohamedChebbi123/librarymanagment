@@ -17,3 +17,5 @@ export '/pages/adminpages/bowsebooksforadmin/bowsebooksforadmin_widget.dart'
     show BowsebooksforadminWidget;
 export '/pages/adminpages/bookdetailsforadmin/bookdetailsforadmin_widget.dart'
     show BookdetailsforadminWidget;
+export '/pages/adminpages/editbookpageforadmin/editbookpageforadmin_widget.dart'
+    show EditbookpageforadminWidget;
