@@ -17,14 +17,24 @@ class BowsebooksforadminModel
   void updateBookRowsAtIndex(int index, Function(BooksRow) updateFn) =>
       bookRows[index] = updateFn(bookRows[index]);
 
+  String? searchQuery = '';
+
   ///  State fields for stateful widgets in this page.
 
   // Stores action output result for [Backend Call - Query Rows] action in bowsebooksforadmin widget.
-  List<BooksRow>? loadedBooks;
+  List<BooksRow>? orderedBooks;
+  // State field(s) for BookSearchField widget.
+  FocusNode? bookSearchFieldFocusNode;
+  TextEditingController? bookSearchFieldTextController;
+  String? Function(BuildContext, String?)?
+      bookSearchFieldTextControllerValidator;
 
   @override
   void initState(BuildContext context) {}
 
   @override
-  void dispose() {}
+  void dispose() {
+    bookSearchFieldFocusNode?.dispose();
+    bookSearchFieldTextController?.dispose();
+  }
 }
