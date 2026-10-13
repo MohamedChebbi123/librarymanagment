@@ -13,3 +13,7 @@ export '/pages/adminpages/adminhomepage/adminhomepage_widget.dart'
 export '/userhomepage/userhomepage_widget.dart' show UserhomepageWidget;
 export '/pages/auth/adminprofilepage/adminprofilepage_widget.dart'
     show AdminprofilepageWidget;
+export '/pages/adminpages/bowsebooksforadmin/bowsebooksforadmin_widget.dart'
+    show BowsebooksforadminWidget;
+export '/pages/adminpages/bookdetailsforadmin/bookdetailsforadmin_widget.dart'
+    show BookdetailsforadminWidget;

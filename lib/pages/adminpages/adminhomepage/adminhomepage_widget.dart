@@ -140,6 +140,28 @@ class _AdminhomepageWidgetState extends State<AdminhomepageWidget> {
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                 ),
+                FFButtonWidget(
+                  onPressed: () async {
+                    context.pushNamed(BowsebooksforadminWidget.routeName);
+                  },
+                  text: 'Browse books',
+                  icon: Icon(
+                    Icons.library_books,
+                    size: 20.0,
+                  ),
+                  options: FFButtonOptions(
+                    width: double.infinity,
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    iconPadding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    iconColor: FlutterFlowTheme.of(context).primaryBackground,
+                    color: FlutterFlowTheme.of(context).primary,
+                    textStyle: TextStyle(
+                      color: FlutterFlowTheme.of(context).primaryBackground,
+                    ),
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                ),
               ].divide(SizedBox(height: 16.0)),
             ),
           ),

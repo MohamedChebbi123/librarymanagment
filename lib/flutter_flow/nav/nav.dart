@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '/backend/supabase/supabase.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -130,6 +131,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: AdminprofilepageWidget.routeName,
           path: AdminprofilepageWidget.routePath,
           builder: (context, params) => AdminprofilepageWidget(),
+        ),
+        FFRoute(
+          name: BowsebooksforadminWidget.routeName,
+          path: BowsebooksforadminWidget.routePath,
+          builder: (context, params) => BowsebooksforadminWidget(),
+        ),
+        FFRoute(
+          name: BookdetailsforadminWidget.routeName,
+          path: BookdetailsforadminWidget.routePath,
+          builder: (context, params) => BookdetailsforadminWidget(
+            book: params.getParam<BooksRow>(
+              'book',
+              ParamType.SupabaseRow,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
