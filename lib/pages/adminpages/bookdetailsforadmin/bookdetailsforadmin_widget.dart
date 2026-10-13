@@ -532,8 +532,59 @@ class _BookdetailsforadminWidgetState extends State<BookdetailsforadminWidget> {
                           Expanded(
                             flex: 1,
                             child: FFButtonWidget(
-                              onPressed: () {
-                                print('BookDetailsDeleteButton pressed ...');
+                              onPressed: () async {
+                                var confirmDialogResponse =
+                                    await showDialog<bool>(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: Text('Delete book?'),
+                                              content: Text(
+                                                  'This book will be permanently removed. This cannot be undone.'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext,
+                                                          false),
+                                                  child: Text('Cancel'),
+                                                ),
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext,
+                                                          true),
+                                                  child: Text('Delete'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        ) ??
+                                        false;
+                                if (confirmDialogResponse) {
+                                  await BooksTable().delete(
+                                    matchingRows: (rows) => rows.eqOrNull(
+                                      'id',
+                                      widget.book?.id,
+                                    ),
+                                  );
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Book deleted',
+                                        style: TextStyle(),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                    ),
+                                  );
+                                  if (Navigator.of(context).canPop()) {
+                                    context.pop();
+                                  }
+                                  context.pushNamed(
+                                      BowsebooksforadminWidget.routeName);
+                                }
+
+                                safeSetState(() {});
                               },
                               text: 'Delete',
                               icon: Icon(
