@@ -7,3 +7,4 @@ export 'table.dart';
 
 export 'tables/books.dart';
 export 'tables/users.dart';
+export 'tables/favorites.dart';

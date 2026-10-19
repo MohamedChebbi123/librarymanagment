@@ -1,9 +1,11 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -39,6 +41,15 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
         queryFn: (q) => q.order('created_at', ascending: true),
       );
       _model.bookRows = _model.loadedUserBooks!.toList().cast<BooksRow>();
+      safeSetState(() {});
+      _model.loadedUserFavorites = await FavoritesTable().queryRows(
+        queryFn: (q) => q.eqOrNull(
+          'user_id',
+          currentUserUid,
+        ),
+      );
+      _model.favoriteRows =
+          _model.loadedUserFavorites!.toList().cast<FavoritesRow>();
       safeSetState(() {});
     });
 
@@ -95,7 +106,19 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
                       FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                 ),
           ),
-          actions: [],
+          actions: [
+            FlutterFlowIconButton(
+              buttonSize: 40.0,
+              icon: Icon(
+                Icons.favorite,
+                color: Colors.white,
+                size: 24.0,
+              ),
+              onPressed: () async {
+                context.pushNamed(FavouritebookforuserWidget.routeName);
+              },
+            ),
+          ],
           centerTitle: true,
           elevation: 0.0,
         ),
@@ -724,6 +747,110 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
                                             ].divide(SizedBox(height: 4.0)),
                                           ),
                                         ),
+                                        if (((List<FavoritesRow>? r, int? id) {
+                                              return (r ?? [])
+                                                  .any((f) => f.bookId == id);
+                                            }(_model.favoriteRows.toList(),
+                                                bookRowItem.id)) ??
+                                            true)
+                                          FlutterFlowIconButton(
+                                            buttonSize: 42.0,
+                                            icon: Icon(
+                                              Icons.favorite,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              size: 26.0,
+                                            ),
+                                            onPressed: () async {
+                                              await FavoritesTable().delete(
+                                                matchingRows: (rows) => rows
+                                                    .eqOrNull(
+                                                      'user_id',
+                                                      currentUserUid,
+                                                    )
+                                                    .eqOrNull(
+                                                      'book_id',
+                                                      bookRowItem.id,
+                                                    ),
+                                              );
+                                              _model.userFavReload =
+                                                  await FavoritesTable()
+                                                      .queryRows(
+                                                queryFn: (q) => q.eqOrNull(
+                                                  'user_id',
+                                                  currentUserUid,
+                                                ),
+                                              );
+                                              _model.favoriteRows = _model
+                                                  .userFavReload!
+                                                  .toList()
+                                                  .cast<FavoritesRow>();
+                                              safeSetState(() {});
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    'Removed from favourites',
+                                                    style: TextStyle(),
+                                                  ),
+                                                  duration: Duration(
+                                                      milliseconds: 4000),
+                                                ),
+                                              );
+
+                                              safeSetState(() {});
+                                            },
+                                          ),
+                                        if (!((List<FavoritesRow>? r, int? id) {
+                                          return (r ?? [])
+                                              .any((f) => f.bookId == id);
+                                        }(_model.favoriteRows.toList(),
+                                            bookRowItem.id)))
+                                          FlutterFlowIconButton(
+                                            buttonSize: 42.0,
+                                            icon: Icon(
+                                              Icons.favorite_border,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              size: 26.0,
+                                            ),
+                                            onPressed: () async {
+                                              _model.rows2 =
+                                                  await FavoritesTable()
+                                                      .insert({
+                                                'user_id': currentUserUid,
+                                                'book_id': bookRowItem.id,
+                                              });
+                                              _model.userFavReload2 =
+                                                  await FavoritesTable()
+                                                      .queryRows(
+                                                queryFn: (q) => q.eqOrNull(
+                                                  'user_id',
+                                                  currentUserUid,
+                                                ),
+                                              );
+                                              _model.favoriteRows = _model
+                                                  .userFavReload2!
+                                                  .toList()
+                                                  .cast<FavoritesRow>();
+                                              safeSetState(() {});
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    'Added to favourites',
+                                                    style: TextStyle(),
+                                                  ),
+                                                  duration: Duration(
+                                                      milliseconds: 4000),
+                                                ),
+                                              );
+
+                                              safeSetState(() {});
+                                            },
+                                          ),
                                       ].divide(SizedBox(width: 16.0)),
                                     ),
                                   ),

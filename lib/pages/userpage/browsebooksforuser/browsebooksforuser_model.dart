@@ -1,5 +1,6 @@
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'browsebooksforuser_widget.dart' show BrowsebooksforuserWidget;
 import 'package:flutter/material.dart';
 
@@ -20,15 +21,34 @@ class BrowsebooksforuserModel
 
   String? categoryFilter = 'All';
 
+  List<FavoritesRow> favoriteRows = [];
+  void addToFavoriteRows(FavoritesRow item) => favoriteRows.add(item);
+  void removeFromFavoriteRows(FavoritesRow item) => favoriteRows.remove(item);
+  void removeAtIndexFromFavoriteRows(int index) => favoriteRows.removeAt(index);
+  void insertAtIndexInFavoriteRows(int index, FavoritesRow item) =>
+      favoriteRows.insert(index, item);
+  void updateFavoriteRowsAtIndex(int index, Function(FavoritesRow) updateFn) =>
+      favoriteRows[index] = updateFn(favoriteRows[index]);
+
   ///  State fields for stateful widgets in this page.
 
   // Stores action output result for [Backend Call - Query Rows] action in browsebooksforuser widget.
   List<BooksRow>? loadedUserBooks;
+  // Stores action output result for [Backend Call - Query Rows] action in browsebooksforuser widget.
+  List<FavoritesRow>? loadedUserFavorites;
   // State field(s) for UserBookSearchField widget.
   FocusNode? userBookSearchFieldFocusNode;
   TextEditingController? userBookSearchFieldTextController;
   String? Function(BuildContext, String?)?
       userBookSearchFieldTextControllerValidator;
+  // Stores action output result for [Backend Call - Delete Row(s)] action in UserFavOnButton widget.
+  List<FavoritesRow>? rows;
+  // Stores action output result for [Backend Call - Query Rows] action in UserFavOnButton widget.
+  List<FavoritesRow>? userFavReload;
+  // Stores action output result for [Backend Call - Insert Row] action in UserFavOffButton widget.
+  FavoritesRow? rows2;
+  // Stores action output result for [Backend Call - Query Rows] action in UserFavOffButton widget.
+  List<FavoritesRow>? userFavReload2;
 
   @override
   void initState(BuildContext context) {}
