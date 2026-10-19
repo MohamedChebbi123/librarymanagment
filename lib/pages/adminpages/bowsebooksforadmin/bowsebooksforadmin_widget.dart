@@ -81,7 +81,7 @@ class _BowsebooksforadminWidgetState extends State<BowsebooksforadminWidget> {
           title: Text(
             'Books',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  font: GoogleFonts.inter(
+                  font: GoogleFonts.playfairDisplay(
                     fontWeight:
                         FlutterFlowTheme.of(context).headlineMedium.fontWeight,
                     fontStyle:
@@ -97,8 +97,8 @@ class _BowsebooksforadminWidgetState extends State<BowsebooksforadminWidget> {
                 ),
           ),
           actions: [],
-          centerTitle: false,
-          elevation: 2.0,
+          centerTitle: true,
+          elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
@@ -126,50 +126,43 @@ class _BowsebooksforadminWidgetState extends State<BowsebooksforadminWidget> {
                       hintText: 'Search by title, author or category',
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color(0x00000000),
-                          width: 1.0,
+                          color: FlutterFlowTheme.of(context).alternate,
+                          width: 1.2,
                         ),
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(4.0),
-                          topRight: Radius.circular(4.0),
-                        ),
+                        borderRadius: BorderRadius.circular(14.0),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color(0x00000000),
-                          width: 1.0,
+                          color: FlutterFlowTheme.of(context).primary,
+                          width: 1.2,
                         ),
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(4.0),
-                          topRight: Radius.circular(4.0),
-                        ),
+                        borderRadius: BorderRadius.circular(14.0),
                       ),
                       errorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color(0x00000000),
-                          width: 1.0,
+                          color: FlutterFlowTheme.of(context).error,
+                          width: 1.2,
                         ),
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(4.0),
-                          topRight: Radius.circular(4.0),
-                        ),
+                        borderRadius: BorderRadius.circular(14.0),
                       ),
                       focusedErrorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color(0x00000000),
-                          width: 1.0,
+                          color: FlutterFlowTheme.of(context).error,
+                          width: 1.2,
                         ),
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(4.0),
-                          topRight: Radius.circular(4.0),
-                        ),
+                        borderRadius: BorderRadius.circular(14.0),
                       ),
                       filled: true,
+                      fillColor:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      contentPadding: EdgeInsetsDirectional.fromSTEB(
+                          16.0, 16.0, 16.0, 16.0),
                       prefixIcon: Icon(
                         Icons.search,
                       ),
                     ),
                     style: TextStyle(),
+                    cursorColor: FlutterFlowTheme.of(context).primary,
                     validator: _model.bookSearchFieldTextControllerValidator
                         .asValidator(context),
                   ),
@@ -204,6 +197,7 @@ class _BowsebooksforadminWidgetState extends State<BowsebooksforadminWidget> {
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: TextStyle(
                                 color: Colors.white,
+                                fontWeight: FontWeight.w600,
                               ),
                               borderRadius: BorderRadius.circular(18.0),
                             ),
@@ -224,6 +218,7 @@ class _BowsebooksforadminWidgetState extends State<BowsebooksforadminWidget> {
                               color: Colors.transparent,
                               textStyle: TextStyle(
                                 color: FlutterFlowTheme.of(context).primary,
+                                fontWeight: FontWeight.w600,
                               ),
                               elevation: 0.0,
                               borderSide: BorderSide(
@@ -248,6 +243,7 @@ class _BowsebooksforadminWidgetState extends State<BowsebooksforadminWidget> {
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: TextStyle(
                                 color: Colors.white,
+                                fontWeight: FontWeight.w600,
                               ),
                               borderRadius: BorderRadius.circular(18.0),
                             ),
@@ -268,6 +264,7 @@ class _BowsebooksforadminWidgetState extends State<BowsebooksforadminWidget> {
                               color: Colors.transparent,
                               textStyle: TextStyle(
                                 color: FlutterFlowTheme.of(context).primary,
+                                fontWeight: FontWeight.w600,
                               ),
                               elevation: 0.0,
                               borderSide: BorderSide(
@@ -292,6 +289,7 @@ class _BowsebooksforadminWidgetState extends State<BowsebooksforadminWidget> {
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: TextStyle(
                                 color: Colors.white,
+                                fontWeight: FontWeight.w600,
                               ),
                               borderRadius: BorderRadius.circular(18.0),
                             ),
@@ -312,6 +310,7 @@ class _BowsebooksforadminWidgetState extends State<BowsebooksforadminWidget> {
                               color: Colors.transparent,
                               textStyle: TextStyle(
                                 color: FlutterFlowTheme.of(context).primary,
+                                fontWeight: FontWeight.w600,
                               ),
                               elevation: 0.0,
                               borderSide: BorderSide(
@@ -336,6 +335,7 @@ class _BowsebooksforadminWidgetState extends State<BowsebooksforadminWidget> {
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: TextStyle(
                                 color: Colors.white,
+                                fontWeight: FontWeight.w600,
                               ),
                               borderRadius: BorderRadius.circular(18.0),
                             ),
@@ -356,6 +356,7 @@ class _BowsebooksforadminWidgetState extends State<BowsebooksforadminWidget> {
                               color: Colors.transparent,
                               textStyle: TextStyle(
                                 color: FlutterFlowTheme.of(context).primary,
+                                fontWeight: FontWeight.w600,
                               ),
                               elevation: 0.0,
                               borderSide: BorderSide(
@@ -380,6 +381,7 @@ class _BowsebooksforadminWidgetState extends State<BowsebooksforadminWidget> {
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: TextStyle(
                                 color: Colors.white,
+                                fontWeight: FontWeight.w600,
                               ),
                               borderRadius: BorderRadius.circular(18.0),
                             ),
@@ -400,6 +402,7 @@ class _BowsebooksforadminWidgetState extends State<BowsebooksforadminWidget> {
                               color: Colors.transparent,
                               textStyle: TextStyle(
                                 color: FlutterFlowTheme.of(context).primary,
+                                fontWeight: FontWeight.w600,
                               ),
                               elevation: 0.0,
                               borderSide: BorderSide(
@@ -424,6 +427,7 @@ class _BowsebooksforadminWidgetState extends State<BowsebooksforadminWidget> {
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: TextStyle(
                                 color: Colors.white,
+                                fontWeight: FontWeight.w600,
                               ),
                               borderRadius: BorderRadius.circular(18.0),
                             ),
@@ -444,6 +448,7 @@ class _BowsebooksforadminWidgetState extends State<BowsebooksforadminWidget> {
                               color: Colors.transparent,
                               textStyle: TextStyle(
                                 color: FlutterFlowTheme.of(context).primary,
+                                fontWeight: FontWeight.w600,
                               ),
                               elevation: 0.0,
                               borderSide: BorderSide(
@@ -515,7 +520,23 @@ class _BowsebooksforadminWidgetState extends State<BowsebooksforadminWidget> {
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 16.0,
+                                          color: Color(0x12000000),
+                                          offset: Offset(
+                                            0.0,
+                                            6.0,
+                                          ),
+                                          spreadRadius: 0.0,
+                                        )
+                                      ],
                                       borderRadius: BorderRadius.circular(16.0),
+                                      border: Border.all(
+                                        color: FlutterFlowTheme.of(context)
+                                            .alternate,
+                                        width: 1.0,
+                                      ),
                                     ),
                                     child: Padding(
                                       padding: EdgeInsets.all(16.0),
@@ -531,7 +552,7 @@ class _BowsebooksforadminWidgetState extends State<BowsebooksforadminWidget> {
                                         children: [
                                           Container(
                                             decoration: BoxDecoration(
-                                              color: Color(0x1F4F46E5),
+                                              color: Color(0x1F1B4D3E),
                                               borderRadius:
                                                   BorderRadius.circular(12.0),
                                             ),

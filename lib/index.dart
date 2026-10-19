@@ -10,7 +10,8 @@ export '/pages/auth/updateprofile/updateprofile_widget.dart'
 export '/pages/adminpages/addbook/addbook_widget.dart' show AddbookWidget;
 export '/pages/adminpages/adminhomepage/adminhomepage_widget.dart'
     show AdminhomepageWidget;
-export '/userhomepage/userhomepage_widget.dart' show UserhomepageWidget;
+export '/pages/userpage/userhomepage/userhomepage_widget.dart'
+    show UserhomepageWidget;
 export '/pages/auth/adminprofilepage/adminprofilepage_widget.dart'
     show AdminprofilepageWidget;
 export '/pages/adminpages/bowsebooksforadmin/bowsebooksforadmin_widget.dart'
@@ -19,3 +20,11 @@ export '/pages/adminpages/bookdetailsforadmin/bookdetailsforadmin_widget.dart'
     show BookdetailsforadminWidget;
 export '/pages/adminpages/editbookpageforadmin/editbookpageforadmin_widget.dart'
     show EditbookpageforadminWidget;
+export '/pages/userpage/browsebooksforuser/browsebooksforuser_widget.dart'
+    show BrowsebooksforuserWidget;
+export '/pages/userpage/favouritebookforuser/favouritebookforuser_widget.dart'
+    show FavouritebookforuserWidget;
+export '/pages/userpage/profileforuser/profileforuser_widget.dart'
+    show ProfileforuserWidget;
+export '/pages/userpage/editprofileforuser/editprofileforuser_widget.dart'
+    show EditprofileforuserWidget;

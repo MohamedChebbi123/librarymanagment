@@ -110,7 +110,7 @@ class _AdminprofilepageWidgetState extends State<AdminprofilepageWidget> {
               title: Text(
                 'My profile',
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      font: GoogleFonts.inter(
+                      font: GoogleFonts.playfairDisplay(
                         fontWeight: FlutterFlowTheme.of(context)
                             .headlineMedium
                             .fontWeight,
@@ -129,8 +129,8 @@ class _AdminprofilepageWidgetState extends State<AdminprofilepageWidget> {
                     ),
               ),
               actions: [],
-              centerTitle: false,
-              elevation: 2.0,
+              centerTitle: true,
+              elevation: 0.0,
             ),
             body: SafeArea(
               top: true,
@@ -187,7 +187,8 @@ class _AdminprofilepageWidgetState extends State<AdminprofilepageWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .headlineSmall
                                                 .override(
-                                                  font: GoogleFonts.inter(
+                                                  font: GoogleFonts
+                                                      .playfairDisplay(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -219,8 +220,24 @@ class _AdminprofilepageWidgetState extends State<AdminprofilepageWidget> {
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryBackground,
+                                          boxShadow: [
+                                            BoxShadow(
+                                              blurRadius: 16.0,
+                                              color: Color(0x12000000),
+                                              offset: Offset(
+                                                0.0,
+                                                6.0,
+                                              ),
+                                              spreadRadius: 0.0,
+                                            )
+                                          ],
                                           borderRadius:
                                               BorderRadius.circular(16.0),
+                                          border: Border.all(
+                                            color: FlutterFlowTheme.of(context)
+                                                .alternate,
+                                            width: 1.0,
+                                          ),
                                         ),
                                         child: Padding(
                                           padding: EdgeInsets.all(20.0),
@@ -249,7 +266,7 @@ class _AdminprofilepageWidgetState extends State<AdminprofilepageWidget> {
                                                 children: [
                                                   Container(
                                                     decoration: BoxDecoration(
-                                                      color: Color(0x1F4F46E5),
+                                                      color: Color(0x1F1B4D3E),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               12.0),
@@ -377,7 +394,7 @@ class _AdminprofilepageWidgetState extends State<AdminprofilepageWidget> {
                                                 children: [
                                                   Container(
                                                     decoration: BoxDecoration(
-                                                      color: Color(0x1F4F46E5),
+                                                      color: Color(0x1F1B4D3E),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               12.0),
@@ -506,7 +523,7 @@ class _AdminprofilepageWidgetState extends State<AdminprofilepageWidget> {
                                                 children: [
                                                   Container(
                                                     decoration: BoxDecoration(
-                                                      color: Color(0x1F4F46E5),
+                                                      color: Color(0x1F1B4D3E),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               12.0),
@@ -645,6 +662,7 @@ class _AdminprofilepageWidgetState extends State<AdminprofilepageWidget> {
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: TextStyle(
                                 color: Colors.white,
+                                fontWeight: FontWeight.w600,
                               ),
                               borderRadius: BorderRadius.circular(14.0),
                             ),
@@ -674,6 +692,7 @@ class _AdminprofilepageWidgetState extends State<AdminprofilepageWidget> {
                               color: Colors.transparent,
                               textStyle: TextStyle(
                                 color: FlutterFlowTheme.of(context).primary,
+                                fontWeight: FontWeight.w600,
                               ),
                               elevation: 0.0,
                               borderSide: BorderSide(

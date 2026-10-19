@@ -156,6 +156,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.SupabaseRow,
             ),
           ),
+        ),
+        FFRoute(
+          name: BrowsebooksforuserWidget.routeName,
+          path: BrowsebooksforuserWidget.routePath,
+          builder: (context, params) => BrowsebooksforuserWidget(),
+        ),
+        FFRoute(
+          name: FavouritebookforuserWidget.routeName,
+          path: FavouritebookforuserWidget.routePath,
+          builder: (context, params) => FavouritebookforuserWidget(),
+        ),
+        FFRoute(
+          name: ProfileforuserWidget.routeName,
+          path: ProfileforuserWidget.routePath,
+          builder: (context, params) => ProfileforuserWidget(),
+        ),
+        FFRoute(
+          name: EditprofileforuserWidget.routeName,
+          path: EditprofileforuserWidget.routePath,
+          builder: (context, params) => EditprofileforuserWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

@@ -120,22 +120,22 @@ class LightModeTheme extends FlutterFlowTheme {
   @Deprecated('Use tertiary instead')
   Color get tertiaryColor => tertiary;
 
-  late Color primary = const Color(0xFF4F46E5);
-  late Color secondary = const Color(0xFF39D2C0);
-  late Color tertiary = const Color(0xFFF59E0B);
-  late Color alternate = const Color(0xFFE0E3E7);
-  late Color primaryText = const Color(0xFF14181B);
-  late Color secondaryText = const Color(0xFF6B7280);
-  late Color primaryBackground = const Color(0xFFF8F9FC);
+  late Color primary = const Color(0xFF1B4D3E);
+  late Color secondary = const Color(0xFFC9A227);
+  late Color tertiary = const Color(0xFFD97757);
+  late Color alternate = const Color(0xFFE6E0D4);
+  late Color primaryText = const Color(0xFF1E2522);
+  late Color secondaryText = const Color(0xFF6F7670);
+  late Color primaryBackground = const Color(0xFFF6F3EC);
   late Color secondaryBackground = const Color(0xFFFFFFFF);
-  late Color accent1 = const Color(0x4C4B39EF);
-  late Color accent2 = const Color(0x4D39D2C0);
-  late Color accent3 = const Color(0x4DEE8B60);
+  late Color accent1 = const Color(0x1F1B4D3E);
+  late Color accent2 = const Color(0x33C9A227);
+  late Color accent3 = const Color(0x33D97757);
   late Color accent4 = const Color(0xCCFFFFFF);
-  late Color success = const Color(0xFF249689);
-  late Color warning = const Color(0xFFF9CF58);
-  late Color error = const Color(0xFFFF5963);
-  late Color info = const Color(0xFFFFFFFF);
+  late Color success = const Color(0xFF2E7D5B);
+  late Color warning = const Color(0xFFE0A526);
+  late Color error = const Color(0xFFC8473D);
+  late Color info = const Color(0xFF3B6EA8);
 }
 
 abstract class Typography {
@@ -191,89 +191,89 @@ class ThemeTypography extends Typography {
 
   final FlutterFlowTheme theme;
 
-  String get displayLargeFamily => 'Inter';
+  String get displayLargeFamily => 'Playfair Display';
   bool get displayLargeIsCustom => false;
-  TextStyle get displayLarge => GoogleFonts.inter(
+  TextStyle get displayLarge => GoogleFonts.playfairDisplay(
         color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 64.0,
+        fontWeight: FontWeight.bold,
+        fontSize: 57.0,
       );
-  String get displayMediumFamily => 'Inter';
+  String get displayMediumFamily => 'Playfair Display';
   bool get displayMediumIsCustom => false;
-  TextStyle get displayMedium => GoogleFonts.inter(
+  TextStyle get displayMedium => GoogleFonts.playfairDisplay(
         color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 44.0,
+        fontWeight: FontWeight.bold,
+        fontSize: 45.0,
       );
-  String get displaySmallFamily => 'Inter';
+  String get displaySmallFamily => 'Playfair Display';
   bool get displaySmallIsCustom => false;
-  TextStyle get displaySmall => GoogleFonts.inter(
+  TextStyle get displaySmall => GoogleFonts.playfairDisplay(
         color: theme.primaryText,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.bold,
         fontSize: 36.0,
       );
-  String get headlineLargeFamily => 'Inter';
+  String get headlineLargeFamily => 'Playfair Display';
   bool get headlineLargeIsCustom => false;
-  TextStyle get headlineLarge => GoogleFonts.inter(
+  TextStyle get headlineLarge => GoogleFonts.playfairDisplay(
         color: theme.primaryText,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.bold,
         fontSize: 32.0,
       );
-  String get headlineMediumFamily => 'Inter';
+  String get headlineMediumFamily => 'Playfair Display';
   bool get headlineMediumIsCustom => false;
-  TextStyle get headlineMedium => GoogleFonts.inter(
+  TextStyle get headlineMedium => GoogleFonts.playfairDisplay(
         color: theme.primaryText,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.bold,
         fontSize: 28.0,
       );
-  String get headlineSmallFamily => 'Inter';
+  String get headlineSmallFamily => 'Playfair Display';
   bool get headlineSmallIsCustom => false;
-  TextStyle get headlineSmall => GoogleFonts.inter(
+  TextStyle get headlineSmall => GoogleFonts.playfairDisplay(
         color: theme.primaryText,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.bold,
         fontSize: 24.0,
       );
-  String get titleLargeFamily => 'Inter';
+  String get titleLargeFamily => 'Playfair Display';
   bool get titleLargeIsCustom => false;
-  TextStyle get titleLarge => GoogleFonts.inter(
+  TextStyle get titleLarge => GoogleFonts.playfairDisplay(
         color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 20.0,
+        fontWeight: FontWeight.bold,
+        fontSize: 22.0,
       );
   String get titleMediumFamily => 'Inter';
   bool get titleMediumIsCustom => false;
   TextStyle get titleMedium => GoogleFonts.inter(
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
-        fontSize: 18.0,
+        fontSize: 16.0,
       );
   String get titleSmallFamily => 'Inter';
   bool get titleSmallIsCustom => false;
   TextStyle get titleSmall => GoogleFonts.inter(
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
-        fontSize: 16.0,
+        fontSize: 14.0,
       );
   String get labelLargeFamily => 'Inter';
   bool get labelLargeIsCustom => false;
   TextStyle get labelLarge => GoogleFonts.inter(
         color: theme.secondaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 16.0,
+        fontWeight: FontWeight.w600,
+        fontSize: 14.0,
       );
   String get labelMediumFamily => 'Inter';
   bool get labelMediumIsCustom => false;
   TextStyle get labelMedium => GoogleFonts.inter(
         color: theme.secondaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 14.0,
+        fontWeight: FontWeight.w600,
+        fontSize: 12.0,
       );
   String get labelSmallFamily => 'Inter';
   bool get labelSmallIsCustom => false;
   TextStyle get labelSmall => GoogleFonts.inter(
         color: theme.secondaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 12.0,
+        fontWeight: FontWeight.w600,
+        fontSize: 11.0,
       );
   String get bodyLargeFamily => 'Inter';
   bool get bodyLargeIsCustom => false;
@@ -281,6 +281,7 @@ class ThemeTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 16.0,
+        height: 1.5,
       );
   String get bodyMediumFamily => 'Inter';
   bool get bodyMediumIsCustom => false;
@@ -288,6 +289,7 @@ class ThemeTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
+        height: 1.45,
       );
   String get bodySmallFamily => 'Inter';
   bool get bodySmallIsCustom => false;
@@ -295,6 +297,7 @@ class ThemeTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 12.0,
+        height: 1.4,
       );
 }
 

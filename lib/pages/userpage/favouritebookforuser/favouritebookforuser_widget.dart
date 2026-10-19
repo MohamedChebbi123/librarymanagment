@@ -2,28 +2,30 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'userhomepage_model.dart';
-export 'userhomepage_model.dart';
+import 'favouritebookforuser_model.dart';
+export 'favouritebookforuser_model.dart';
 
-class UserhomepageWidget extends StatefulWidget {
-  const UserhomepageWidget({super.key});
+class FavouritebookforuserWidget extends StatefulWidget {
+  const FavouritebookforuserWidget({super.key});
 
-  static String routeName = 'userhomepage';
-  static String routePath = '/userhomepage';
+  static String routeName = 'favouritebookforuser';
+  static String routePath = '/favouritebookforuser';
 
   @override
-  State<UserhomepageWidget> createState() => _UserhomepageWidgetState();
+  State<FavouritebookforuserWidget> createState() =>
+      _FavouritebookforuserWidgetState();
 }
 
-class _UserhomepageWidgetState extends State<UserhomepageWidget> {
-  late UserhomepageModel _model;
+class _FavouritebookforuserWidgetState
+    extends State<FavouritebookforuserWidget> {
+  late FavouritebookforuserModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => UserhomepageModel());
+    _model = createModel(context, () => FavouritebookforuserModel());
   }
 
   @override
@@ -49,7 +51,7 @@ class _UserhomepageWidgetState extends State<UserhomepageWidget> {
           title: Text(
             'Page Title',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  font: GoogleFonts.inter(
+                  font: GoogleFonts.playfairDisplay(
                     fontWeight:
                         FlutterFlowTheme.of(context).headlineMedium.fontWeight,
                     fontStyle:

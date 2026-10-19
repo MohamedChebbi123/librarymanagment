@@ -72,7 +72,7 @@ class _BookdetailsforadminWidgetState extends State<BookdetailsforadminWidget> {
           title: Text(
             'Book details',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  font: GoogleFonts.inter(
+                  font: GoogleFonts.playfairDisplay(
                     fontWeight:
                         FlutterFlowTheme.of(context).headlineMedium.fontWeight,
                     fontStyle:
@@ -88,8 +88,8 @@ class _BookdetailsforadminWidgetState extends State<BookdetailsforadminWidget> {
                 ),
           ),
           actions: [],
-          centerTitle: false,
-          elevation: 2.0,
+          centerTitle: true,
+          elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
@@ -132,13 +132,13 @@ class _BookdetailsforadminWidgetState extends State<BookdetailsforadminWidget> {
                         Container(
                           height: 260.0,
                           decoration: BoxDecoration(
-                            color: Color(0x1F4F46E5),
+                            color: Color(0x1F1B4D3E),
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           alignment: AlignmentDirectional(0.0, 0.0),
                           child: Icon(
                             Icons.menu_book,
-                            color: Color(0xFF4F46E5),
+                            color: FlutterFlowTheme.of(context).primary,
                             size: 72.0,
                           ),
                         ),
@@ -150,7 +150,7 @@ class _BookdetailsforadminWidgetState extends State<BookdetailsforadminWidget> {
                         }(widget.book?.title)),
                         style:
                             FlutterFlowTheme.of(context).headlineSmall.override(
-                                  font: GoogleFonts.inter(
+                                  font: GoogleFonts.playfairDisplay(
                                     fontWeight: FontWeight.bold,
                                     fontStyle: FlutterFlowTheme.of(context)
                                         .headlineSmall
@@ -200,7 +200,7 @@ class _BookdetailsforadminWidgetState extends State<BookdetailsforadminWidget> {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                              color: Color(0xFF4F46E5),
+                              color: FlutterFlowTheme.of(context).primary,
                               borderRadius: BorderRadius.circular(14.0),
                             ),
                             child: Padding(
@@ -240,7 +240,22 @@ class _BookdetailsforadminWidgetState extends State<BookdetailsforadminWidget> {
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 16.0,
+                              color: Color(0x12000000),
+                              offset: Offset(
+                                0.0,
+                                6.0,
+                              ),
+                              spreadRadius: 0.0,
+                            )
+                          ],
                           borderRadius: BorderRadius.circular(14.0),
+                          border: Border.all(
+                            color: FlutterFlowTheme.of(context).alternate,
+                            width: 1.0,
+                          ),
                         ),
                         child: Padding(
                           padding: EdgeInsets.all(16.0),
@@ -262,14 +277,15 @@ class _BookdetailsforadminWidgetState extends State<BookdetailsforadminWidget> {
                                 children: [
                                   Container(
                                     decoration: BoxDecoration(
-                                      color: Color(0x1F4F46E5),
+                                      color: Color(0x1F1B4D3E),
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     child: Padding(
                                       padding: EdgeInsets.all(10.0),
                                       child: Icon(
                                         Icons.qr_code,
-                                        color: Color(0xFF4F46E5),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
                                         size: 22.0,
                                       ),
                                     ),
@@ -355,14 +371,15 @@ class _BookdetailsforadminWidgetState extends State<BookdetailsforadminWidget> {
                                 children: [
                                   Container(
                                     decoration: BoxDecoration(
-                                      color: Color(0x1F4F46E5),
+                                      color: Color(0x1F1B4D3E),
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     child: Padding(
                                       padding: EdgeInsets.all(10.0),
                                       child: Icon(
                                         Icons.calendar_today,
-                                        color: Color(0xFF4F46E5),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
                                         size: 22.0,
                                       ),
                                     ),
@@ -515,10 +532,11 @@ class _BookdetailsforadminWidgetState extends State<BookdetailsforadminWidget> {
                                     0.0, 0.0, 0.0, 0.0),
                                 iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                iconColor: Color(0xFF4F46E5),
+                                iconColor: FlutterFlowTheme.of(context).primary,
                                 color: Colors.transparent,
                                 textStyle: TextStyle(
-                                  color: Color(0xFF4F46E5),
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  fontWeight: FontWeight.w600,
                                 ),
                                 elevation: 0.0,
                                 borderSide: BorderSide(
@@ -601,6 +619,7 @@ class _BookdetailsforadminWidgetState extends State<BookdetailsforadminWidget> {
                                 color: FlutterFlowTheme.of(context).error,
                                 textStyle: TextStyle(
                                   color: Colors.white,
+                                  fontWeight: FontWeight.w600,
                                 ),
                                 borderRadius: BorderRadius.circular(14.0),
                               ),

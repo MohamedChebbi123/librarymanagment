@@ -76,7 +76,7 @@ class _UpdateprofileWidgetState extends State<UpdateprofileWidget> {
           title: Text(
             'Update profile',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  font: GoogleFonts.inter(
+                  font: GoogleFonts.playfairDisplay(
                     fontWeight:
                         FlutterFlowTheme.of(context).headlineMedium.fontWeight,
                     fontStyle:
@@ -92,8 +92,8 @@ class _UpdateprofileWidgetState extends State<UpdateprofileWidget> {
                 ),
           ),
           actions: [],
-          centerTitle: false,
-          elevation: 2.0,
+          centerTitle: true,
+          elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
@@ -123,7 +123,7 @@ class _UpdateprofileWidgetState extends State<UpdateprofileWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .headlineMedium
                                 .override(
-                                  font: GoogleFonts.inter(
+                                  font: GoogleFonts.playfairDisplay(
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .headlineMedium
                                         .fontWeight,
@@ -199,7 +199,8 @@ class _UpdateprofileWidgetState extends State<UpdateprofileWidget> {
                                                   .labelMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF374151),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .labelMedium
@@ -220,50 +221,44 @@ class _UpdateprofileWidgetState extends State<UpdateprofileWidget> {
                                 hintText: 'Your full name',
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 filled: true,
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 16.0, 16.0, 16.0),
                                 prefixIcon: Icon(
                                   Icons.person,
                                 ),
                               ),
                               style: TextStyle(),
+                              cursorColor: FlutterFlowTheme.of(context).primary,
                               validator: _model
                                   .profileUsernameFieldTextControllerValidator
                                   .asValidator(context),
@@ -287,7 +282,8 @@ class _UpdateprofileWidgetState extends State<UpdateprofileWidget> {
                                                   .labelMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF374151),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .labelMedium
@@ -308,51 +304,45 @@ class _UpdateprofileWidgetState extends State<UpdateprofileWidget> {
                                 hintText: '+216 12 345 678',
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 filled: true,
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 16.0, 16.0, 16.0),
                                 prefixIcon: Icon(
                                   Icons.phone,
                                 ),
                               ),
                               style: TextStyle(),
                               keyboardType: (FFKeyboardType.phone).flutterValue,
+                              cursorColor: FlutterFlowTheme.of(context).primary,
                               validator: _model
                                   .profilePhoneFieldTextControllerValidator
                                   .asValidator(context),
@@ -376,7 +366,8 @@ class _UpdateprofileWidgetState extends State<UpdateprofileWidget> {
                                                   .labelMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF374151),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .labelMedium
@@ -395,6 +386,7 @@ class _UpdateprofileWidgetState extends State<UpdateprofileWidget> {
                               options: ['Français', 'English', 'العربية'],
                               onChanged: (val) => safeSetState(
                                   () => _model.profileLanguageFieldValue = val),
+                              height: 56.0,
                               textStyle: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -423,11 +415,13 @@ class _UpdateprofileWidgetState extends State<UpdateprofileWidget> {
                               ),
                               fillColor: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              elevation: 2.0,
+                              elevation: 0.0,
                               borderColor:
                                   FlutterFlowTheme.of(context).alternate,
-                              borderWidth: 1.0,
-                              borderRadius: 8.0,
+                              focusBorderColor:
+                                  FlutterFlowTheme.of(context).primary,
+                              borderWidth: 1.2,
+                              borderRadius: 14.0,
                               margin: EdgeInsetsDirectional.fromSTEB(
                                   12.0, 0.0, 12.0, 0.0),
                               hidesUnderline: true,
@@ -454,7 +448,8 @@ class _UpdateprofileWidgetState extends State<UpdateprofileWidget> {
                                                   .labelMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF374151),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .labelMedium
@@ -477,45 +472,38 @@ class _UpdateprofileWidgetState extends State<UpdateprofileWidget> {
                                     'Leave empty to keep your current password',
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 filled: true,
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 16.0, 16.0, 16.0),
                                 prefixIcon: Icon(
                                   Icons.lock,
                                 ),
@@ -535,6 +523,7 @@ class _UpdateprofileWidgetState extends State<UpdateprofileWidget> {
                                 ),
                               ),
                               style: TextStyle(),
+                              cursorColor: FlutterFlowTheme.of(context).primary,
                               validator: _model
                                   .profilePasswordFieldTextControllerValidator
                                   .asValidator(context),
@@ -644,6 +633,7 @@ class _UpdateprofileWidgetState extends State<UpdateprofileWidget> {
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle: TextStyle(
                             color: Colors.white,
+                            fontWeight: FontWeight.w600,
                           ),
                           borderRadius: BorderRadius.circular(14.0),
                         ),

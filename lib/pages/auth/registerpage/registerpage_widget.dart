@@ -63,14 +63,14 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          backgroundColor: FlutterFlowTheme.of(context).primary,
           iconTheme:
               IconThemeData(color: FlutterFlowTheme.of(context).primaryText),
           automaticallyImplyLeading: true,
           title: Text(
             '',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  font: GoogleFonts.inter(
+                  font: GoogleFonts.playfairDisplay(
                     fontWeight:
                         FlutterFlowTheme.of(context).headlineMedium.fontWeight,
                     fontStyle:
@@ -86,7 +86,7 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                 ),
           ),
           actions: [],
-          centerTitle: false,
+          centerTitle: true,
           elevation: 0.0,
         ),
         body: SafeArea(
@@ -128,7 +128,7 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .headlineMedium
                                 .override(
-                                  font: GoogleFonts.inter(
+                                  font: GoogleFonts.playfairDisplay(
                                     fontWeight: FontWeight.bold,
                                     fontStyle: FlutterFlowTheme.of(context)
                                         .headlineMedium
@@ -198,7 +198,8 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                                                   .labelMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF374151),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         fontSize: 13.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
@@ -226,34 +227,36 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Colors.transparent,
-                                    width: 1.5,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    width: 1.2,
                                   ),
                                   borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: FlutterFlowTheme.of(context).primary,
-                                    width: 1.5,
+                                    width: 1.2,
                                   ),
                                   borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: FlutterFlowTheme.of(context).error,
-                                    width: 1.5,
+                                    width: 1.2,
                                   ),
                                   borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: FlutterFlowTheme.of(context).error,
-                                    width: 1.5,
+                                    width: 1.2,
                                   ),
                                   borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 filled: true,
-                                fillColor: Color(0xFFF1F2F6),
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
                                 contentPadding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 17.0, 16.0, 17.0),
                                 prefixIcon: Icon(
@@ -285,7 +288,8 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                                                   .labelMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF374151),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         fontSize: 13.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
@@ -313,34 +317,36 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Colors.transparent,
-                                    width: 1.5,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    width: 1.2,
                                   ),
                                   borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: FlutterFlowTheme.of(context).primary,
-                                    width: 1.5,
+                                    width: 1.2,
                                   ),
                                   borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: FlutterFlowTheme.of(context).error,
-                                    width: 1.5,
+                                    width: 1.2,
                                   ),
                                   borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: FlutterFlowTheme.of(context).error,
-                                    width: 1.5,
+                                    width: 1.2,
                                   ),
                                   borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 filled: true,
-                                fillColor: Color(0xFFF1F2F6),
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
                                 contentPadding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 17.0, 16.0, 17.0),
                                 prefixIcon: Icon(
@@ -374,7 +380,8 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                                                   .labelMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF374151),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         fontSize: 13.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
@@ -402,34 +409,36 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Colors.transparent,
-                                    width: 1.5,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    width: 1.2,
                                   ),
                                   borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: FlutterFlowTheme.of(context).primary,
-                                    width: 1.5,
+                                    width: 1.2,
                                   ),
                                   borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: FlutterFlowTheme.of(context).error,
-                                    width: 1.5,
+                                    width: 1.2,
                                   ),
                                   borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: FlutterFlowTheme.of(context).error,
-                                    width: 1.5,
+                                    width: 1.2,
                                   ),
                                   borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 filled: true,
-                                fillColor: Color(0xFFF1F2F6),
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
                                 contentPadding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 17.0, 16.0, 17.0),
                                 prefixIcon: Icon(
@@ -462,7 +471,8 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                                                   .labelMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF374151),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         fontSize: 13.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
@@ -490,34 +500,36 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Colors.transparent,
-                                    width: 1.5,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    width: 1.2,
                                   ),
                                   borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: FlutterFlowTheme.of(context).primary,
-                                    width: 1.5,
+                                    width: 1.2,
                                   ),
                                   borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: FlutterFlowTheme.of(context).error,
-                                    width: 1.5,
+                                    width: 1.2,
                                   ),
                                   borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: FlutterFlowTheme.of(context).error,
-                                    width: 1.5,
+                                    width: 1.2,
                                   ),
                                   borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 filled: true,
-                                fillColor: Color(0xFFF1F2F6),
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
                                 contentPadding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 17.0, 16.0, 17.0),
                                 prefixIcon: Icon(
@@ -596,7 +608,8 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                                                   .labelMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF374151),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         fontSize: 13.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
@@ -644,12 +657,14 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                                     FlutterFlowTheme.of(context).secondaryText,
                                 size: 24.0,
                               ),
-                              fillColor: Color(0xFFF1F2F6),
-                              elevation: 2.0,
-                              borderColor: Colors.transparent,
+                              fillColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              elevation: 0.0,
+                              borderColor:
+                                  FlutterFlowTheme.of(context).alternate,
                               focusBorderColor:
                                   FlutterFlowTheme.of(context).primary,
-                              borderWidth: 1.5,
+                              borderWidth: 1.2,
                               borderRadius: 14.0,
                               margin: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 0.0, 12.0, 0.0),

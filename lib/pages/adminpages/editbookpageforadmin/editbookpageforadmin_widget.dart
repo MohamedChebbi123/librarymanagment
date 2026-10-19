@@ -130,7 +130,7 @@ class _EditbookpageforadminWidgetState
           title: Text(
             'Edit book',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  font: GoogleFonts.inter(
+                  font: GoogleFonts.playfairDisplay(
                     fontWeight:
                         FlutterFlowTheme.of(context).headlineMedium.fontWeight,
                     fontStyle:
@@ -146,8 +146,8 @@ class _EditbookpageforadminWidgetState
                 ),
           ),
           actions: [],
-          centerTitle: false,
-          elevation: 2.0,
+          centerTitle: true,
+          elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
@@ -194,7 +194,8 @@ class _EditbookpageforadminWidgetState
                                                   .labelMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF374151),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .labelMedium
@@ -215,50 +216,44 @@ class _EditbookpageforadminWidgetState
                                 hintText: 'Enter the book title',
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 filled: true,
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 16.0, 16.0, 16.0),
                                 prefixIcon: Icon(
                                   Icons.menu_book,
                                 ),
                               ),
                               style: TextStyle(),
+                              cursorColor: FlutterFlowTheme.of(context).primary,
                               validator: _model
                                   .editBookTitleFieldTextControllerValidator
                                   .asValidator(context),
@@ -282,7 +277,8 @@ class _EditbookpageforadminWidgetState
                                                   .labelMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF374151),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .labelMedium
@@ -303,50 +299,44 @@ class _EditbookpageforadminWidgetState
                                 hintText: 'e.g. 978-3-16-148410-0',
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 filled: true,
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 16.0, 16.0, 16.0),
                                 prefixIcon: Icon(
                                   Icons.qr_code,
                                 ),
                               ),
                               style: TextStyle(),
+                              cursorColor: FlutterFlowTheme.of(context).primary,
                               validator: _model
                                   .editBookIsbnFieldTextControllerValidator
                                   .asValidator(context),
@@ -370,7 +360,8 @@ class _EditbookpageforadminWidgetState
                                                   .labelMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF374151),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .labelMedium
@@ -391,50 +382,44 @@ class _EditbookpageforadminWidgetState
                                 hintText: 'Enter the author name',
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 filled: true,
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 16.0, 16.0, 16.0),
                                 prefixIcon: Icon(
                                   Icons.person,
                                 ),
                               ),
                               style: TextStyle(),
+                              cursorColor: FlutterFlowTheme.of(context).primary,
                               validator: _model
                                   .editBookAuthorFieldTextControllerValidator
                                   .asValidator(context),
@@ -458,7 +443,8 @@ class _EditbookpageforadminWidgetState
                                                   .labelMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF374151),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .labelMedium
@@ -486,6 +472,7 @@ class _EditbookpageforadminWidgetState
                               ],
                               onChanged: (val) => safeSetState(() =>
                                   _model.editBookCategoryFieldValue = val),
+                              height: 56.0,
                               textStyle: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -514,11 +501,13 @@ class _EditbookpageforadminWidgetState
                               ),
                               fillColor: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              elevation: 2.0,
+                              elevation: 0.0,
                               borderColor:
                                   FlutterFlowTheme.of(context).alternate,
-                              borderWidth: 1.0,
-                              borderRadius: 8.0,
+                              focusBorderColor:
+                                  FlutterFlowTheme.of(context).primary,
+                              borderWidth: 1.2,
+                              borderRadius: 14.0,
                               margin: EdgeInsetsDirectional.fromSTEB(
                                   12.0, 0.0, 12.0, 0.0),
                               hidesUnderline: true,
@@ -545,7 +534,8 @@ class _EditbookpageforadminWidgetState
                                                   .labelMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF374151),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .labelMedium
@@ -567,48 +557,42 @@ class _EditbookpageforadminWidgetState
                                 hintText: 'Short description of the book',
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 filled: true,
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 16.0, 16.0, 16.0),
                               ),
                               style: TextStyle(),
                               maxLines: 4,
+                              cursorColor: FlutterFlowTheme.of(context).primary,
                               validator: _model
                                   .editBookDescriptionFieldTextControllerValidator
                                   .asValidator(context),
@@ -632,7 +616,8 @@ class _EditbookpageforadminWidgetState
                                                   .labelMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF374151),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .labelMedium
@@ -653,50 +638,44 @@ class _EditbookpageforadminWidgetState
                                 hintText: 'https://example.com/cover.jpg',
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 filled: true,
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 16.0, 16.0, 16.0),
                                 prefixIcon: Icon(
                                   Icons.image,
                                 ),
                               ),
                               style: TextStyle(),
+                              cursorColor: FlutterFlowTheme.of(context).primary,
                               validator: _model
                                   .editBookCoverUrlFieldTextControllerValidator
                                   .asValidator(context),
@@ -720,7 +699,8 @@ class _EditbookpageforadminWidgetState
                                                   .labelMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF374151),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .labelMedium
@@ -752,45 +732,38 @@ class _EditbookpageforadminWidgetState
                                 hintText: 'e.g. 2020',
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 errorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 1.2,
                                   ),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(14.0),
                                 ),
                                 filled: true,
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 16.0, 16.0, 16.0),
                                 prefixIcon: Icon(
                                   Icons.calendar_today,
                                 ),
@@ -798,6 +771,7 @@ class _EditbookpageforadminWidgetState
                               style: TextStyle(),
                               keyboardType:
                                   (FFKeyboardType.number).flutterValue,
+                              cursorColor: FlutterFlowTheme.of(context).primary,
                               validator: _model
                                   .editBookPublishYearFieldTextControllerValidator
                                   .asValidator(context),
@@ -866,6 +840,7 @@ class _EditbookpageforadminWidgetState
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle: TextStyle(
                             color: Colors.white,
+                            fontWeight: FontWeight.w600,
                           ),
                           borderRadius: BorderRadius.circular(14.0),
                         ),
@@ -888,6 +863,7 @@ class _EditbookpageforadminWidgetState
                           color: Colors.transparent,
                           textStyle: TextStyle(
                             color: FlutterFlowTheme.of(context).primary,
+                            fontWeight: FontWeight.w600,
                           ),
                           elevation: 0.0,
                           borderSide: BorderSide(
