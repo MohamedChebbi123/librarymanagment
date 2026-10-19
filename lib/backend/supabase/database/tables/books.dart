@@ -40,4 +40,10 @@ class BooksRow extends SupabaseDataRow {
 
   String get title => getField<String>('title')!;
   set title(String value) => setField<String>('title', value);
+
+  double? get price => getField<double>('price');
+  set price(double? value) => setField<double>('price', value);
+
+  int get bookCount => getField<int>('book_count')!;
+  set bookCount(int value) => setField<int>('book_count', value);
 }

@@ -30,6 +30,14 @@ class BowsebooksforadminModel
   TextEditingController? bookSearchFieldTextController;
   String? Function(BuildContext, String?)?
       bookSearchFieldTextControllerValidator;
+  // Stores action output result for [Backend Call - Update Row(s)] action in BookStockMinusButton widget.
+  List<BooksRow>? rows;
+  // Stores action output result for [Backend Call - Query Rows] action in BookStockMinusButton widget.
+  List<BooksRow>? booksAfterMinus;
+  // Stores action output result for [Backend Call - Update Row(s)] action in BookStockPlusButton widget.
+  List<BooksRow>? rows2;
+  // Stores action output result for [Backend Call - Query Rows] action in BookStockPlusButton widget.
+  List<BooksRow>? booksAfterPlus;
 
   @override
   void initState(BuildContext context) {}

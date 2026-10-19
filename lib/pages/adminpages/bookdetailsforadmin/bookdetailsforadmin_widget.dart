@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'bookdetailsforadmin_model.dart';
 export 'bookdetailsforadmin_model.dart';
@@ -36,6 +37,12 @@ class _BookdetailsforadminWidgetState extends State<BookdetailsforadminWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => BookdetailsforadminModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.bookCount = widget.book?.bookCount ?? 0;
+      safeSetState(() {});
+    });
   }
 
   @override
@@ -236,6 +243,171 @@ class _BookdetailsforadminWidgetState extends State<BookdetailsforadminWidget> {
                             ),
                           ),
                         ],
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Color(0x33C9A227),
+                          borderRadius: BorderRadius.circular(16.0),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment:
+                                (FFMainAxisAlignment.start).flutterValue,
+                            crossAxisAlignment:
+                                (FFCrossAxisAlignment.center).flutterValue,
+                            textBaseline: TextBaseline.alphabetic,
+                            children: [
+                              Expanded(
+                                flex: 1,
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment:
+                                      (FFMainAxisAlignment.start).flutterValue,
+                                  crossAxisAlignment:
+                                      (FFCrossAxisAlignment.start).flutterValue,
+                                  textBaseline: TextBaseline.alphabetic,
+                                  children: [
+                                    Text(
+                                      ((double? p) {
+                                        return '${(p ?? 0).toStringAsFixed(3)} DT';
+                                      }(widget.book?.price)),
+                                      style: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .override(
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .fontStyle,
+                                            ),
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleMedium
+                                                    .fontStyle,
+                                          ),
+                                    ),
+                                    Text(
+                                      ((int? c) {
+                                        return '${c ?? 0} copies in stock';
+                                      }(_model.bookCount)),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                    ),
+                                  ].divide(SizedBox(height: 2.0)),
+                                ),
+                              ),
+                              FlutterFlowIconButton(
+                                borderRadius: 18.0,
+                                buttonSize: 40.0,
+                                fillColor: Color(0x1F1B4D3E),
+                                icon: Icon(
+                                  Icons.remove,
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  size: 20.0,
+                                ),
+                                onPressed: () async {
+                                  await BooksTable().update(
+                                    data: {
+                                      'book_count': (int? c) {
+                                        return (c ?? 0) > 0 ? (c ?? 0) - 1 : 0;
+                                      }(_model.bookCount),
+                                    },
+                                    matchingRows: (rows) => rows.eqOrNull(
+                                      'id',
+                                      widget.book?.id,
+                                    ),
+                                  );
+                                  _model.bookCount = (int? c) {
+                                    return (c ?? 0) > 0 ? (c ?? 0) - 1 : 0;
+                                  }(_model.bookCount);
+                                  safeSetState(() {});
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Stock updated',
+                                        style: TextStyle(),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                    ),
+                                  );
+
+                                  safeSetState(() {});
+                                },
+                              ),
+                              FlutterFlowIconButton(
+                                borderRadius: 18.0,
+                                buttonSize: 40.0,
+                                fillColor: FlutterFlowTheme.of(context).primary,
+                                icon: Icon(
+                                  Icons.add,
+                                  color: Colors.white,
+                                  size: 20.0,
+                                ),
+                                onPressed: () async {
+                                  await BooksTable().update(
+                                    data: {
+                                      'book_count': (_model.bookCount ?? 0) + 1,
+                                    },
+                                    matchingRows: (rows) => rows.eqOrNull(
+                                      'id',
+                                      widget.book?.id,
+                                    ),
+                                  );
+                                  _model.bookCount =
+                                      (_model.bookCount ?? 0) + 1;
+                                  safeSetState(() {});
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Stock updated',
+                                        style: TextStyle(),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                    ),
+                                  );
+
+                                  safeSetState(() {});
+                                },
+                              ),
+                            ].divide(SizedBox(width: 12.0)),
+                          ),
+                        ),
                       ),
                       Container(
                         decoration: BoxDecoration(

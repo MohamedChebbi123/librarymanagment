@@ -28,3 +28,9 @@ export '/pages/userpage/profileforuser/profileforuser_widget.dart'
     show ProfileforuserWidget;
 export '/pages/userpage/editprofileforuser/editprofileforuser_widget.dart'
     show EditprofileforuserWidget;
+export '/pages/userpage/boughtbooksuser/boughtbooksuser_widget.dart'
+    show BoughtbooksuserWidget;
+export '/pages/userpage/bookdetailforuser/bookdetailforuser_widget.dart'
+    show BookdetailforuserWidget;
+export '/bookdetailsforuser/bookdetailsforuser_widget.dart'
+    show BookdetailsforuserWidget;

@@ -546,7 +546,7 @@ class _BowsebooksforadminWidgetState extends State<BowsebooksforadminWidget> {
                                             (FFMainAxisAlignment.start)
                                                 .flutterValue,
                                         crossAxisAlignment:
-                                            (FFCrossAxisAlignment.center)
+                                            (FFCrossAxisAlignment.start)
                                                 .flutterValue,
                                         textBaseline: TextBaseline.alphabetic,
                                         children: [
@@ -561,10 +561,12 @@ class _BowsebooksforadminWidgetState extends State<BowsebooksforadminWidget> {
                                                   BorderRadius.circular(8.0),
                                               child: CachedNetworkImage(
                                                 fadeInDuration:
-                                                    Duration(milliseconds: 0),
+                                                    Duration(milliseconds: 500),
                                                 fadeOutDuration:
-                                                    Duration(milliseconds: 0),
-                                                imageUrl: bookRowItem.coverUrl!,
+                                                    Duration(milliseconds: 500),
+                                                imageUrl: ((String? v) {
+                                                  return (v ?? '');
+                                                }(bookRowItem.coverUrl)),
                                                 width: 60.0,
                                                 height: 90.0,
                                                 fit: BoxFit.cover,
@@ -657,7 +659,11 @@ class _BowsebooksforadminWidgetState extends State<BowsebooksforadminWidget> {
                                                       TextOverflow.ellipsis,
                                                 ),
                                                 Text(
-                                                  bookRowItem.category!,
+                                                  ((String? v) {
+                                                    return (v ?? '').isEmpty
+                                                        ? 'Uncategorized'
+                                                        : v!;
+                                                  }(bookRowItem.category)),
                                                   maxLines: 1,
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -693,6 +699,196 @@ class _BowsebooksforadminWidgetState extends State<BowsebooksforadminWidget> {
                                                       ),
                                                   overflow:
                                                       TextOverflow.ellipsis,
+                                                ),
+                                                Text(
+                                                  ((double? p) {
+                                                    return '${(p ?? 0).toStringAsFixed(3)} DT';
+                                                  }(bookRowItem.price)),
+                                                  maxLines: 1,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodySmall
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .fontStyle,
+                                                        ),
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodySmall
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodySmall
+                                                                .fontStyle,
+                                                      ),
+                                                ),
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      (FFMainAxisAlignment
+                                                              .start)
+                                                          .flutterValue,
+                                                  crossAxisAlignment:
+                                                      (FFCrossAxisAlignment
+                                                              .center)
+                                                          .flutterValue,
+                                                  textBaseline:
+                                                      TextBaseline.alphabetic,
+                                                  children: [
+                                                    Expanded(
+                                                      flex: 1,
+                                                      child: Text(
+                                                        ((int? c) {
+                                                          return 'Stock: ${c ?? 0}';
+                                                        }(bookRowItem
+                                                            .bookCount)),
+                                                        maxLines: 1,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .inter(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleSmall
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleSmall
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .fontStyle,
+                                                                ),
+                                                      ),
+                                                    ),
+                                                    FlutterFlowIconButton(
+                                                      borderRadius: 18.0,
+                                                      buttonSize: 40.0,
+                                                      fillColor:
+                                                          Color(0x1F1B4D3E),
+                                                      icon: Icon(
+                                                        Icons.remove,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        size: 20.0,
+                                                      ),
+                                                      onPressed: () async {
+                                                        await BooksTable()
+                                                            .update(
+                                                          data: {
+                                                            'book_count':
+                                                                (int? c) {
+                                                              return (c ?? 0) >
+                                                                      0
+                                                                  ? (c ?? 0) - 1
+                                                                  : 0;
+                                                            }(bookRowItem
+                                                                    .bookCount),
+                                                          },
+                                                          matchingRows:
+                                                              (rows) =>
+                                                                  rows.eqOrNull(
+                                                            'id',
+                                                            bookRowItem.id,
+                                                          ),
+                                                        );
+                                                        _model.booksAfterMinus =
+                                                            await BooksTable()
+                                                                .queryRows(
+                                                          queryFn: (q) =>
+                                                              q.order(
+                                                                  'created_at',
+                                                                  ascending:
+                                                                      true),
+                                                        );
+                                                        _model.bookRows = _model
+                                                            .booksAfterMinus!
+                                                            .toList()
+                                                            .cast<BooksRow>();
+                                                        safeSetState(() {});
+
+                                                        safeSetState(() {});
+                                                      },
+                                                    ),
+                                                    FlutterFlowIconButton(
+                                                      borderRadius: 18.0,
+                                                      buttonSize: 40.0,
+                                                      fillColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      icon: Icon(
+                                                        Icons.add,
+                                                        color: Colors.white,
+                                                        size: 20.0,
+                                                      ),
+                                                      onPressed: () async {
+                                                        await BooksTable()
+                                                            .update(
+                                                          data: {
+                                                            'book_count':
+                                                                (bookRowItem.bookCount ??
+                                                                        0) +
+                                                                    1,
+                                                          },
+                                                          matchingRows:
+                                                              (rows) =>
+                                                                  rows.eqOrNull(
+                                                            'id',
+                                                            bookRowItem.id,
+                                                          ),
+                                                        );
+                                                        _model.booksAfterPlus =
+                                                            await BooksTable()
+                                                                .queryRows(
+                                                          queryFn: (q) =>
+                                                              q.order(
+                                                                  'created_at',
+                                                                  ascending:
+                                                                      true),
+                                                        );
+                                                        _model.bookRows = _model
+                                                            .booksAfterPlus!
+                                                            .toList()
+                                                            .cast<BooksRow>();
+                                                        safeSetState(() {});
+
+                                                        safeSetState(() {});
+                                                      },
+                                                    ),
+                                                  ].divide(
+                                                      SizedBox(width: 8.0)),
                                                 ),
                                               ].divide(SizedBox(height: 4.0)),
                                             ),

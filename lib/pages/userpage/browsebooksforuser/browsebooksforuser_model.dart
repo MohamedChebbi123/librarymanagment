@@ -41,12 +41,18 @@ class BrowsebooksforuserModel
   TextEditingController? userBookSearchFieldTextController;
   String? Function(BuildContext, String?)?
       userBookSearchFieldTextControllerValidator;
+  // Stores action output result for [Backend Call - Insert Row] action in UserBookBuyButton widget.
+  BoughtBooksRow? rows;
+  // Stores action output result for [Backend Call - Update Row(s)] action in UserBookBuyButton widget.
+  List<BooksRow>? rows2;
+  // Stores action output result for [Backend Call - Query Rows] action in UserBookBuyButton widget.
+  List<BooksRow>? booksAfterBuy;
   // Stores action output result for [Backend Call - Delete Row(s)] action in UserFavOnButton widget.
-  List<FavoritesRow>? rows;
+  List<FavoritesRow>? rows3;
   // Stores action output result for [Backend Call - Query Rows] action in UserFavOnButton widget.
   List<FavoritesRow>? userFavReload;
   // Stores action output result for [Backend Call - Insert Row] action in UserFavOffButton widget.
-  FavoritesRow? rows2;
+  FavoritesRow? rows4;
   // Stores action output result for [Backend Call - Query Rows] action in UserFavOffButton widget.
   List<FavoritesRow>? userFavReload2;
 

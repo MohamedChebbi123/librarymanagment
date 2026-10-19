@@ -49,6 +49,12 @@ class _AddbookWidgetState extends State<AddbookWidget> {
 
     _model.bookPublishYearFieldTextController ??= TextEditingController();
     _model.bookPublishYearFieldFocusNode ??= FocusNode();
+
+    _model.bookPriceFieldTextController ??= TextEditingController();
+    _model.bookPriceFieldFocusNode ??= FocusNode();
+
+    _model.bookCountFieldTextController ??= TextEditingController();
+    _model.bookCountFieldFocusNode ??= FocusNode();
   }
 
   @override
@@ -723,6 +729,186 @@ class _AddbookWidgetState extends State<AddbookWidget> {
                                   .bookPublishYearFieldTextControllerValidator
                                   .asValidator(context),
                             ),
+                            Container(
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 16.0, 0.0, 8.0),
+                                child: Text(
+                                  'Price (DT)',
+                                  style: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        font: GoogleFonts.inter(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .fontStyle,
+                                        ),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .fontStyle,
+                                      ),
+                                ),
+                              ),
+                            ),
+                            TextFormField(
+                              controller: _model.bookPriceFieldTextController,
+                              focusNode: _model.bookPriceFieldFocusNode,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                hintText: 'e.g. 25.500',
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(4.0),
+                                    topRight: Radius.circular(4.0),
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(4.0),
+                                    topRight: Radius.circular(4.0),
+                                  ),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(4.0),
+                                    topRight: Radius.circular(4.0),
+                                  ),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(4.0),
+                                    topRight: Radius.circular(4.0),
+                                  ),
+                                ),
+                                filled: true,
+                                prefixIcon: Icon(
+                                  Icons.payments,
+                                ),
+                              ),
+                              style: TextStyle(),
+                              keyboardType:
+                                  (FFKeyboardType.decimal).flutterValue,
+                              validator: _model
+                                  .bookPriceFieldTextControllerValidator
+                                  .asValidator(context),
+                            ),
+                            Container(
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 16.0, 0.0, 8.0),
+                                child: Text(
+                                  'Book count',
+                                  style: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        font: GoogleFonts.inter(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .fontStyle,
+                                        ),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .fontStyle,
+                                      ),
+                                ),
+                              ),
+                            ),
+                            TextFormField(
+                              controller: _model.bookCountFieldTextController,
+                              focusNode: _model.bookCountFieldFocusNode,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                hintText: 'Number of copies, e.g. 3',
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(4.0),
+                                    topRight: Radius.circular(4.0),
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(4.0),
+                                    topRight: Radius.circular(4.0),
+                                  ),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(4.0),
+                                    topRight: Radius.circular(4.0),
+                                  ),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(4.0),
+                                    topRight: Radius.circular(4.0),
+                                  ),
+                                ),
+                                filled: true,
+                                prefixIcon: Icon(
+                                  Icons.inventory_2,
+                                ),
+                              ),
+                              style: TextStyle(),
+                              keyboardType:
+                                  (FFKeyboardType.number).flutterValue,
+                              validator: _model
+                                  .bookCountFieldTextControllerValidator
+                                  .asValidator(context),
+                            ),
                           ].divide(SizedBox(height: 0.0)),
                         ),
                       ),
@@ -744,7 +930,17 @@ class _AddbookWidgetState extends State<AddbookWidget> {
                                 _model.bookDescriptionFieldTextController.text,
                             'cover_url':
                                 _model.bookCoverUrlFieldTextController.text,
-                            'publish_year': _model.publishYear,
+                            'publish_year': (String? t) {
+                              return int.tryParse((t ?? '').trim());
+                            }(_model.bookPublishYearFieldTextController.text),
+                            'price': (String? t) {
+                              return double.tryParse(
+                                      (t ?? '').trim().replaceAll(',', '.')) ??
+                                  0;
+                            }(_model.bookPriceFieldTextController.text),
+                            'book_count': (String? t) {
+                              return int.tryParse((t ?? '').trim()) ?? 1;
+                            }(_model.bookCountFieldTextController.text),
                           });
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(

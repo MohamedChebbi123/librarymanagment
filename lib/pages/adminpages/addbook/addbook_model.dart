@@ -71,6 +71,34 @@ class AddbookModel extends FlutterFlowModel<AddbookWidget> {
   TextEditingController? bookPublishYearFieldTextController;
   String? Function(BuildContext, String?)?
       bookPublishYearFieldTextControllerValidator;
+  // State field(s) for BookPriceField widget.
+  FocusNode? bookPriceFieldFocusNode;
+  TextEditingController? bookPriceFieldTextController;
+  String? Function(BuildContext, String?)?
+      bookPriceFieldTextControllerValidator;
+  String? _bookPriceFieldTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Enter the price';
+    }
+
+    return null;
+  }
+
+  // State field(s) for BookCountField widget.
+  FocusNode? bookCountFieldFocusNode;
+  TextEditingController? bookCountFieldTextController;
+  String? Function(BuildContext, String?)?
+      bookCountFieldTextControllerValidator;
+  String? _bookCountFieldTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Enter the number of copies';
+    }
+
+    return null;
+  }
+
   // Stores action output result for [Backend Call - Insert Row] action in AddBookButton widget.
   BooksRow? rows;
 
@@ -82,6 +110,10 @@ class AddbookModel extends FlutterFlowModel<AddbookWidget> {
         _bookIsbnFieldTextControllerValidator;
     bookAuthorFieldTextControllerValidator =
         _bookAuthorFieldTextControllerValidator;
+    bookPriceFieldTextControllerValidator =
+        _bookPriceFieldTextControllerValidator;
+    bookCountFieldTextControllerValidator =
+        _bookCountFieldTextControllerValidator;
   }
 
   @override
@@ -103,5 +135,11 @@ class AddbookModel extends FlutterFlowModel<AddbookWidget> {
 
     bookPublishYearFieldFocusNode?.dispose();
     bookPublishYearFieldTextController?.dispose();
+
+    bookPriceFieldFocusNode?.dispose();
+    bookPriceFieldTextController?.dispose();
+
+    bookCountFieldFocusNode?.dispose();
+    bookCountFieldTextController?.dispose();
   }
 }

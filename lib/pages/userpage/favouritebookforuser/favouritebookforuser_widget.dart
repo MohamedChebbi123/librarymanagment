@@ -243,97 +243,100 @@ class _FavouritebookforuserWidgetState
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 12.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 16.0,
-                                        color: Color(0x12000000),
-                                        offset: Offset(
-                                          0.0,
-                                          6.0,
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed(
+                                      BookdetailsforuserWidget.routeName,
+                                      queryParameters: {
+                                        'bookId': serializeParam(
+                                          bookRowItem.id,
+                                          ParamType.int,
                                         ),
-                                        spreadRadius: 0.0,
-                                      )
-                                    ],
-                                    borderRadius: BorderRadius.circular(16.0),
-                                    border: Border.all(
+                                      }.withoutNulls,
+                                    );
+                                  },
+                                  child: Container(
+                                    decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
-                                          .alternate,
-                                      width: 1.0,
-                                    ),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsets.all(16.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          (FFMainAxisAlignment.start)
-                                              .flutterValue,
-                                      crossAxisAlignment:
-                                          (FFCrossAxisAlignment.start)
-                                              .flutterValue,
-                                      textBaseline: TextBaseline.alphabetic,
-                                      children: [
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            color: Color(0x1F1B4D3E),
-                                            borderRadius:
-                                                BorderRadius.circular(12.0),
+                                          .secondaryBackground,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 16.0,
+                                          color: Color(0x12000000),
+                                          offset: Offset(
+                                            0.0,
+                                            6.0,
                                           ),
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                            child: CachedNetworkImage(
-                                              fadeInDuration:
-                                                  Duration(milliseconds: 500),
-                                              fadeOutDuration:
-                                                  Duration(milliseconds: 500),
-                                              imageUrl: ((String? v) {
-                                                return (v ?? '');
-                                              }(bookRowItem.coverUrl)),
-                                              width: 60.0,
-                                              height: 90.0,
-                                              fit: BoxFit.cover,
+                                          spreadRadius: 0.0,
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(16.0),
+                                      border: Border.all(
+                                        color: FlutterFlowTheme.of(context)
+                                            .alternate,
+                                        width: 1.0,
+                                      ),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsets.all(16.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            (FFMainAxisAlignment.start)
+                                                .flutterValue,
+                                        crossAxisAlignment:
+                                            (FFCrossAxisAlignment.start)
+                                                .flutterValue,
+                                        textBaseline: TextBaseline.alphabetic,
+                                        children: [
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              color: Color(0x1F1B4D3E),
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                            ),
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                              child: CachedNetworkImage(
+                                                fadeInDuration:
+                                                    Duration(milliseconds: 500),
+                                                fadeOutDuration:
+                                                    Duration(milliseconds: 500),
+                                                imageUrl: ((String? v) {
+                                                  return (v ?? '');
+                                                }(bookRowItem.coverUrl)),
+                                                width: 60.0,
+                                                height: 90.0,
+                                                fit: BoxFit.cover,
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        Expanded(
-                                          flex: 1,
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            mainAxisAlignment:
-                                                (FFMainAxisAlignment.start)
-                                                    .flutterValue,
-                                            crossAxisAlignment:
-                                                (FFCrossAxisAlignment.start)
-                                                    .flutterValue,
-                                            textBaseline:
-                                                TextBaseline.alphabetic,
-                                            children: [
-                                              Text(
-                                                bookRowItem.title,
-                                                maxLines: 2,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMedium
-                                                        .override(
-                                                          font:
-                                                              GoogleFonts.inter(
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleMedium
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleMedium
-                                                                    .fontStyle,
-                                                          ),
-                                                          letterSpacing: 0.0,
+                                          Expanded(
+                                            flex: 1,
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              mainAxisAlignment:
+                                                  (FFMainAxisAlignment.start)
+                                                      .flutterValue,
+                                              crossAxisAlignment:
+                                                  (FFCrossAxisAlignment.start)
+                                                      .flutterValue,
+                                              textBaseline:
+                                                  TextBaseline.alphabetic,
+                                              children: [
+                                                Text(
+                                                  bookRowItem.title,
+                                                  maxLines: 2,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .titleMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -345,20 +348,49 @@ class _FavouritebookforuserWidgetState
                                                                   .titleMedium
                                                                   .fontStyle,
                                                         ),
-                                                overflow: TextOverflow.ellipsis,
-                                              ),
-                                              Text(
-                                                ((String? v) {
-                                                  return (v ?? '').isEmpty
-                                                      ? 'Unknown author'
-                                                      : v!;
-                                                }(bookRowItem.author)),
-                                                maxLines: 1,
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      font: GoogleFonts.inter(
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleMedium
+                                                                .fontStyle,
+                                                      ),
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                ),
+                                                Text(
+                                                  ((String? v) {
+                                                    return (v ?? '').isEmpty
+                                                        ? 'Unknown author'
+                                                        : v!;
+                                                  }(bookRowItem.author)),
+                                                  maxLines: 1,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -370,36 +402,37 @@ class _FavouritebookforuserWidgetState
                                                                 .bodyMedium
                                                                 .fontStyle,
                                                       ),
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .fontWeight,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .fontStyle,
-                                                    ),
-                                                overflow: TextOverflow.ellipsis,
-                                              ),
-                                              Text(
-                                                ((String? v) {
-                                                  return (v ?? '').isEmpty
-                                                      ? 'Uncategorized'
-                                                      : v!;
-                                                }(bookRowItem.category)),
-                                                maxLines: 1,
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .labelMedium
-                                                    .override(
-                                                      font: GoogleFonts.inter(
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                ),
+                                                Text(
+                                                  ((String? v) {
+                                                    return (v ?? '').isEmpty
+                                                        ? 'Uncategorized'
+                                                        : v!;
+                                                  }(bookRowItem.category)),
+                                                  maxLines: 1,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .labelMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -411,36 +444,37 @@ class _FavouritebookforuserWidgetState
                                                                 .labelMedium
                                                                 .fontStyle,
                                                       ),
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium
-                                                              .fontWeight,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium
-                                                              .fontStyle,
-                                                    ),
-                                                overflow: TextOverflow.ellipsis,
-                                              ),
-                                              Text(
-                                                ((String? v) {
-                                                  return (v ?? '').isEmpty
-                                                      ? 'No description available.'
-                                                      : v!;
-                                                }(bookRowItem.description)),
-                                                maxLines: 2,
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodySmall
-                                                    .override(
-                                                      font: GoogleFonts.inter(
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                ),
+                                                Text(
+                                                  ((String? v) {
+                                                    return (v ?? '').isEmpty
+                                                        ? 'No description available.'
+                                                        : v!;
+                                                  }(bookRowItem.description)),
+                                                  maxLines: 2,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodySmall
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .fontStyle,
+                                                        ),
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -452,83 +486,70 @@ class _FavouritebookforuserWidgetState
                                                                 .bodySmall
                                                                 .fontStyle,
                                                       ),
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodySmall
-                                                              .fontWeight,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodySmall
-                                                              .fontStyle,
-                                                    ),
-                                                overflow: TextOverflow.ellipsis,
-                                              ),
-                                            ].divide(SizedBox(height: 4.0)),
-                                          ),
-                                        ),
-                                        if (((List<FavoritesRow>? r, int? id) {
-                                              return (r ?? [])
-                                                  .any((f) => f.bookId == id);
-                                            }(_model.favoriteRows.toList(),
-                                                bookRowItem.id)) ??
-                                            true)
-                                          FlutterFlowIconButton(
-                                            buttonSize: 42.0,
-                                            icon: Icon(
-                                              Icons.favorite,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                              size: 26.0,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                ),
+                                              ].divide(SizedBox(height: 4.0)),
                                             ),
-                                            onPressed: () async {
-                                              await FavoritesTable().delete(
-                                                matchingRows: (rows) => rows
-                                                    .eqOrNull(
-                                                      'user_id',
-                                                      currentUserUid,
-                                                    )
-                                                    .eqOrNull(
-                                                      'book_id',
-                                                      bookRowItem.id,
-                                                    ),
-                                              );
-                                              _model.favFavReload =
-                                                  await FavoritesTable()
-                                                      .queryRows(
-                                                queryFn: (q) => q.eqOrNull(
-                                                  'user_id',
-                                                  currentUserUid,
-                                                ),
-                                              );
-                                              _model.favoriteRows = _model
-                                                  .favFavReload!
-                                                  .toList()
-                                                  .cast<FavoritesRow>();
-                                              safeSetState(() {});
-                                              ScaffoldMessenger.of(context)
-                                                  .showSnackBar(
-                                                SnackBar(
-                                                  content: Text(
-                                                    'Removed from favourites',
-                                                    style: TextStyle(),
-                                                  ),
-                                                  duration: Duration(
-                                                      milliseconds: 4000),
-                                                ),
-                                              );
-
-                                              safeSetState(() {});
-                                            },
                                           ),
-                                      ].divide(SizedBox(width: 16.0)),
+                                          if (((List<FavoritesRow>? r,
+                                                      int? id) {
+                                                return (r ?? [])
+                                                    .any((f) => f.bookId == id);
+                                              }(_model.favoriteRows.toList(),
+                                                  bookRowItem.id)) ??
+                                              true)
+                                            FlutterFlowIconButton(
+                                              buttonSize: 42.0,
+                                              icon: Icon(
+                                                Icons.favorite,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                size: 26.0,
+                                              ),
+                                              onPressed: () async {
+                                                await FavoritesTable().delete(
+                                                  matchingRows: (rows) => rows
+                                                      .eqOrNull(
+                                                        'user_id',
+                                                        currentUserUid,
+                                                      )
+                                                      .eqOrNull(
+                                                        'book_id',
+                                                        bookRowItem.id,
+                                                      ),
+                                                );
+                                                _model.favFavReload =
+                                                    await FavoritesTable()
+                                                        .queryRows(
+                                                  queryFn: (q) => q.eqOrNull(
+                                                    'user_id',
+                                                    currentUserUid,
+                                                  ),
+                                                );
+                                                _model.favoriteRows = _model
+                                                    .favFavReload!
+                                                    .toList()
+                                                    .cast<FavoritesRow>();
+                                                safeSetState(() {});
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                  SnackBar(
+                                                    content: Text(
+                                                      'Removed from favourites',
+                                                      style: TextStyle(),
+                                                    ),
+                                                    duration: Duration(
+                                                        milliseconds: 4000),
+                                                  ),
+                                                );
+
+                                                safeSetState(() {});
+                                              },
+                                            ),
+                                        ].divide(SizedBox(width: 16.0)),
+                                      ),
                                     ),
                                   ),
                                 ),

@@ -245,6 +245,8 @@ dynamic deserializeParam<T>(
             return UsersRow(data);
           case FavoritesRow:
             return FavoritesRow(data);
+          case BoughtBooksRow:
+            return BoughtBooksRow(data);
           default:
             return null;
         }

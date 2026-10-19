@@ -176,6 +176,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: EditprofileforuserWidget.routeName,
           path: EditprofileforuserWidget.routePath,
           builder: (context, params) => EditprofileforuserWidget(),
+        ),
+        FFRoute(
+          name: BoughtbooksuserWidget.routeName,
+          path: BoughtbooksuserWidget.routePath,
+          builder: (context, params) => BoughtbooksuserWidget(),
+        ),
+        FFRoute(
+          name: BookdetailforuserWidget.routeName,
+          path: BookdetailforuserWidget.routePath,
+          builder: (context, params) => BookdetailforuserWidget(),
+        ),
+        FFRoute(
+          name: BookdetailsforuserWidget.routeName,
+          path: BookdetailsforuserWidget.routePath,
+          builder: (context, params) => BookdetailsforuserWidget(
+            bookId: params.getParam(
+              'bookId',
+              ParamType.int,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
