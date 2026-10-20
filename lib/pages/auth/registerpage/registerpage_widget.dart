@@ -38,11 +38,18 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
     _model.emailFieldTextController ??= TextEditingController();
     _model.emailFieldFocusNode ??= FocusNode();
 
-    _model.phoneFieldTextController ??= TextEditingController(text: '+216 ');
+    _model.phoneFieldTextController ??= TextEditingController();
     _model.phoneFieldFocusNode ??= FocusNode();
 
     _model.passwordFieldTextController ??= TextEditingController();
     _model.passwordFieldFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {
+          _model.phoneFieldTextController?.text =
+              FFLocalizations.of(context).getText(
+            'dt92cmrb' /* +216  */,
+          );
+        }));
   }
 
   @override
@@ -124,7 +131,9 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                             ),
                           ),
                           Text(
-                            'Create your account',
+                            FFLocalizations.of(context).getText(
+                              'ef7odq7r' /* Create your account */,
+                            ),
                             style: FlutterFlowTheme.of(context)
                                 .headlineMedium
                                 .override(
@@ -144,7 +153,9 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                                 ),
                           ),
                           Text(
-                            'Join the library to borrow and discover books.',
+                            FFLocalizations.of(context).getText(
+                              'mfy2z4hu' /* Join the library to borrow and... */,
+                            ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -187,7 +198,9 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 8.0),
                                 child: Text(
-                                  'Full name',
+                                  FFLocalizations.of(context).getText(
+                                    'vna1xuwx' /* Full name */,
+                                  ),
                                   style: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
@@ -216,7 +229,9 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                               obscureText: false,
                               decoration: InputDecoration(
                                 labelText: '',
-                                hintText: 'Your full name',
+                                hintText: FFLocalizations.of(context).getText(
+                                  '51e5yzq1' /* Your full name */,
+                                ),
                                 hintStyle: TextStyle(
                                   color: Color(0xFF9CA3AF),
                                   fontSize: 15.0,
@@ -277,7 +292,9 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 8.0),
                                 child: Text(
-                                  'Email',
+                                  FFLocalizations.of(context).getText(
+                                    't82mnm2i' /* Email */,
+                                  ),
                                   style: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
@@ -306,7 +323,9 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                               obscureText: false,
                               decoration: InputDecoration(
                                 labelText: '',
-                                hintText: 'you@example.com',
+                                hintText: FFLocalizations.of(context).getText(
+                                  'tqcuu7r4' /* you@example.com */,
+                                ),
                                 hintStyle: TextStyle(
                                   color: Color(0xFF9CA3AF),
                                   fontSize: 15.0,
@@ -369,7 +388,9 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 8.0),
                                 child: Text(
-                                  'Phone number',
+                                  FFLocalizations.of(context).getText(
+                                    'e015vas7' /* Phone number */,
+                                  ),
                                   style: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
@@ -398,7 +419,9 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                               obscureText: false,
                               decoration: InputDecoration(
                                 labelText: '',
-                                hintText: '+216 12 345 678',
+                                hintText: FFLocalizations.of(context).getText(
+                                  'ipqh14l2' /* +216 12 345 678 */,
+                                ),
                                 hintStyle: TextStyle(
                                   color: Color(0xFF9CA3AF),
                                   fontSize: 15.0,
@@ -460,7 +483,9 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 8.0),
                                 child: Text(
-                                  'Password',
+                                  FFLocalizations.of(context).getText(
+                                    '1r89snm4' /* Password */,
+                                  ),
                                   style: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
@@ -489,7 +514,9 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                               obscureText: !_model.passwordFieldVisibility,
                               decoration: InputDecoration(
                                 labelText: '',
-                                hintText: 'Create a password',
+                                hintText: FFLocalizations.of(context).getText(
+                                  '8rg0igoj' /* Create a password */,
+                                ),
                                 hintStyle: TextStyle(
                                   color: Color(0xFF9CA3AF),
                                   fontSize: 15.0,
@@ -564,7 +591,9 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     4.0, 6.0, 0.0, 0.0),
                                 child: Text(
-                                  'At least 6 characters',
+                                  FFLocalizations.of(context).getText(
+                                    'ekfr0bot' /* At least 6 characters */,
+                                  ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodySmall
                                       .override(
@@ -597,7 +626,9 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 8.0),
                                 child: Text(
-                                  'Preferred language',
+                                  FFLocalizations.of(context).getText(
+                                    'vnbmdwfm' /* Preferred language */,
+                                  ),
                                   style: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
@@ -624,7 +655,17 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                               controller:
                                   _model.languageFieldValueController ??=
                                       FormFieldController<String>(null),
-                              options: ['Français', 'English', 'العربية'],
+                              options: [
+                                FFLocalizations.of(context).getText(
+                                  'qqjmu6uf' /* Français */,
+                                ),
+                                FFLocalizations.of(context).getText(
+                                  'qoefum9b' /* English */,
+                                ),
+                                FFLocalizations.of(context).getText(
+                                  'hwqbruoc' /* العربية */,
+                                )
+                              ],
                               onChanged: (val) => safeSetState(
                                   () => _model.languageFieldValue = val),
                               height: 56.0,
@@ -650,7 +691,9 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                                         .bodyMedium
                                         .fontStyle,
                                   ),
-                              hintText: 'Select your language',
+                              hintText: FFLocalizations.of(context).getText(
+                                'aa3uat8h' /* Select your language */,
+                              ),
                               icon: Icon(
                                 Icons.keyboard_arrow_down_rounded,
                                 color:
@@ -723,7 +766,9 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                           context.goNamedAuth(
                               LoginpageWidget.routeName, context.mounted);
                         },
-                        text: 'Create account',
+                        text: FFLocalizations.of(context).getText(
+                          'nlh28bwa' /* Create account */,
+                        ),
                         options: FFButtonOptions(
                           width: double.infinity,
                           height: 56.0,
@@ -754,7 +799,9 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                             textBaseline: TextBaseline.alphabetic,
                             children: [
                               Text(
-                                'Already have an account?',
+                                FFLocalizations.of(context).getText(
+                                  'q016irxf' /* Already have an account? */,
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -791,7 +838,9 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         4.0, 8.0, 4.0, 8.0),
                                     child: Text(
-                                      'Log in',
+                                      FFLocalizations.of(context).getText(
+                                        'phkp2ygz' /* Log in */,
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(

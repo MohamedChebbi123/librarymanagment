@@ -101,7 +101,9 @@ class _EditprofileforuserWidgetState extends State<EditprofileforuserWidget> {
             },
           ),
           title: Text(
-            'Edit profile',
+            FFLocalizations.of(context).getText(
+              'hieruka5' /* Edit profile */,
+            ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.playfairDisplay(
                     fontWeight:
@@ -146,7 +148,9 @@ class _EditprofileforuserWidgetState extends State<EditprofileforuserWidget> {
                         textBaseline: TextBaseline.alphabetic,
                         children: [
                           Text(
-                            'Your profile',
+                            FFLocalizations.of(context).getText(
+                              'p6s1qxqj' /* Your profile */,
+                            ),
                             style: FlutterFlowTheme.of(context)
                                 .headlineMedium
                                 .override(
@@ -168,7 +172,9 @@ class _EditprofileforuserWidgetState extends State<EditprofileforuserWidget> {
                                 ),
                           ),
                           Text(
-                            'Keep your library account details up to date.',
+                            FFLocalizations.of(context).getText(
+                              'gzajf4pz' /* Keep your library account deta... */,
+                            ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -212,7 +218,9 @@ class _EditprofileforuserWidgetState extends State<EditprofileforuserWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 8.0),
                                 child: Text(
-                                  'Username',
+                                  FFLocalizations.of(context).getText(
+                                    'ho80xkig' /* Username */,
+                                  ),
                                   style: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
@@ -246,7 +254,9 @@ class _EditprofileforuserWidgetState extends State<EditprofileforuserWidget> {
                                   _model.userProfileUsernameFieldFocusNode,
                               obscureText: false,
                               decoration: InputDecoration(
-                                hintText: 'Your full name',
+                                hintText: FFLocalizations.of(context).getText(
+                                  '69lp8dhu' /* Your full name */,
+                                ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
@@ -302,7 +312,9 @@ class _EditprofileforuserWidgetState extends State<EditprofileforuserWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 8.0),
                                 child: Text(
-                                  'Phone number',
+                                  FFLocalizations.of(context).getText(
+                                    '8xy2lq16' /* Phone number */,
+                                  ),
                                   style: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
@@ -335,7 +347,9 @@ class _EditprofileforuserWidgetState extends State<EditprofileforuserWidget> {
                               focusNode: _model.userProfilePhoneFieldFocusNode,
                               obscureText: false,
                               decoration: InputDecoration(
-                                hintText: '+216 12 345 678',
+                                hintText: FFLocalizations.of(context).getText(
+                                  'hc1w2ywa' /* +216 12 345 678 */,
+                                ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
@@ -392,7 +406,9 @@ class _EditprofileforuserWidgetState extends State<EditprofileforuserWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 8.0),
                                 child: Text(
-                                  'Preferred language',
+                                  FFLocalizations.of(context).getText(
+                                    'cxg65c6m' /* Preferred language */,
+                                  ),
                                   style: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
@@ -423,7 +439,17 @@ class _EditprofileforuserWidgetState extends State<EditprofileforuserWidget> {
                               controller: _model
                                       .userProfileLanguageFieldValueController ??=
                                   FormFieldController<String>(null),
-                              options: ['Français', 'English', 'العربية'],
+                              options: [
+                                FFLocalizations.of(context).getText(
+                                  'js6fj1dx' /* Français */,
+                                ),
+                                FFLocalizations.of(context).getText(
+                                  'g3s046s6' /* English */,
+                                ),
+                                FFLocalizations.of(context).getText(
+                                  'xwcrcuzd' /* العربية */,
+                                )
+                              ],
                               onChanged: (val) => safeSetState(() =>
                                   _model.userProfileLanguageFieldValue = val),
                               textStyle: FlutterFlowTheme.of(context)
@@ -445,7 +471,9 @@ class _EditprofileforuserWidgetState extends State<EditprofileforuserWidget> {
                                         .bodyMedium
                                         .fontStyle,
                                   ),
-                              hintText: 'Select your language',
+                              hintText: FFLocalizations.of(context).getText(
+                                'dxa6zcxb' /* Select your language */,
+                              ),
                               icon: Icon(
                                 Icons.keyboard_arrow_down_rounded,
                                 color:
@@ -471,7 +499,9 @@ class _EditprofileforuserWidgetState extends State<EditprofileforuserWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 8.0),
                                 child: Text(
-                                  'New password',
+                                  FFLocalizations.of(context).getText(
+                                    '0pzf9c4y' /* New password */,
+                                  ),
                                   style: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
@@ -506,8 +536,9 @@ class _EditprofileforuserWidgetState extends State<EditprofileforuserWidget> {
                               obscureText:
                                   !_model.userProfilePasswordFieldVisibility,
                               decoration: InputDecoration(
-                                hintText:
-                                    'Leave empty to keep your current password',
+                                hintText: FFLocalizations.of(context).getText(
+                                  'wc41heoi' /* Leave empty to keep your curre... */,
+                                ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
@@ -578,7 +609,9 @@ class _EditprofileforuserWidgetState extends State<EditprofileforuserWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     4.0, 6.0, 0.0, 0.0),
                                 child: Text(
-                                  'At least 6 characters',
+                                  FFLocalizations.of(context).getText(
+                                    'tnugul8u' /* At least 6 characters */,
+                                  ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodySmall
                                       .override(
@@ -670,7 +703,9 @@ class _EditprofileforuserWidgetState extends State<EditprofileforuserWidget> {
 
                           safeSetState(() {});
                         },
-                        text: 'Save changes',
+                        text: FFLocalizations.of(context).getText(
+                          'ply5f9r4' /* Save changes */,
+                        ),
                         icon: Icon(
                           Icons.save,
                           size: 20.0,
@@ -697,7 +732,9 @@ class _EditprofileforuserWidgetState extends State<EditprofileforuserWidget> {
                         onPressed: () async {
                           context.pop();
                         },
-                        text: 'Cancel',
+                        text: FFLocalizations.of(context).getText(
+                          'w3x7yn6f' /* Cancel */,
+                        ),
                         options: FFButtonOptions(
                           width: double.infinity,
                           height: 52.0,

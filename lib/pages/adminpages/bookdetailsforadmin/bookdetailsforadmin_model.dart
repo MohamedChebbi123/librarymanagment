@@ -12,9 +12,9 @@ class BookdetailsforadminModel
 
   ///  State fields for stateful widgets in this page.
 
-  // Stores action output result for [Backend Call - Update Row(s)] action in AdminStockMinusButton widget.
+  // Stores action output result for [Backend Call - Update Row(s)] action in BookDetailsStockMinusButton widget.
   List<BooksRow>? rows2;
-  // Stores action output result for [Backend Call - Update Row(s)] action in AdminStockPlusButton widget.
+  // Stores action output result for [Backend Call - Update Row(s)] action in BookDetailsStockPlusButton widget.
   List<BooksRow>? rows3;
   // Stores action output result for [Backend Call - Delete Row(s)] action in BookDetailsDeleteButton widget.
   List<BooksRow>? rows;

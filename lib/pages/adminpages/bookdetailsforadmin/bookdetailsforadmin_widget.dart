@@ -77,7 +77,9 @@ class _BookdetailsforadminWidgetState extends State<BookdetailsforadminWidget> {
             },
           ),
           title: Text(
-            'Book details',
+            FFLocalizations.of(context).getText(
+              'nuq8ijdd' /* Book details */,
+            ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.playfairDisplay(
                     fontWeight:
@@ -465,7 +467,9 @@ class _BookdetailsforadminWidgetState extends State<BookdetailsforadminWidget> {
                                   Expanded(
                                     flex: 1,
                                     child: Text(
-                                      'ISBN',
+                                      FFLocalizations.of(context).getText(
+                                        'emzwxhtp' /* ISBN */,
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -559,7 +563,9 @@ class _BookdetailsforadminWidgetState extends State<BookdetailsforadminWidget> {
                                   Expanded(
                                     flex: 1,
                                     child: Text(
-                                      'Publish year',
+                                      FFLocalizations.of(context).getText(
+                                        'lsog4kwv' /* Publish year */,
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -626,7 +632,9 @@ class _BookdetailsforadminWidgetState extends State<BookdetailsforadminWidget> {
                         ),
                       ),
                       Text(
-                        'Description',
+                        FFLocalizations.of(context).getText(
+                          'pac7lzz7' /* Description */,
+                        ),
                         style:
                             FlutterFlowTheme.of(context).titleMedium.override(
                                   font: GoogleFonts.inter(
@@ -684,7 +692,7 @@ class _BookdetailsforadminWidgetState extends State<BookdetailsforadminWidget> {
                             child: FFButtonWidget(
                               onPressed: () async {
                                 context.pushNamed(
-                                  EditbookpageforadminWidget.routeName,
+                                  EditbookforadminWidget.routeName,
                                   queryParameters: {
                                     'book': serializeParam(
                                       widget.book,
@@ -693,7 +701,9 @@ class _BookdetailsforadminWidgetState extends State<BookdetailsforadminWidget> {
                                   }.withoutNulls,
                                 );
                               },
-                              text: 'Edit',
+                              text: FFLocalizations.of(context).getText(
+                                '3c0k4730' /* Edit */,
+                              ),
                               icon: Icon(
                                 Icons.edit,
                                 size: 20.0,
@@ -771,12 +781,14 @@ class _BookdetailsforadminWidgetState extends State<BookdetailsforadminWidget> {
                                     context.pop();
                                   }
                                   context.pushNamed(
-                                      BowsebooksforadminWidget.routeName);
+                                      BrowsebooksforadminWidget.routeName);
                                 }
 
                                 safeSetState(() {});
                               },
-                              text: 'Delete',
+                              text: FFLocalizations.of(context).getText(
+                                '9vj7omvi' /* Delete */,
+                              ),
                               icon: Icon(
                                 Icons.delete,
                                 size: 20.0,

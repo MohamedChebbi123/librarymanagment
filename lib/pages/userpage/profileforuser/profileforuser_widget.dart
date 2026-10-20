@@ -78,7 +78,9 @@ class _ProfileforuserWidgetState extends State<ProfileforuserWidget> {
             },
           ),
           title: Text(
-            'My profile',
+            FFLocalizations.of(context).getText(
+              '3jobnwgh' /* My profile */,
+            ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.playfairDisplay(
                     fontWeight:
@@ -309,7 +311,11 @@ class _ProfileforuserWidgetState extends State<ProfileforuserWidget> {
                                                       TextBaseline.alphabetic,
                                                   children: [
                                                     Text(
-                                                      'Email',
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'u3d8x5ap' /* Email */,
+                                                      ),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -440,7 +446,11 @@ class _ProfileforuserWidgetState extends State<ProfileforuserWidget> {
                                                       TextBaseline.alphabetic,
                                                   children: [
                                                     Text(
-                                                      'Phone number',
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'ls1hx2bc' /* Phone number */,
+                                                      ),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -572,7 +582,11 @@ class _ProfileforuserWidgetState extends State<ProfileforuserWidget> {
                                                       TextBaseline.alphabetic,
                                                   children: [
                                                     Text(
-                                                      'Preferred language',
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'nxcze77y' /* Preferred language */,
+                                                      ),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -704,7 +718,11 @@ class _ProfileforuserWidgetState extends State<ProfileforuserWidget> {
                                                       TextBaseline.alphabetic,
                                                   children: [
                                                     Text(
-                                                      'Member since',
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'mhtp8jac' /* Member since */,
+                                                      ),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -739,9 +757,14 @@ class _ProfileforuserWidgetState extends State<ProfileforuserWidget> {
                                                     ),
                                                     Text(
                                                       dateTimeFormat(
-                                                          "MMM d, y",
-                                                          profileRowItem
-                                                              .createdAt!),
+                                                        "MMM d, y",
+                                                        profileRowItem
+                                                            .createdAt!,
+                                                        locale:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .languageCode,
+                                                      ),
                                                       maxLines: 1,
                                                       style:
                                                           FlutterFlowTheme.of(
@@ -797,7 +820,9 @@ class _ProfileforuserWidgetState extends State<ProfileforuserWidget> {
                           }
                           context.pushNamed(EditprofileforuserWidget.routeName);
                         },
-                        text: 'Edit profile',
+                        text: FFLocalizations.of(context).getText(
+                          '6el7lg3r' /* Edit profile */,
+                        ),
                         icon: Icon(
                           Icons.edit,
                           size: 20.0,
@@ -826,7 +851,9 @@ class _ProfileforuserWidgetState extends State<ProfileforuserWidget> {
                           context.goNamedAuth(
                               RegisterpageWidget.routeName, context.mounted);
                         },
-                        text: 'Log out',
+                        text: FFLocalizations.of(context).getText(
+                          '2yqvcy64' /* Log out */,
+                        ),
                         icon: Icon(
                           Icons.logout,
                           size: 20.0,

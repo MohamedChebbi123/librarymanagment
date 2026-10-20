@@ -47,13 +47,13 @@ class BrowsebooksforuserModel
   List<BooksRow>? rows2;
   // Stores action output result for [Backend Call - Query Rows] action in UserBookBuyButton widget.
   List<BooksRow>? booksAfterBuy;
-  // Stores action output result for [Backend Call - Delete Row(s)] action in UserFavOnButton widget.
+  // Stores action output result for [Backend Call - Delete Row(s)] action in UserBookFavRemoveButton widget.
   List<FavoritesRow>? rows3;
-  // Stores action output result for [Backend Call - Query Rows] action in UserFavOnButton widget.
+  // Stores action output result for [Backend Call - Query Rows] action in UserBookFavRemoveButton widget.
   List<FavoritesRow>? userFavReload;
-  // Stores action output result for [Backend Call - Insert Row] action in UserFavOffButton widget.
+  // Stores action output result for [Backend Call - Insert Row] action in UserBookFavAddButton widget.
   FavoritesRow? rows4;
-  // Stores action output result for [Backend Call - Query Rows] action in UserFavOffButton widget.
+  // Stores action output result for [Backend Call - Query Rows] action in UserBookFavAddButton widget.
   List<FavoritesRow>? userFavReload2;
 
   @override

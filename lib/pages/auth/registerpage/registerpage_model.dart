@@ -15,11 +15,15 @@ class RegisterpageModel extends FlutterFlowModel<RegisterpageWidget> {
   String? _usernameFieldTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Enter a username';
+      return FFLocalizations.of(context).getText(
+        'jw8mwvwx' /* Enter a username */,
+      );
     }
 
     if (val.length < 3) {
-      return 'Username must have at least 3 characters';
+      return FFLocalizations.of(context).getText(
+        '22zu9qy4' /* Username must have at least 3 ... */,
+      );
     }
 
     return null;
@@ -32,11 +36,15 @@ class RegisterpageModel extends FlutterFlowModel<RegisterpageWidget> {
   String? _emailFieldTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Enter your email address';
+      return FFLocalizations.of(context).getText(
+        'j0b5g887' /* Enter your email address */,
+      );
     }
 
     if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
-      return 'Enter a valid email address';
+      return FFLocalizations.of(context).getText(
+        'suhr81va' /* Enter a valid email address */,
+      );
     }
     return null;
   }
@@ -48,11 +56,15 @@ class RegisterpageModel extends FlutterFlowModel<RegisterpageWidget> {
   String? _phoneFieldTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Enter your phone number';
+      return FFLocalizations.of(context).getText(
+        '72to9d7t' /* Enter your phone number */,
+      );
     }
 
     if (val.length < 8) {
-      return 'Enter a valid phone number';
+      return FFLocalizations.of(context).getText(
+        'ogod5fve' /* Enter a valid phone number */,
+      );
     }
 
     return null;
@@ -66,11 +78,15 @@ class RegisterpageModel extends FlutterFlowModel<RegisterpageWidget> {
   String? _passwordFieldTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Enter a password';
+      return FFLocalizations.of(context).getText(
+        'euafthya' /* Enter a password */,
+      );
     }
 
     if (val.length < 6) {
-      return 'Password must have at least 6 characters';
+      return FFLocalizations.of(context).getText(
+        'gvpnygp0' /* Password must have at least 6 ... */,
+      );
     }
 
     return null;

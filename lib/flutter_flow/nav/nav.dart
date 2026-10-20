@@ -88,11 +88,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : RegisterpageWidget(),
         ),
         FFRoute(
-          name: HomePageWidget.routeName,
-          path: HomePageWidget.routePath,
-          builder: (context, params) => HomePageWidget(),
-        ),
-        FFRoute(
           name: LoginpageWidget.routeName,
           path: LoginpageWidget.routePath,
           builder: (context, params) => LoginpageWidget(),
@@ -108,34 +103,34 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => ForgetpasswordWidget(),
         ),
         FFRoute(
-          name: UpdateprofileWidget.routeName,
-          path: UpdateprofileWidget.routePath,
-          builder: (context, params) => UpdateprofileWidget(),
+          name: EditprofileforadminWidget.routeName,
+          path: EditprofileforadminWidget.routePath,
+          builder: (context, params) => EditprofileforadminWidget(),
         ),
         FFRoute(
-          name: AddbookWidget.routeName,
-          path: AddbookWidget.routePath,
-          builder: (context, params) => AddbookWidget(),
+          name: AddbookforadminWidget.routeName,
+          path: AddbookforadminWidget.routePath,
+          builder: (context, params) => AddbookforadminWidget(),
         ),
         FFRoute(
-          name: AdminhomepageWidget.routeName,
-          path: AdminhomepageWidget.routePath,
-          builder: (context, params) => AdminhomepageWidget(),
+          name: HomeforadminWidget.routeName,
+          path: HomeforadminWidget.routePath,
+          builder: (context, params) => HomeforadminWidget(),
         ),
         FFRoute(
-          name: UserhomepageWidget.routeName,
-          path: UserhomepageWidget.routePath,
-          builder: (context, params) => UserhomepageWidget(),
+          name: HomeforuserWidget.routeName,
+          path: HomeforuserWidget.routePath,
+          builder: (context, params) => HomeforuserWidget(),
         ),
         FFRoute(
-          name: AdminprofilepageWidget.routeName,
-          path: AdminprofilepageWidget.routePath,
-          builder: (context, params) => AdminprofilepageWidget(),
+          name: ProfileforadminWidget.routeName,
+          path: ProfileforadminWidget.routePath,
+          builder: (context, params) => ProfileforadminWidget(),
         ),
         FFRoute(
-          name: BowsebooksforadminWidget.routeName,
-          path: BowsebooksforadminWidget.routePath,
-          builder: (context, params) => BowsebooksforadminWidget(),
+          name: BrowsebooksforadminWidget.routeName,
+          path: BrowsebooksforadminWidget.routePath,
+          builder: (context, params) => BrowsebooksforadminWidget(),
         ),
         FFRoute(
           name: BookdetailsforadminWidget.routeName,
@@ -148,9 +143,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: EditbookpageforadminWidget.routeName,
-          path: EditbookpageforadminWidget.routePath,
-          builder: (context, params) => EditbookpageforadminWidget(
+          name: EditbookforadminWidget.routeName,
+          path: EditbookforadminWidget.routePath,
+          builder: (context, params) => EditbookforadminWidget(
             book: params.getParam<BooksRow>(
               'book',
               ParamType.SupabaseRow,
@@ -163,9 +158,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => BrowsebooksforuserWidget(),
         ),
         FFRoute(
-          name: FavouritebookforuserWidget.routeName,
-          path: FavouritebookforuserWidget.routePath,
-          builder: (context, params) => FavouritebookforuserWidget(),
+          name: FavoritebooksforuserWidget.routeName,
+          path: FavoritebooksforuserWidget.routePath,
+          builder: (context, params) => FavoritebooksforuserWidget(),
         ),
         FFRoute(
           name: ProfileforuserWidget.routeName,
@@ -178,14 +173,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => EditprofileforuserWidget(),
         ),
         FFRoute(
-          name: BoughtbooksuserWidget.routeName,
-          path: BoughtbooksuserWidget.routePath,
-          builder: (context, params) => BoughtbooksuserWidget(),
-        ),
-        FFRoute(
-          name: BookdetailforuserWidget.routeName,
-          path: BookdetailforuserWidget.routePath,
-          builder: (context, params) => BookdetailforuserWidget(),
+          name: BoughtbooksforuserWidget.routeName,
+          path: BoughtbooksforuserWidget.routePath,
+          builder: (context, params) => BoughtbooksforuserWidget(),
         ),
         FFRoute(
           name: BookdetailsforuserWidget.routeName,

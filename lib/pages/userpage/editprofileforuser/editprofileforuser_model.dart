@@ -31,11 +31,15 @@ class EditprofileforuserModel
   String? _userProfileUsernameFieldTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Enter your username';
+      return FFLocalizations.of(context).getText(
+        'fth1y9i3' /* Enter your username */,
+      );
     }
 
     if (val.length < 3) {
-      return 'Username must have at least 3 characters';
+      return FFLocalizations.of(context).getText(
+        '95g9w7wc' /* Username must have at least 3 ... */,
+      );
     }
 
     return null;
@@ -49,11 +53,15 @@ class EditprofileforuserModel
   String? _userProfilePhoneFieldTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Enter your phone number';
+      return FFLocalizations.of(context).getText(
+        'vpbhf75g' /* Enter your phone number */,
+      );
     }
 
     if (val.length < 8) {
-      return 'Enter a valid phone number';
+      return FFLocalizations.of(context).getText(
+        'kgb1lrjl' /* Enter a valid phone number */,
+      );
     }
 
     return null;
@@ -68,7 +76,7 @@ class EditprofileforuserModel
   late bool userProfilePasswordFieldVisibility;
   String? Function(BuildContext, String?)?
       userProfilePasswordFieldTextControllerValidator;
-  // Stores action output result for [Backend Call - Update Row(s)] action in UserSaveProfileButton widget.
+  // Stores action output result for [Backend Call - Update Row(s)] action in UserProfileSaveButton widget.
   List<UsersRow>? rows;
 
   @override

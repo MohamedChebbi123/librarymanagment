@@ -16,11 +16,15 @@ class LoginpageModel extends FlutterFlowModel<LoginpageWidget> {
   String? _loginEmailFieldTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Enter your email address';
+      return FFLocalizations.of(context).getText(
+        '18rb1l8j' /* Enter your email address */,
+      );
     }
 
     if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
-      return 'Enter a valid email address';
+      return FFLocalizations.of(context).getText(
+        '1imjazk3' /* Enter a valid email address */,
+      );
     }
     return null;
   }
@@ -34,7 +38,9 @@ class LoginpageModel extends FlutterFlowModel<LoginpageWidget> {
   String? _loginPasswordFieldTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Enter your password';
+      return FFLocalizations.of(context).getText(
+        'ub2rzoxo' /* Enter your password */,
+      );
     }
 
     return null;

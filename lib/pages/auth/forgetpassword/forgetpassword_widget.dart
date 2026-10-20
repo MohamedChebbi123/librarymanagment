@@ -47,7 +47,9 @@ class _ForgetpasswordWidgetState extends State<ForgetpasswordWidget> {
           backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: false,
           title: Text(
-            'Page Title',
+            FFLocalizations.of(context).getText(
+              'mjehmkmw' /* Page Title */,
+            ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.playfairDisplay(
                     fontWeight:

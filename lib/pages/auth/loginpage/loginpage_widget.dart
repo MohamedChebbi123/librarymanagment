@@ -58,7 +58,9 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
           backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: false,
           title: Text(
-            'Log in',
+            FFLocalizations.of(context).getText(
+              'p6jlgvfr' /* Log in */,
+            ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.playfairDisplay(
                     fontWeight:
@@ -144,7 +146,9 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                 ),
                               ),
                               Text(
-                                'Bibliothèque',
+                                FFLocalizations.of(context).getText(
+                                  'bnt9lwa1' /* Bibliothèque */,
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .headlineSmall
                                     .override(
@@ -167,7 +171,9 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                     ),
                               ),
                               Text(
-                                'Your library, beautifully organized.',
+                                FFLocalizations.of(context).getText(
+                                  '6ildvoc8' /* Your library, beautifully orga... */,
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -202,7 +208,9 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                         textBaseline: TextBaseline.alphabetic,
                         children: [
                           Text(
-                            'Welcome back',
+                            FFLocalizations.of(context).getText(
+                              '2jxjqg3m' /* Welcome back */,
+                            ),
                             style: FlutterFlowTheme.of(context)
                                 .headlineMedium
                                 .override(
@@ -224,7 +232,9 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                 ),
                           ),
                           Text(
-                            'Log in to your library account.',
+                            FFLocalizations.of(context).getText(
+                              'hhq8ok9n' /* Log in to your library account... */,
+                            ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -265,8 +275,12 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                               focusNode: _model.loginEmailFieldFocusNode,
                               obscureText: false,
                               decoration: InputDecoration(
-                                labelText: 'Email',
-                                hintText: 'you@example.com',
+                                labelText: FFLocalizations.of(context).getText(
+                                  '6fd2fz16' /* Email */,
+                                ),
+                                hintText: FFLocalizations.of(context).getText(
+                                  'pvp8mzr1' /* you@example.com */,
+                                ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color:
@@ -320,8 +334,12 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                               focusNode: _model.loginPasswordFieldFocusNode,
                               obscureText: !_model.loginPasswordFieldVisibility,
                               decoration: InputDecoration(
-                                labelText: 'Password',
-                                hintText: 'Enter your password',
+                                labelText: FFLocalizations.of(context).getText(
+                                  'yvxgzlea' /* Password */,
+                                ),
+                                hintText: FFLocalizations.of(context).getText(
+                                  'atvufe9h' /* Enter your password */,
+                                ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color:
@@ -395,7 +413,9 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                             onPressed: () async {
                               context.pushNamed(ForgetpasswordWidget.routeName);
                             },
-                            text: 'Forgot password?',
+                            text: FFLocalizations.of(context).getText(
+                              'jkhuzl6i' /* Forgot password? */,
+                            ),
                             options: FFButtonOptions(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
@@ -437,15 +457,17 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                           );
                           if (_model.userData?.firstOrNull?.role == 'admin') {
                             context.pushNamedAuth(
-                                AdminhomepageWidget.routeName, context.mounted);
+                                HomeforadminWidget.routeName, context.mounted);
                           } else {
                             context.pushNamedAuth(
-                                UserhomepageWidget.routeName, context.mounted);
+                                HomeforuserWidget.routeName, context.mounted);
                           }
 
                           safeSetState(() {});
                         },
-                        text: 'Log in',
+                        text: FFLocalizations.of(context).getText(
+                          '67c7l6k7' /* Log in */,
+                        ),
                         options: FFButtonOptions(
                           width: double.infinity,
                           height: 52.0,
@@ -466,7 +488,9 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                         onPressed: () async {
                           context.pushNamed(RegisterpageWidget.routeName);
                         },
-                        text: 'Don\'t have an account? Register',
+                        text: FFLocalizations.of(context).getText(
+                          '828nk8kn' /* Don't have an account? Registe... */,
+                        ),
                         options: FFButtonOptions(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),

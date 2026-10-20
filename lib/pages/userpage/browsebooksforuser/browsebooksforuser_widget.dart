@@ -89,7 +89,9 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
             },
           ),
           title: Text(
-            'Books',
+            FFLocalizations.of(context).getText(
+              'rs6m2h3a' /* Books */,
+            ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.playfairDisplay(
                     fontWeight:
@@ -115,7 +117,7 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
                 size: 24.0,
               ),
               onPressed: () async {
-                context.pushNamed(FavouritebookforuserWidget.routeName);
+                context.pushNamed(FavoritebooksforuserWidget.routeName);
               },
             ),
             FlutterFlowIconButton(
@@ -126,7 +128,7 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
                 size: 24.0,
               ),
               onPressed: () async {
-                context.pushNamed(BoughtbooksuserWidget.routeName);
+                context.pushNamed(BoughtbooksforuserWidget.routeName);
               },
             ),
           ],
@@ -156,7 +158,9 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
                     ),
                     obscureText: false,
                     decoration: InputDecoration(
-                      hintText: 'Search by title, author or category',
+                      hintText: FFLocalizations.of(context).getText(
+                        '6dk1zq1x' /* Search by title, author or cat... */,
+                      ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Color(0x00000000),
@@ -227,7 +231,9 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
                             onPressed: () {
                               print('UserCategoryChip0On pressed ...');
                             },
-                            text: 'All',
+                            text: FFLocalizations.of(context).getText(
+                              'rkskwwyh' /* All */,
+                            ),
                             options: FFButtonOptions(
                               height: 36.0,
                               padding: EdgeInsetsDirectional.fromSTEB(
@@ -247,7 +253,9 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
                               _model.categoryFilter = 'All';
                               safeSetState(() {});
                             },
-                            text: 'All',
+                            text: FFLocalizations.of(context).getText(
+                              'fsbu19re' /* All */,
+                            ),
                             options: FFButtonOptions(
                               height: 36.0,
                               padding: EdgeInsetsDirectional.fromSTEB(
@@ -271,7 +279,9 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
                             onPressed: () {
                               print('UserCategoryChip1On pressed ...');
                             },
-                            text: 'Informatique',
+                            text: FFLocalizations.of(context).getText(
+                              'gbgiri74' /* Informatique */,
+                            ),
                             options: FFButtonOptions(
                               height: 36.0,
                               padding: EdgeInsetsDirectional.fromSTEB(
@@ -291,7 +301,9 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
                               _model.categoryFilter = 'Informatique';
                               safeSetState(() {});
                             },
-                            text: 'Informatique',
+                            text: FFLocalizations.of(context).getText(
+                              'wilal4zp' /* Informatique */,
+                            ),
                             options: FFButtonOptions(
                               height: 36.0,
                               padding: EdgeInsetsDirectional.fromSTEB(
@@ -315,7 +327,9 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
                             onPressed: () {
                               print('UserCategoryChip2On pressed ...');
                             },
-                            text: 'Sciences',
+                            text: FFLocalizations.of(context).getText(
+                              '9jjxtfz5' /* Sciences */,
+                            ),
                             options: FFButtonOptions(
                               height: 36.0,
                               padding: EdgeInsetsDirectional.fromSTEB(
@@ -335,7 +349,9 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
                               _model.categoryFilter = 'Sciences';
                               safeSetState(() {});
                             },
-                            text: 'Sciences',
+                            text: FFLocalizations.of(context).getText(
+                              'femtyfh1' /* Sciences */,
+                            ),
                             options: FFButtonOptions(
                               height: 36.0,
                               padding: EdgeInsetsDirectional.fromSTEB(
@@ -359,7 +375,9 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
                             onPressed: () {
                               print('UserCategoryChip3On pressed ...');
                             },
-                            text: 'Littérature',
+                            text: FFLocalizations.of(context).getText(
+                              'ig8nmcwg' /* Littérature */,
+                            ),
                             options: FFButtonOptions(
                               height: 36.0,
                               padding: EdgeInsetsDirectional.fromSTEB(
@@ -379,7 +397,9 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
                               _model.categoryFilter = 'Littérature';
                               safeSetState(() {});
                             },
-                            text: 'Littérature',
+                            text: FFLocalizations.of(context).getText(
+                              'oas65wz2' /* Littérature */,
+                            ),
                             options: FFButtonOptions(
                               height: 36.0,
                               padding: EdgeInsetsDirectional.fromSTEB(
@@ -403,7 +423,9 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
                             onPressed: () {
                               print('UserCategoryChip4On pressed ...');
                             },
-                            text: 'Histoire',
+                            text: FFLocalizations.of(context).getText(
+                              '39oqnhz7' /* Histoire */,
+                            ),
                             options: FFButtonOptions(
                               height: 36.0,
                               padding: EdgeInsetsDirectional.fromSTEB(
@@ -423,7 +445,9 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
                               _model.categoryFilter = 'Histoire';
                               safeSetState(() {});
                             },
-                            text: 'Histoire',
+                            text: FFLocalizations.of(context).getText(
+                              'e088h9b6' /* Histoire */,
+                            ),
                             options: FFButtonOptions(
                               height: 36.0,
                               padding: EdgeInsetsDirectional.fromSTEB(
@@ -447,7 +471,9 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
                             onPressed: () {
                               print('UserCategoryChip5On pressed ...');
                             },
-                            text: 'Économie',
+                            text: FFLocalizations.of(context).getText(
+                              '0g72oh8v' /* Économie */,
+                            ),
                             options: FFButtonOptions(
                               height: 36.0,
                               padding: EdgeInsetsDirectional.fromSTEB(
@@ -467,7 +493,9 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
                               _model.categoryFilter = 'Économie';
                               safeSetState(() {});
                             },
-                            text: 'Économie',
+                            text: FFLocalizations.of(context).getText(
+                              'tbcr5939' /* Économie */,
+                            ),
                             options: FFButtonOptions(
                               height: 36.0,
                               padding: EdgeInsetsDirectional.fromSTEB(
@@ -1000,7 +1028,12 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
 
                                                           safeSetState(() {});
                                                         },
-                                                        text: 'Buy',
+                                                        text:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                          '5up10ksv' /* Buy */,
+                                                        ),
                                                         icon: Icon(
                                                           Icons.shopping_cart,
                                                           size: 20.0,
@@ -1060,7 +1093,11 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
                                                                       10.0,
                                                                       6.0),
                                                           child: Text(
-                                                            'Sold out',
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                              'ajci6y56' /* Sold out */,
+                                                            ),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .labelMedium
