@@ -798,6 +798,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
       'fr': '',
     },
+    '3ed2bdu3': {
+      'en': 'Reading challenge',
+      'ar': 'تحدي القراءة',
+      'fr': 'Défi lecture',
+    },
+    '1uqw3jgy': {
+      'en': 'Play a quick guessing game',
+      'ar': 'العب لعبة تخمين سريعة',
+      'fr': 'Jouez à un petit jeu de devinettes',
+    },
     'a72vdh2o': {
       'en': 'My profile',
       'ar': 'ملفي الشخصي',
@@ -936,8 +946,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '2jgi9z6k': {
       'en': 'No books found',
-      'ar': '',
-      'fr': '',
+      'ar': 'لم يتم العثور على أي كتاب',
+      'fr': 'Aucun livre trouvé',
     },
     'wpwlxlkz': {
       'en': 'Books',
@@ -1200,8 +1210,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'rtqc407h': {
       'en': 'No books found',
-      'ar': '',
-      'fr': '',
+      'ar': 'لم يتم العثور على أي كتاب',
+      'fr': 'Aucun livre trouvé',
     },
     'rs6m2h3a': {
       'en': 'Books',
@@ -1473,6 +1483,57 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Favourited',
       'ar': 'مفضل',
       'fr': 'Favori',
+    },
+  },
+  // defilecture
+  {
+    'ifwvbkrn': {
+      'en': 'Reading challenge',
+      'ar': 'تحدي القراءة',
+      'fr': 'Défi lecture',
+    },
+    'd7kwj8k0': {
+      'en': 'Guess the book from its summary',
+      'ar': 'خمّن الكتاب من ملخصه',
+      'fr': 'Devinez le livre à partir de son résumé',
+    },
+    'ut8odv9b': {
+      'en': 'Score',
+      'ar': 'النتيجة',
+      'fr': 'Score',
+    },
+    'hu4r7ga2': {
+      'en': 'Which book is this?',
+      'ar': 'ما هو هذا الكتاب؟',
+      'fr': 'Quel est ce livre ?',
+    },
+    'e0mxhsrn': {
+      'en': 'Correct!',
+      'ar': 'إجابة صحيحة!',
+      'fr': 'Bravo !',
+    },
+    'lhxyzrrg': {
+      'en': 'Not quite, try another title',
+      'ar': 'ليس تماماً، جرّب عنواناً آخر',
+      'fr': 'Pas tout à fait, essayez un autre titre',
+    },
+    '45kopjkh': {
+      'en': 'Next question',
+      'ar': 'السؤال التالي',
+      'fr': 'Question suivante',
+    },
+  },
+  // BuySuccessDialog
+  {
+    '9agwont6': {
+      'en': 'Book bought!',
+      'ar': 'تم شراء الكتاب!',
+      'fr': 'Livre acheté !',
+    },
+    'hghjkd3a': {
+      'en': 'You can find it in My purchases.',
+      'ar': 'ستجده في مشترياتي.',
+      'fr': 'Vous le retrouverez dans Mes achats.',
     },
   },
   // Miscellaneous

@@ -1,6 +1,7 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -8,6 +9,8 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'registerpage_model.dart';
 export 'registerpage_model.dart';
@@ -22,10 +25,13 @@ class RegisterpageWidget extends StatefulWidget {
   State<RegisterpageWidget> createState() => _RegisterpageWidgetState();
 }
 
-class _RegisterpageWidgetState extends State<RegisterpageWidget> {
+class _RegisterpageWidgetState extends State<RegisterpageWidget>
+    with TickerProviderStateMixin {
   late RegisterpageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  var hasButtonTriggered = false;
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -43,6 +49,47 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
 
     _model.passwordFieldTextController ??= TextEditingController();
     _model.passwordFieldFocusNode ??= FocusNode();
+
+    animationsMap.addAll({
+      'columnOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(0.0, 30.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'buttonOnActionTriggerAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: false,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 160.0.ms,
+            begin: Offset(0.95, 0.95),
+            end: Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+    });
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {
           _model.phoneFieldTextController?.text =
@@ -731,6 +778,15 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                       ),
                       FFButtonWidget(
                         onPressed: () async {
+                          if (animationsMap['buttonOnActionTriggerAnimation'] !=
+                              null) {
+                            safeSetState(() => hasButtonTriggered = true);
+                            SchedulerBinding.instance.addPostFrameCallback(
+                                (_) async => await animationsMap[
+                                        'buttonOnActionTriggerAnimation']!
+                                    .controller
+                                    .forward(from: 0.0));
+                          }
                           if (_model.formKey.currentState == null ||
                               !_model.formKey.currentState!.validate()) {
                             return;
@@ -791,7 +847,9 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                           elevation: 2.0,
                           borderRadius: BorderRadius.circular(14.0),
                         ),
-                      ),
+                      ).animateOnActionTrigger(
+                          animationsMap['buttonOnActionTriggerAnimation']!,
+                          hasBeenTriggered: hasButtonTriggered),
                       Container(
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
@@ -837,7 +895,17 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  context.pushNamed(LoginpageWidget.routeName);
+                                  context.pushNamed(
+                                    LoginpageWidget.routeName,
+                                    extra: <String, dynamic>{
+                                      '__transition_info__': TransitionInfo(
+                                        hasTransition: true,
+                                        transitionType:
+                                            PageTransitionType.rightToLeft,
+                                        duration: Duration(milliseconds: 300),
+                                      ),
+                                    },
+                                  );
                                 },
                                 child: Container(
                                   child: Padding(
@@ -1008,7 +1076,7 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                 ),
               ],
             ),
-          ),
+          ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
         ),
       ),
     );

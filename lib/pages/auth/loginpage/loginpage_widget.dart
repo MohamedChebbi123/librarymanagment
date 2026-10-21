@@ -1,11 +1,15 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'loginpage_model.dart';
 export 'loginpage_model.dart';
@@ -20,10 +24,14 @@ class LoginpageWidget extends StatefulWidget {
   State<LoginpageWidget> createState() => _LoginpageWidgetState();
 }
 
-class _LoginpageWidgetState extends State<LoginpageWidget> {
+class _LoginpageWidgetState extends State<LoginpageWidget>
+    with TickerProviderStateMixin {
   late LoginpageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  var hasFormTriggered = false;
+  var hasButtonTriggered = false;
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -35,6 +43,80 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
 
     _model.loginPasswordFieldTextController ??= TextEditingController();
     _model.loginPasswordFieldFocusNode ??= FocusNode();
+
+    animationsMap.addAll({
+      'columnOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(0.0, 30.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'containerOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 500.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          ScaleEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 500.0.ms,
+            begin: Offset(0.6, 0.6),
+            end: Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+      'formOnActionTriggerAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: false,
+        effectsBuilder: () => [
+          ShakeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 500.0.ms,
+            hz: 8.0,
+            offset: Offset(10.0, 0.0),
+            rotation: 0,
+          ),
+        ],
+      ),
+      'buttonOnActionTriggerAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: false,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 160.0.ms,
+            begin: Offset(0.95, 0.95),
+            end: Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+    });
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
   }
 
   @override
@@ -144,7 +226,8 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                     size: 28.0,
                                   ),
                                 ),
-                              ),
+                              ).animateOnPageLoad(animationsMap[
+                                  'containerOnPageLoadAnimation']!),
                               Text(
                                 FFLocalizations.of(context).getText(
                                   'bnt9lwa1' /* Bibliothèque */,
@@ -402,7 +485,9 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                             ),
                           ].divide(SizedBox(height: 16.0)),
                         ),
-                      ),
+                      ).animateOnActionTrigger(
+                          animationsMap['formOnActionTriggerAnimation']!,
+                          hasBeenTriggered: hasFormTriggered),
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment:
@@ -413,7 +498,17 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                         children: [
                           FFButtonWidget(
                             onPressed: () async {
-                              context.pushNamed(ForgetpasswordWidget.routeName);
+                              context.pushNamed(
+                                ForgetpasswordWidget.routeName,
+                                extra: <String, dynamic>{
+                                  '__transition_info__': TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType:
+                                        PageTransitionType.rightToLeft,
+                                    duration: Duration(milliseconds: 300),
+                                  ),
+                                },
+                              );
                             },
                             text: FFLocalizations.of(context).getText(
                               'jkhuzl6i' /* Forgot password? */,
@@ -436,33 +531,67 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                       ),
                       FFButtonWidget(
                         onPressed: () async {
+                          if (animationsMap['buttonOnActionTriggerAnimation'] !=
+                              null) {
+                            safeSetState(() => hasButtonTriggered = true);
+                            SchedulerBinding.instance.addPostFrameCallback(
+                                (_) async => await animationsMap[
+                                        'buttonOnActionTriggerAnimation']!
+                                    .controller
+                                    .forward(from: 0.0));
+                          }
                           if (_model.formKey.currentState == null ||
                               !_model.formKey.currentState!.validate()) {
                             return;
                           }
-                          GoRouter.of(context).prepareAuthEvent();
-
-                          final user = await authManager.signInWithEmail(
+                          _model.loginOk = await actions.loginWithEmail(
                             context,
                             _model.loginEmailFieldTextController.text,
                             _model.loginPasswordFieldTextController.text,
                           );
-                          if (user == null) {
-                            return;
-                          }
-
-                          _model.userData = await UsersTable().queryRows(
-                            queryFn: (q) => q.eqOrNull(
-                              'id',
-                              currentUserUid,
-                            ),
-                          );
-                          if (_model.userData?.firstOrNull?.role == 'admin') {
-                            context.pushNamedAuth(
-                                HomeforadminWidget.routeName, context.mounted);
+                          if (_model.loginOk!) {
+                            _model.userData = await UsersTable().queryRows(
+                              queryFn: (q) => q.eqOrNull(
+                                'id',
+                                currentUserUid,
+                              ),
+                            );
+                            if (((List<UsersRow>? r) {
+                              return (r ?? []).isNotEmpty &&
+                                  r!.first.role == 'admin';
+                            }(_model.userData?.toList()))) {
+                              context.pushNamed(
+                                HomeforadminWidget.routeName,
+                                extra: <String, dynamic>{
+                                  '__transition_info__': TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.fade,
+                                    duration: Duration(milliseconds: 300),
+                                  ),
+                                },
+                              );
+                            } else {
+                              context.pushNamed(
+                                HomeforuserWidget.routeName,
+                                extra: <String, dynamic>{
+                                  '__transition_info__': TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.fade,
+                                    duration: Duration(milliseconds: 300),
+                                  ),
+                                },
+                              );
+                            }
                           } else {
-                            context.pushNamedAuth(
-                                HomeforuserWidget.routeName, context.mounted);
+                            if (animationsMap['formOnActionTriggerAnimation'] !=
+                                null) {
+                              safeSetState(() => hasFormTriggered = true);
+                              SchedulerBinding.instance.addPostFrameCallback(
+                                  (_) async => await animationsMap[
+                                          'formOnActionTriggerAnimation']!
+                                      .controller
+                                      .forward(from: 0.0));
+                            }
                           }
 
                           safeSetState(() {});
@@ -485,10 +614,21 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                           ),
                           borderRadius: BorderRadius.circular(14.0),
                         ),
-                      ),
+                      ).animateOnActionTrigger(
+                          animationsMap['buttonOnActionTriggerAnimation']!,
+                          hasBeenTriggered: hasButtonTriggered),
                       FFButtonWidget(
                         onPressed: () async {
-                          context.pushNamed(RegisterpageWidget.routeName);
+                          context.pushNamed(
+                            RegisterpageWidget.routeName,
+                            extra: <String, dynamic>{
+                              '__transition_info__': TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.rightToLeft,
+                                duration: Duration(milliseconds: 300),
+                              ),
+                            },
+                          );
                         },
                         text: FFLocalizations.of(context).getText(
                           '828nk8kn' /* Don't have an account? Registe... */,
@@ -512,7 +652,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                 ),
               ),
             ],
-          ),
+          ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
         ),
       ),
     );

@@ -1,6 +1,7 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -8,6 +9,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'homeforadmin_model.dart';
 export 'homeforadmin_model.dart';
@@ -22,10 +24,13 @@ class HomeforadminWidget extends StatefulWidget {
   State<HomeforadminWidget> createState() => _HomeforadminWidgetState();
 }
 
-class _HomeforadminWidgetState extends State<HomeforadminWidget> {
+class _HomeforadminWidgetState extends State<HomeforadminWidget>
+    with TickerProviderStateMixin {
   late HomeforadminModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -75,6 +80,28 @@ class _HomeforadminWidgetState extends State<HomeforadminWidget> {
       }(_model.adminLangRows?.toList()))) {
         setAppLanguage(context, 'en');
       }
+    });
+
+    animationsMap.addAll({
+      'columnOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(0.0, 30.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
     });
   }
 
@@ -126,7 +153,16 @@ class _HomeforadminWidgetState extends State<HomeforadminWidget> {
                 ),
                 FFButtonWidget(
                   onPressed: () async {
-                    context.pushNamed(ProfileforadminWidget.routeName);
+                    context.pushNamed(
+                      ProfileforadminWidget.routeName,
+                      extra: <String, dynamic>{
+                        '__transition_info__': TransitionInfo(
+                          hasTransition: true,
+                          transitionType: PageTransitionType.rightToLeft,
+                          duration: Duration(milliseconds: 300),
+                        ),
+                      },
+                    );
                   },
                   text: FFLocalizations.of(context).getText(
                     'pc4kbue9' /* View profile */,
@@ -152,7 +188,16 @@ class _HomeforadminWidgetState extends State<HomeforadminWidget> {
                 ),
                 FFButtonWidget(
                   onPressed: () async {
-                    context.pushNamed(EditprofileforadminWidget.routeName);
+                    context.pushNamed(
+                      EditprofileforadminWidget.routeName,
+                      extra: <String, dynamic>{
+                        '__transition_info__': TransitionInfo(
+                          hasTransition: true,
+                          transitionType: PageTransitionType.rightToLeft,
+                          duration: Duration(milliseconds: 300),
+                        ),
+                      },
+                    );
                   },
                   text: FFLocalizations.of(context).getText(
                     'dxs4c1nd' /* Update profile */,
@@ -178,7 +223,16 @@ class _HomeforadminWidgetState extends State<HomeforadminWidget> {
                 ),
                 FFButtonWidget(
                   onPressed: () async {
-                    context.pushNamed(AddbookforadminWidget.routeName);
+                    context.pushNamed(
+                      AddbookforadminWidget.routeName,
+                      extra: <String, dynamic>{
+                        '__transition_info__': TransitionInfo(
+                          hasTransition: true,
+                          transitionType: PageTransitionType.rightToLeft,
+                          duration: Duration(milliseconds: 300),
+                        ),
+                      },
+                    );
                   },
                   text: FFLocalizations.of(context).getText(
                     '0pze3o9v' /* Add book */,
@@ -204,7 +258,16 @@ class _HomeforadminWidgetState extends State<HomeforadminWidget> {
                 ),
                 FFButtonWidget(
                   onPressed: () async {
-                    context.pushNamed(BrowsebooksforadminWidget.routeName);
+                    context.pushNamed(
+                      BrowsebooksforadminWidget.routeName,
+                      extra: <String, dynamic>{
+                        '__transition_info__': TransitionInfo(
+                          hasTransition: true,
+                          transitionType: PageTransitionType.rightToLeft,
+                          duration: Duration(milliseconds: 300),
+                        ),
+                      },
+                    );
                   },
                   text: FFLocalizations.of(context).getText(
                     '3v5rwshv' /* Browse books */,
@@ -426,7 +489,16 @@ class _HomeforadminWidgetState extends State<HomeforadminWidget> {
                               highlightColor: Colors.transparent,
                               onTap: () async {
                                 context.pushNamed(
-                                    BrowsebooksforadminWidget.routeName);
+                                  BrowsebooksforadminWidget.routeName,
+                                  extra: <String, dynamic>{
+                                    '__transition_info__': TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType:
+                                          PageTransitionType.rightToLeft,
+                                      duration: Duration(milliseconds: 300),
+                                    ),
+                                  },
+                                );
                               },
                               child: Container(
                                 decoration: BoxDecoration(
@@ -555,8 +627,17 @@ class _HomeforadminWidgetState extends State<HomeforadminWidget> {
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                context
-                                    .pushNamed(AddbookforadminWidget.routeName);
+                                context.pushNamed(
+                                  AddbookforadminWidget.routeName,
+                                  extra: <String, dynamic>{
+                                    '__transition_info__': TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType:
+                                          PageTransitionType.rightToLeft,
+                                      duration: Duration(milliseconds: 300),
+                                    ),
+                                  },
+                                );
                               },
                               child: Container(
                                 decoration: BoxDecoration(
@@ -695,8 +776,17 @@ class _HomeforadminWidgetState extends State<HomeforadminWidget> {
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                context
-                                    .pushNamed(ProfileforadminWidget.routeName);
+                                context.pushNamed(
+                                  ProfileforadminWidget.routeName,
+                                  extra: <String, dynamic>{
+                                    '__transition_info__': TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType:
+                                          PageTransitionType.rightToLeft,
+                                      duration: Duration(milliseconds: 300),
+                                    ),
+                                  },
+                                );
                               },
                               child: Container(
                                 decoration: BoxDecoration(
@@ -826,7 +916,16 @@ class _HomeforadminWidgetState extends State<HomeforadminWidget> {
                               highlightColor: Colors.transparent,
                               onTap: () async {
                                 context.pushNamed(
-                                    EditprofileforadminWidget.routeName);
+                                  EditprofileforadminWidget.routeName,
+                                  extra: <String, dynamic>{
+                                    '__transition_info__': TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType:
+                                          PageTransitionType.rightToLeft,
+                                      duration: Duration(milliseconds: 300),
+                                    ),
+                                  },
+                                );
                               },
                               child: Container(
                                 decoration: BoxDecoration(
@@ -954,7 +1053,7 @@ class _HomeforadminWidgetState extends State<HomeforadminWidget> {
                 ),
               ],
             ),
-          ),
+          ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
         ),
       ),
     );

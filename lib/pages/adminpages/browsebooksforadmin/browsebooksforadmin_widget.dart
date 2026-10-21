@@ -1,5 +1,6 @@
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -9,7 +10,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'browsebooksforadmin_model.dart';
 export 'browsebooksforadmin_model.dart';
@@ -25,10 +28,13 @@ class BrowsebooksforadminWidget extends StatefulWidget {
       _BrowsebooksforadminWidgetState();
 }
 
-class _BrowsebooksforadminWidgetState extends State<BrowsebooksforadminWidget> {
+class _BrowsebooksforadminWidgetState extends State<BrowsebooksforadminWidget>
+    with TickerProviderStateMixin {
   late BrowsebooksforadminModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -93,6 +99,98 @@ class _BrowsebooksforadminWidgetState extends State<BrowsebooksforadminWidget> {
 
     _model.bookSearchFieldTextController ??= TextEditingController();
     _model.bookSearchFieldFocusNode ??= FocusNode();
+
+    animationsMap.addAll({
+      'columnOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(0.0, 30.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'containerOnPageLoadAnimation1': AnimationInfo(
+        loop: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ShimmerEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1200.0.ms,
+            color: Color(0x80FFFFFF),
+            angle: 0.785,
+          ),
+        ],
+      ),
+      'containerOnPageLoadAnimation2': AnimationInfo(
+        loop: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ShimmerEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1200.0.ms,
+            color: Color(0x80FFFFFF),
+            angle: 0.785,
+          ),
+        ],
+      ),
+      'containerOnPageLoadAnimation3': AnimationInfo(
+        loop: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ShimmerEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1200.0.ms,
+            color: Color(0x80FFFFFF),
+            angle: 0.785,
+          ),
+        ],
+      ),
+      'containerOnPageLoadAnimation4': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(0.0, 30.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'textOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeOut,
+            delay: 200.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+    });
   }
 
   @override
@@ -966,6 +1064,242 @@ class _BrowsebooksforadminWidgetState extends State<BrowsebooksforadminWidget> {
                   ),
                 ),
               ),
+              if (((bool? l, List<BooksRow>? r) {
+                    return (l ?? false) && (r ?? []).isEmpty;
+                  }(_model.isLoading, _model.bookRows.toList())) ??
+                  true)
+                Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: (FFMainAxisAlignment.start).flutterValue,
+                    crossAxisAlignment:
+                        (FFCrossAxisAlignment.stretch).flutterValue,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Container(
+                        height: 122.0,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).alternate,
+                          borderRadius: BorderRadius.circular(16.0),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment:
+                                (FFMainAxisAlignment.start).flutterValue,
+                            crossAxisAlignment:
+                                (FFCrossAxisAlignment.start).flutterValue,
+                            textBaseline: TextBaseline.alphabetic,
+                            children: [
+                              Container(
+                                width: 60.0,
+                                height: 90.0,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  borderRadius: BorderRadius.circular(6.0),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment:
+                                      (FFMainAxisAlignment.start).flutterValue,
+                                  crossAxisAlignment:
+                                      (FFCrossAxisAlignment.start).flutterValue,
+                                  textBaseline: TextBaseline.alphabetic,
+                                  children: [
+                                    Container(
+                                      width: 160.0,
+                                      height: 14.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(6.0),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 110.0,
+                                      height: 12.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(6.0),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 80.0,
+                                      height: 12.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(6.0),
+                                      ),
+                                    ),
+                                  ].divide(SizedBox(height: 10.0)),
+                                ),
+                              ),
+                            ].divide(SizedBox(width: 16.0)),
+                          ),
+                        ),
+                      ).animateOnPageLoad(
+                          animationsMap['containerOnPageLoadAnimation1']!),
+                      Container(
+                        height: 122.0,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).alternate,
+                          borderRadius: BorderRadius.circular(16.0),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment:
+                                (FFMainAxisAlignment.start).flutterValue,
+                            crossAxisAlignment:
+                                (FFCrossAxisAlignment.start).flutterValue,
+                            textBaseline: TextBaseline.alphabetic,
+                            children: [
+                              Container(
+                                width: 60.0,
+                                height: 90.0,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  borderRadius: BorderRadius.circular(6.0),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment:
+                                      (FFMainAxisAlignment.start).flutterValue,
+                                  crossAxisAlignment:
+                                      (FFCrossAxisAlignment.start).flutterValue,
+                                  textBaseline: TextBaseline.alphabetic,
+                                  children: [
+                                    Container(
+                                      width: 160.0,
+                                      height: 14.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(6.0),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 110.0,
+                                      height: 12.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(6.0),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 80.0,
+                                      height: 12.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(6.0),
+                                      ),
+                                    ),
+                                  ].divide(SizedBox(height: 10.0)),
+                                ),
+                              ),
+                            ].divide(SizedBox(width: 16.0)),
+                          ),
+                        ),
+                      ).animateOnPageLoad(
+                          animationsMap['containerOnPageLoadAnimation2']!),
+                      Container(
+                        height: 122.0,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).alternate,
+                          borderRadius: BorderRadius.circular(16.0),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment:
+                                (FFMainAxisAlignment.start).flutterValue,
+                            crossAxisAlignment:
+                                (FFCrossAxisAlignment.start).flutterValue,
+                            textBaseline: TextBaseline.alphabetic,
+                            children: [
+                              Container(
+                                width: 60.0,
+                                height: 90.0,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  borderRadius: BorderRadius.circular(6.0),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment:
+                                      (FFMainAxisAlignment.start).flutterValue,
+                                  crossAxisAlignment:
+                                      (FFCrossAxisAlignment.start).flutterValue,
+                                  textBaseline: TextBaseline.alphabetic,
+                                  children: [
+                                    Container(
+                                      width: 160.0,
+                                      height: 14.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(6.0),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 110.0,
+                                      height: 12.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(6.0),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 80.0,
+                                      height: 12.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(6.0),
+                                      ),
+                                    ),
+                                  ].divide(SizedBox(height: 10.0)),
+                                ),
+                              ),
+                            ].divide(SizedBox(width: 16.0)),
+                          ),
+                        ),
+                      ).animateOnPageLoad(
+                          animationsMap['containerOnPageLoadAnimation3']!),
+                    ].divide(SizedBox(height: 12.0)),
+                  ),
+                ),
               Expanded(
                 flex: 1,
                 child: Padding(
@@ -1017,6 +1351,14 @@ class _BrowsebooksforadminWidgetState extends State<BrowsebooksforadminWidget> {
                                           ParamType.SupabaseRow,
                                         ),
                                       }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        '__transition_info__': TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.rightToLeft,
+                                          duration: Duration(milliseconds: 300),
+                                        ),
+                                      },
                                     );
                                   },
                                   child: Container(
@@ -1059,20 +1401,29 @@ class _BrowsebooksforadminWidgetState extends State<BrowsebooksforadminWidget> {
                                               borderRadius:
                                                   BorderRadius.circular(12.0),
                                             ),
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                              child: CachedNetworkImage(
-                                                fadeInDuration:
-                                                    Duration(milliseconds: 500),
-                                                fadeOutDuration:
-                                                    Duration(milliseconds: 500),
-                                                imageUrl: ((String? v) {
-                                                  return (v ?? '');
-                                                }(bookRowItem.coverUrl)),
-                                                width: 60.0,
-                                                height: 90.0,
-                                                fit: BoxFit.cover,
+                                            child: Hero(
+                                              tag: ((String? v, int? i) {
+                                                return '${v ?? ''}#book-${i}';
+                                              }(bookRowItem.coverUrl,
+                                                  bookRowItem.id)),
+                                              transitionOnUserGestures: true,
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                                child: CachedNetworkImage(
+                                                  fadeInDuration: Duration(
+                                                      milliseconds: 500),
+                                                  fadeOutDuration: Duration(
+                                                      milliseconds: 500),
+                                                  imageUrl:
+                                                      ((String? v, int? i) {
+                                                    return '${v ?? ''}#book-${i}';
+                                                  }(bookRowItem.coverUrl,
+                                                          bookRowItem.id)),
+                                                  width: 60.0,
+                                                  height: 90.0,
+                                                  fit: BoxFit.cover,
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -1606,7 +1957,8 @@ class _BrowsebooksforadminWidgetState extends State<BrowsebooksforadminWidget> {
                                   ),
                                 ),
                               ),
-                            ),
+                            ).animateOnPageLoad(animationsMap[
+                                'containerOnPageLoadAnimation4']!),
                           );
                         },
                       );
@@ -2544,6 +2896,17 @@ class _BrowsebooksforadminWidgetState extends State<BrowsebooksforadminWidget> {
                             return !(l ?? false) && (a ?? []).isEmpty;
                           }(_model.isLoading, _model.allRows.toList())) ??
                           true)
+                        Lottie.network(
+                          'https://assets9.lottiefiles.com/packages/lf20_wnqlfojb.json',
+                          width: 200.0,
+                          height: 140.0,
+                          fit: BoxFit.contain,
+                          animate: true,
+                        ),
+                      if (((bool? l, List<BooksRow>? a) {
+                            return !(l ?? false) && (a ?? []).isEmpty;
+                          }(_model.isLoading, _model.allRows.toList())) ??
+                          true)
                         Text(
                           FFLocalizations.of(context).getText(
                             '2jgi9z6k' /* No books found */,
@@ -2569,13 +2932,14 @@ class _BrowsebooksforadminWidgetState extends State<BrowsebooksforadminWidget> {
                                     .bodyMedium
                                     .fontStyle,
                               ),
-                        ),
+                        ).animateOnPageLoad(
+                            animationsMap['textOnPageLoadAnimation']!),
                     ].divide(SizedBox(height: 8.0)),
                   ),
                 ),
               ),
             ],
-          ),
+          ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
         ),
       ),
     );

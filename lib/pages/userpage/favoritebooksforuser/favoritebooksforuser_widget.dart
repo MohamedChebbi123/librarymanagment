@@ -1,6 +1,7 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -9,6 +10,7 @@ import '/index.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'favoritebooksforuser_model.dart';
 export 'favoritebooksforuser_model.dart';
@@ -24,11 +26,13 @@ class FavoritebooksforuserWidget extends StatefulWidget {
       _FavoritebooksforuserWidgetState();
 }
 
-class _FavoritebooksforuserWidgetState
-    extends State<FavoritebooksforuserWidget> {
+class _FavoritebooksforuserWidgetState extends State<FavoritebooksforuserWidget>
+    with TickerProviderStateMixin {
   late FavoritebooksforuserModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -50,6 +54,47 @@ class _FavoritebooksforuserWidgetState
       );
       _model.bookRows = _model.loadedFavBooks!.toList().cast<BooksRow>();
       safeSetState(() {});
+    });
+
+    animationsMap.addAll({
+      'columnOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(0.0, 30.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'containerOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(0.0, 30.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
     });
   }
 
@@ -197,8 +242,17 @@ class _FavoritebooksforuserWidgetState
                         ),
                         FFButtonWidget(
                           onPressed: () async {
-                            context
-                                .pushNamed(BrowsebooksforuserWidget.routeName);
+                            context.pushNamed(
+                              BrowsebooksforuserWidget.routeName,
+                              extra: <String, dynamic>{
+                                '__transition_info__': TransitionInfo(
+                                  hasTransition: true,
+                                  transitionType:
+                                      PageTransitionType.rightToLeft,
+                                  duration: Duration(milliseconds: 300),
+                                ),
+                              },
+                            );
                           },
                           text: FFLocalizations.of(context).getText(
                             'bekgskpq' /* Browse books */,
@@ -265,6 +319,14 @@ class _FavoritebooksforuserWidgetState
                                           ParamType.int,
                                         ),
                                       }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        '__transition_info__': TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.rightToLeft,
+                                          duration: Duration(milliseconds: 300),
+                                        ),
+                                      },
                                     );
                                   },
                                   child: Container(
@@ -307,20 +369,29 @@ class _FavoritebooksforuserWidgetState
                                               borderRadius:
                                                   BorderRadius.circular(12.0),
                                             ),
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                              child: CachedNetworkImage(
-                                                fadeInDuration:
-                                                    Duration(milliseconds: 500),
-                                                fadeOutDuration:
-                                                    Duration(milliseconds: 500),
-                                                imageUrl: ((String? v) {
-                                                  return (v ?? '');
-                                                }(bookRowItem.coverUrl)),
-                                                width: 60.0,
-                                                height: 90.0,
-                                                fit: BoxFit.cover,
+                                            child: Hero(
+                                              tag: ((String? v, int? i) {
+                                                return '${v ?? ''}#book-${i}';
+                                              }(bookRowItem.coverUrl,
+                                                  bookRowItem.id)),
+                                              transitionOnUserGestures: true,
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                                child: CachedNetworkImage(
+                                                  fadeInDuration: Duration(
+                                                      milliseconds: 500),
+                                                  fadeOutDuration: Duration(
+                                                      milliseconds: 500),
+                                                  imageUrl:
+                                                      ((String? v, int? i) {
+                                                    return '${v ?? ''}#book-${i}';
+                                                  }(bookRowItem.coverUrl,
+                                                          bookRowItem.id)),
+                                                  width: 60.0,
+                                                  height: 90.0,
+                                                  fit: BoxFit.cover,
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -562,7 +633,8 @@ class _FavoritebooksforuserWidgetState
                                   ),
                                 ),
                               ),
-                            ),
+                            ).animateOnPageLoad(
+                                animationsMap['containerOnPageLoadAnimation']!),
                           );
                         },
                       );
@@ -571,7 +643,7 @@ class _FavoritebooksforuserWidgetState
                 ),
               ),
             ],
-          ),
+          ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
         ),
       ),
     );

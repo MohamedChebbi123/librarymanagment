@@ -1,6 +1,8 @@
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'forgetpassword_model.dart';
 export 'forgetpassword_model.dart';
@@ -15,15 +17,40 @@ class ForgetpasswordWidget extends StatefulWidget {
   State<ForgetpasswordWidget> createState() => _ForgetpasswordWidgetState();
 }
 
-class _ForgetpasswordWidgetState extends State<ForgetpasswordWidget> {
+class _ForgetpasswordWidgetState extends State<ForgetpasswordWidget>
+    with TickerProviderStateMixin {
   late ForgetpasswordModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => ForgetpasswordModel());
+
+    animationsMap.addAll({
+      'columnOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(0.0, 30.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+    });
   }
 
   @override
@@ -75,7 +102,7 @@ class _ForgetpasswordWidgetState extends State<ForgetpasswordWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [],
-          ),
+          ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
         ),
       ),
     );

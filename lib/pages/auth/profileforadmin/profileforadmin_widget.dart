@@ -1,6 +1,7 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -8,6 +9,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'profileforadmin_model.dart';
 export 'profileforadmin_model.dart';
@@ -22,10 +24,13 @@ class ProfileforadminWidget extends StatefulWidget {
   State<ProfileforadminWidget> createState() => _ProfileforadminWidgetState();
 }
 
-class _ProfileforadminWidgetState extends State<ProfileforadminWidget> {
+class _ProfileforadminWidgetState extends State<ProfileforadminWidget>
+    with TickerProviderStateMixin {
   late ProfileforadminModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  var hasButtonTriggered = false;
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -43,6 +48,47 @@ class _ProfileforadminWidgetState extends State<ProfileforadminWidget> {
       _model.adminRows = _model.loadedAdminRows!.toList().cast<UsersRow>();
       safeSetState(() {});
     });
+
+    animationsMap.addAll({
+      'columnOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(0.0, 30.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'buttonOnActionTriggerAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: false,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 160.0.ms,
+            begin: Offset(0.95, 0.95),
+            end: Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+    });
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
   }
 
   @override
@@ -662,8 +708,28 @@ class _ProfileforadminWidgetState extends State<ProfileforadminWidget> {
                           ),
                           FFButtonWidget(
                             onPressed: () async {
+                              if (animationsMap[
+                                      'buttonOnActionTriggerAnimation'] !=
+                                  null) {
+                                safeSetState(() => hasButtonTriggered = true);
+                                SchedulerBinding.instance.addPostFrameCallback(
+                                    (_) async => await animationsMap[
+                                            'buttonOnActionTriggerAnimation']!
+                                        .controller
+                                        .forward(from: 0.0));
+                              }
+
                               context.pushNamed(
-                                  EditprofileforadminWidget.routeName);
+                                EditprofileforadminWidget.routeName,
+                                extra: <String, dynamic>{
+                                  '__transition_info__': TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType:
+                                        PageTransitionType.rightToLeft,
+                                    duration: Duration(milliseconds: 300),
+                                  ),
+                                },
+                              );
                             },
                             text: FFLocalizations.of(context).getText(
                               'md2lzygm' /* Edit profile */,
@@ -687,7 +753,9 @@ class _ProfileforadminWidgetState extends State<ProfileforadminWidget> {
                               ),
                               borderRadius: BorderRadius.circular(14.0),
                             ),
-                          ),
+                          ).animateOnActionTrigger(
+                              animationsMap['buttonOnActionTriggerAnimation']!,
+                              hasBeenTriggered: hasButtonTriggered),
                           FFButtonWidget(
                             onPressed: () async {
                               GoRouter.of(context).prepareAuthEvent();
@@ -730,7 +798,7 @@ class _ProfileforadminWidgetState extends State<ProfileforadminWidget> {
                     ),
                   ],
                 ),
-              ),
+              ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
             ),
           ),
         );

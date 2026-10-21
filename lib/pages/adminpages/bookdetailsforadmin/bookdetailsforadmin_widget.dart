@@ -1,5 +1,6 @@
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -8,6 +9,7 @@ import '/index.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'bookdetailsforadmin_model.dart';
 export 'bookdetailsforadmin_model.dart';
@@ -28,10 +30,13 @@ class BookdetailsforadminWidget extends StatefulWidget {
       _BookdetailsforadminWidgetState();
 }
 
-class _BookdetailsforadminWidgetState extends State<BookdetailsforadminWidget> {
+class _BookdetailsforadminWidgetState extends State<BookdetailsforadminWidget>
+    with TickerProviderStateMixin {
   late BookdetailsforadminModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  var hasButtonTriggered = false;
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -43,6 +48,47 @@ class _BookdetailsforadminWidgetState extends State<BookdetailsforadminWidget> {
       _model.bookCount = widget.book?.bookCount ?? 0;
       safeSetState(() {});
     });
+
+    animationsMap.addAll({
+      'columnOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(0.0, 30.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'buttonOnActionTriggerAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: false,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 160.0.ms,
+            begin: Offset(0.95, 0.95),
+            end: Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+    });
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
   }
 
   @override
@@ -119,19 +165,23 @@ class _BookdetailsforadminWidgetState extends State<BookdetailsforadminWidget> {
                             return (v?.toString() ?? '').isEmpty == false;
                           }(widget.book?.coverUrl)) ??
                           true)
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(12.0),
-                          child: CachedNetworkImage(
-                            fadeInDuration: Duration(milliseconds: 0),
-                            fadeOutDuration: Duration(milliseconds: 0),
-                            imageUrl: ((String? v) {
-                              return (v?.toString() ?? '').isEmpty
-                                  ? ''
-                                  : v.toString();
-                            }(widget.book?.coverUrl)),
-                            width: double.infinity,
-                            height: 260.0,
-                            fit: BoxFit.contain,
+                        Hero(
+                          tag: ((String? v, int? i) {
+                            return '${v ?? ''}#book-${i}';
+                          }(widget.book?.coverUrl, widget.book?.id)),
+                          transitionOnUserGestures: true,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(12.0),
+                            child: CachedNetworkImage(
+                              fadeInDuration: Duration(milliseconds: 0),
+                              fadeOutDuration: Duration(milliseconds: 0),
+                              imageUrl: ((String? v, int? i) {
+                                return '${v ?? ''}#book-${i}';
+                              }(widget.book?.coverUrl, widget.book?.id)),
+                              width: double.infinity,
+                              height: 260.0,
+                              fit: BoxFit.contain,
+                            ),
                           ),
                         ),
                       if (((String? v) {
@@ -691,6 +741,17 @@ class _BookdetailsforadminWidgetState extends State<BookdetailsforadminWidget> {
                             flex: 1,
                             child: FFButtonWidget(
                               onPressed: () async {
+                                if (animationsMap[
+                                        'buttonOnActionTriggerAnimation'] !=
+                                    null) {
+                                  safeSetState(() => hasButtonTriggered = true);
+                                  SchedulerBinding.instance.addPostFrameCallback(
+                                      (_) async => await animationsMap[
+                                              'buttonOnActionTriggerAnimation']!
+                                          .controller
+                                          .forward(from: 0.0));
+                                }
+
                                 context.pushNamed(
                                   EditbookforadminWidget.routeName,
                                   queryParameters: {
@@ -699,6 +760,14 @@ class _BookdetailsforadminWidgetState extends State<BookdetailsforadminWidget> {
                                       ParamType.SupabaseRow,
                                     ),
                                   }.withoutNulls,
+                                  extra: <String, dynamic>{
+                                    '__transition_info__': TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType:
+                                          PageTransitionType.rightToLeft,
+                                      duration: Duration(milliseconds: 300),
+                                    ),
+                                  },
                                 );
                               },
                               text: FFLocalizations.of(context).getText(
@@ -727,7 +796,10 @@ class _BookdetailsforadminWidgetState extends State<BookdetailsforadminWidget> {
                                 ),
                                 borderRadius: BorderRadius.circular(14.0),
                               ),
-                            ),
+                            ).animateOnActionTrigger(
+                                animationsMap[
+                                    'buttonOnActionTriggerAnimation']!,
+                                hasBeenTriggered: hasButtonTriggered),
                           ),
                           Expanded(
                             flex: 1,
@@ -781,7 +853,16 @@ class _BookdetailsforadminWidgetState extends State<BookdetailsforadminWidget> {
                                     context.pop();
                                   }
                                   context.pushNamed(
-                                      BrowsebooksforadminWidget.routeName);
+                                    BrowsebooksforadminWidget.routeName,
+                                    extra: <String, dynamic>{
+                                      '__transition_info__': TransitionInfo(
+                                        hasTransition: true,
+                                        transitionType:
+                                            PageTransitionType.rightToLeft,
+                                        duration: Duration(milliseconds: 300),
+                                      ),
+                                    },
+                                  );
                                 }
 
                                 safeSetState(() {});
@@ -816,7 +897,7 @@ class _BookdetailsforadminWidgetState extends State<BookdetailsforadminWidget> {
                 ),
               ],
             ),
-          ),
+          ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
         ),
       ),
     );

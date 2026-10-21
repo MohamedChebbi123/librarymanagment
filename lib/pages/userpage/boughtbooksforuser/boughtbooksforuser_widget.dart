@@ -1,6 +1,7 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -9,6 +10,7 @@ import '/index.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'boughtbooksforuser_model.dart';
 export 'boughtbooksforuser_model.dart';
@@ -24,10 +26,13 @@ class BoughtbooksforuserWidget extends StatefulWidget {
       _BoughtbooksforuserWidgetState();
 }
 
-class _BoughtbooksforuserWidgetState extends State<BoughtbooksforuserWidget> {
+class _BoughtbooksforuserWidgetState extends State<BoughtbooksforuserWidget>
+    with TickerProviderStateMixin {
   late BoughtbooksforuserModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -52,6 +57,47 @@ class _BoughtbooksforuserWidgetState extends State<BoughtbooksforuserWidget> {
       );
       _model.bookRows = _model.loadedBoughtBooks!.toList().cast<BooksRow>();
       safeSetState(() {});
+    });
+
+    animationsMap.addAll({
+      'columnOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(0.0, 30.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'containerOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(0.0, 30.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
     });
   }
 
@@ -199,8 +245,17 @@ class _BoughtbooksforuserWidgetState extends State<BoughtbooksforuserWidget> {
                         ),
                         FFButtonWidget(
                           onPressed: () async {
-                            context
-                                .pushNamed(BrowsebooksforuserWidget.routeName);
+                            context.pushNamed(
+                              BrowsebooksforuserWidget.routeName,
+                              extra: <String, dynamic>{
+                                '__transition_info__': TransitionInfo(
+                                  hasTransition: true,
+                                  transitionType:
+                                      PageTransitionType.rightToLeft,
+                                  duration: Duration(milliseconds: 300),
+                                ),
+                              },
+                            );
                           },
                           text: FFLocalizations.of(context).getText(
                             'h4e3n02a' /* Browse books */,
@@ -469,7 +524,8 @@ class _BoughtbooksforuserWidgetState extends State<BoughtbooksforuserWidget> {
                                 ].divide(SizedBox(width: 16.0)),
                               ),
                             ),
-                          );
+                          ).animateOnPageLoad(
+                              animationsMap['containerOnPageLoadAnimation']!);
                         },
                       );
                     },
@@ -477,7 +533,7 @@ class _BoughtbooksforuserWidgetState extends State<BoughtbooksforuserWidget> {
                 ),
               ),
             ],
-          ),
+          ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
         ),
       ),
     );

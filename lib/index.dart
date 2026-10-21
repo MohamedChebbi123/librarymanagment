@@ -32,3 +32,4 @@ export '/pages/userpage/boughtbooksforuser/boughtbooksforuser_widget.dart'
     show BoughtbooksforuserWidget;
 export '/pages/userpage/bookdetailsforuser/bookdetailsforuser_widget.dart'
     show BookdetailsforuserWidget;
+export '/defilecture/defilecture_widget.dart' show DefilectureWidget;

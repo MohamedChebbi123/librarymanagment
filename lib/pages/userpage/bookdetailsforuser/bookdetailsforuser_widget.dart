@@ -1,6 +1,8 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/buy_success_dialog_widget.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -8,6 +10,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'bookdetailsforuser_model.dart';
 export 'bookdetailsforuser_model.dart';
@@ -29,10 +32,13 @@ class BookdetailsforuserWidget extends StatefulWidget {
       _BookdetailsforuserWidgetState();
 }
 
-class _BookdetailsforuserWidgetState extends State<BookdetailsforuserWidget> {
+class _BookdetailsforuserWidgetState extends State<BookdetailsforuserWidget>
+    with TickerProviderStateMixin {
   late BookdetailsforuserModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  var hasButtonTriggered = false;
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -59,6 +65,47 @@ class _BookdetailsforuserWidgetState extends State<BookdetailsforuserWidget> {
           _model.loadedDetailFavs!.toList().cast<FavoritesRow>();
       safeSetState(() {});
     });
+
+    animationsMap.addAll({
+      'columnOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(0.0, 30.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'buttonOnActionTriggerAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: false,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 160.0.ms,
+            begin: Offset(0.95, 0.95),
+            end: Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+    });
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
   }
 
   @override
@@ -148,20 +195,25 @@ class _BookdetailsforuserWidgetState extends State<BookdetailsforuserWidget> {
                                     return (v ?? '').isNotEmpty == true;
                                   }(bookRowItem.coverUrl)) ??
                                   true)
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(12.0),
-                                  child: CachedNetworkImage(
-                                    fadeInDuration: Duration(milliseconds: 500),
-                                    fadeOutDuration:
-                                        Duration(milliseconds: 500),
-                                    imageUrl: ((String? v) {
-                                      return (v ?? '').toString().isEmpty
-                                          ? ''
-                                          : v.toString();
-                                    }(bookRowItem.coverUrl)),
-                                    width: double.infinity,
-                                    height: 260.0,
-                                    fit: BoxFit.contain,
+                                Hero(
+                                  tag: ((String? v, int? i) {
+                                    return '${v ?? ''}#book-${i}';
+                                  }(bookRowItem.coverUrl, widget.bookId)),
+                                  transitionOnUserGestures: true,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(12.0),
+                                    child: CachedNetworkImage(
+                                      fadeInDuration:
+                                          Duration(milliseconds: 500),
+                                      fadeOutDuration:
+                                          Duration(milliseconds: 500),
+                                      imageUrl: ((String? v, int? i) {
+                                        return '${v ?? ''}#book-${i}';
+                                      }(bookRowItem.coverUrl, widget.bookId)),
+                                      width: double.infinity,
+                                      height: 260.0,
+                                      fit: BoxFit.contain,
+                                    ),
                                   ),
                                 ),
                               if (((String? v) {
@@ -769,118 +821,165 @@ class _BookdetailsforuserWidgetState extends State<BookdetailsforuserWidget> {
                                                     0) ==
                                                 true) ??
                                             true)
-                                          FFButtonWidget(
-                                            onPressed: () async {
-                                              var confirmDialogResponse =
-                                                  await showDialog<bool>(
-                                                        context: context,
-                                                        builder:
-                                                            (alertDialogContext) {
-                                                          return AlertDialog(
-                                                            title: Text(
-                                                                'Buy this book?'),
-                                                            content: Text(
-                                                                '\"${bookRowItem.title}\" for ${(double? p) {
-                                                              return '${(p ?? 0).toStringAsFixed(3)} DT';
-                                                            }(bookRowItem.price)}.'),
-                                                            actions: [
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext,
-                                                                        false),
-                                                                child: Text(
-                                                                    'Cancel'),
-                                                              ),
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext,
-                                                                        true),
-                                                                child:
-                                                                    Text('Buy'),
-                                                              ),
-                                                            ],
-                                                          );
-                                                        },
-                                                      ) ??
-                                                      false;
-                                              if (confirmDialogResponse) {
-                                                _model.rows =
-                                                    await BoughtBooksTable()
-                                                        .insert({
-                                                  'user_id': currentUserUid,
-                                                  'book_id': bookRowItem.id,
-                                                  'quantity': 1,
-                                                  'price_paid':
-                                                      bookRowItem.price ?? 0,
-                                                });
-                                                await BooksTable().update(
-                                                  data: {
-                                                    'book_count': (int? c) {
-                                                      return (c ?? 0) > 0
-                                                          ? (c ?? 0) - 1
-                                                          : 0;
-                                                    }(bookRowItem.bookCount),
-                                                  },
-                                                  matchingRows: (rows) =>
-                                                      rows.eqOrNull(
-                                                    'id',
-                                                    widget.bookId,
-                                                  ),
-                                                );
-                                                _model.detailBookAfterBuy =
-                                                    await BooksTable()
-                                                        .queryRows(
-                                                  queryFn: (q) => q.eqOrNull(
-                                                    'id',
-                                                    widget.bookId,
-                                                  ),
-                                                );
-                                                _model.bookRows = _model
-                                                    .detailBookAfterBuy!
-                                                    .toList()
-                                                    .cast<BooksRow>();
-                                                safeSetState(() {});
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(
-                                                  SnackBar(
-                                                    content: Text(
-                                                      'Book bought! See it in My purchases.',
-                                                      style: TextStyle(),
+                                          Builder(
+                                            builder: (context) =>
+                                                FFButtonWidget(
+                                              onPressed: () async {
+                                                if (animationsMap[
+                                                        'buttonOnActionTriggerAnimation'] !=
+                                                    null) {
+                                                  safeSetState(() =>
+                                                      hasButtonTriggered =
+                                                          true);
+                                                  SchedulerBinding.instance
+                                                      .addPostFrameCallback(
+                                                          (_) async =>
+                                                              await animationsMap[
+                                                                      'buttonOnActionTriggerAnimation']!
+                                                                  .controller
+                                                                  .forward(
+                                                                      from:
+                                                                          0.0));
+                                                }
+                                                var confirmDialogResponse =
+                                                    await showDialog<bool>(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  'Buy this book?'),
+                                                              content: Text(
+                                                                  '\"${bookRowItem.title}\" for ${(double? p) {
+                                                                return '${(p ?? 0).toStringAsFixed(3)} DT';
+                                                              }(bookRowItem.price)}.'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          false),
+                                                                  child: Text(
+                                                                      'Cancel'),
+                                                                ),
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          true),
+                                                                  child: Text(
+                                                                      'Buy'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        ) ??
+                                                        false;
+                                                if (confirmDialogResponse) {
+                                                  _model.rows =
+                                                      await BoughtBooksTable()
+                                                          .insert({
+                                                    'user_id': currentUserUid,
+                                                    'book_id': bookRowItem.id,
+                                                    'quantity': 1,
+                                                    'price_paid':
+                                                        bookRowItem.price ?? 0,
+                                                  });
+                                                  await BooksTable().update(
+                                                    data: {
+                                                      'book_count': (int? c) {
+                                                        return (c ?? 0) > 0
+                                                            ? (c ?? 0) - 1
+                                                            : 0;
+                                                      }(bookRowItem.bookCount),
+                                                    },
+                                                    matchingRows: (rows) =>
+                                                        rows.eqOrNull(
+                                                      'id',
+                                                      widget.bookId,
                                                     ),
-                                                    duration: Duration(
-                                                        milliseconds: 4000),
-                                                  ),
-                                                );
-                                              }
+                                                  );
+                                                  _model.detailBookAfterBuy =
+                                                      await BooksTable()
+                                                          .queryRows(
+                                                    queryFn: (q) => q.eqOrNull(
+                                                      'id',
+                                                      widget.bookId,
+                                                    ),
+                                                  );
+                                                  _model.bookRows = _model
+                                                      .detailBookAfterBuy!
+                                                      .toList()
+                                                      .cast<BooksRow>();
+                                                  safeSetState(() {});
+                                                  await showDialog(
+                                                    barrierDismissible: false,
+                                                    context: context,
+                                                    builder: (dialogContext) {
+                                                      return Dialog(
+                                                        elevation: 0,
+                                                        insetPadding:
+                                                            EdgeInsets.zero,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                        child: GestureDetector(
+                                                          onTap: () {
+                                                            FocusScope.of(
+                                                                    dialogContext)
+                                                                .unfocus();
+                                                            FocusManager
+                                                                .instance
+                                                                .primaryFocus
+                                                                ?.unfocus();
+                                                          },
+                                                          child:
+                                                              BuySuccessDialogWidget(),
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                }
 
-                                              safeSetState(() {});
-                                            },
-                                            text: FFLocalizations.of(context)
-                                                .getText(
-                                              'k3jvrlum' /* Buy */,
-                                            ),
-                                            icon: Icon(
-                                              Icons.shopping_cart,
-                                              size: 20.0,
-                                            ),
-                                            options: FFButtonOptions(
-                                              height: 52.0,
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              iconPadding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              iconColor: Colors.white,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              textStyle: TextStyle(
-                                                color: Colors.white,
+                                                safeSetState(() {});
+                                              },
+                                              text: FFLocalizations.of(context)
+                                                  .getText(
+                                                'k3jvrlum' /* Buy */,
                                               ),
-                                              borderRadius:
-                                                  BorderRadius.circular(14.0),
-                                            ),
+                                              icon: Icon(
+                                                Icons.shopping_cart,
+                                                size: 20.0,
+                                              ),
+                                              options: FFButtonOptions(
+                                                height: 52.0,
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 0.0),
+                                                iconPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                iconColor: Colors.white,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                textStyle: TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(14.0),
+                                              ),
+                                            ).animateOnActionTrigger(
+                                                    animationsMap[
+                                                        'buttonOnActionTriggerAnimation']!,
+                                                    hasBeenTriggered:
+                                                        hasButtonTriggered),
                                           ),
                                         if ((((bookRowItem.bookCount ?? 0) >
                                                     0) ==
@@ -1092,7 +1191,7 @@ class _BookdetailsforuserWidgetState extends State<BookdetailsforuserWidget> {
                 ),
               ],
             ),
-          ),
+          ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
         ),
       ),
     );

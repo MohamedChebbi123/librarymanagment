@@ -1,6 +1,8 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/buy_success_dialog_widget.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -13,7 +15,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'browsebooksforuser_model.dart';
 export 'browsebooksforuser_model.dart';
@@ -29,10 +33,13 @@ class BrowsebooksforuserWidget extends StatefulWidget {
       _BrowsebooksforuserWidgetState();
 }
 
-class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
+class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget>
+    with TickerProviderStateMixin {
   late BrowsebooksforuserModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  var hasButtonTriggered = false;
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -106,6 +113,117 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
 
     _model.userBookSearchFieldTextController ??= TextEditingController();
     _model.userBookSearchFieldFocusNode ??= FocusNode();
+
+    animationsMap.addAll({
+      'columnOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(0.0, 30.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'containerOnPageLoadAnimation1': AnimationInfo(
+        loop: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ShimmerEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1200.0.ms,
+            color: Color(0x80FFFFFF),
+            angle: 0.785,
+          ),
+        ],
+      ),
+      'containerOnPageLoadAnimation2': AnimationInfo(
+        loop: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ShimmerEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1200.0.ms,
+            color: Color(0x80FFFFFF),
+            angle: 0.785,
+          ),
+        ],
+      ),
+      'containerOnPageLoadAnimation3': AnimationInfo(
+        loop: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ShimmerEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1200.0.ms,
+            color: Color(0x80FFFFFF),
+            angle: 0.785,
+          ),
+        ],
+      ),
+      'containerOnPageLoadAnimation4': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(0.0, 30.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'buttonOnActionTriggerAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: false,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 160.0.ms,
+            begin: Offset(0.95, 0.95),
+            end: Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+      'textOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeOut,
+            delay: 200.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+    });
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
   }
 
   @override
@@ -168,7 +286,16 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
                 size: 24.0,
               ),
               onPressed: () async {
-                context.pushNamed(FavoritebooksforuserWidget.routeName);
+                context.pushNamed(
+                  FavoritebooksforuserWidget.routeName,
+                  extra: <String, dynamic>{
+                    '__transition_info__': TransitionInfo(
+                      hasTransition: true,
+                      transitionType: PageTransitionType.rightToLeft,
+                      duration: Duration(milliseconds: 300),
+                    ),
+                  },
+                );
               },
             ),
             FlutterFlowIconButton(
@@ -179,7 +306,16 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
                 size: 24.0,
               ),
               onPressed: () async {
-                context.pushNamed(BoughtbooksforuserWidget.routeName);
+                context.pushNamed(
+                  BoughtbooksforuserWidget.routeName,
+                  extra: <String, dynamic>{
+                    '__transition_info__': TransitionInfo(
+                      hasTransition: true,
+                      transitionType: PageTransitionType.rightToLeft,
+                      duration: Duration(milliseconds: 300),
+                    ),
+                  },
+                );
               },
             ),
           ],
@@ -1000,6 +1136,242 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
                   ),
                 ),
               ),
+              if (((bool? l, List<BooksRow>? r) {
+                    return (l ?? false) && (r ?? []).isEmpty;
+                  }(_model.isLoading, _model.bookRows.toList())) ??
+                  true)
+                Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: (FFMainAxisAlignment.start).flutterValue,
+                    crossAxisAlignment:
+                        (FFCrossAxisAlignment.stretch).flutterValue,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Container(
+                        height: 122.0,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).alternate,
+                          borderRadius: BorderRadius.circular(16.0),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment:
+                                (FFMainAxisAlignment.start).flutterValue,
+                            crossAxisAlignment:
+                                (FFCrossAxisAlignment.start).flutterValue,
+                            textBaseline: TextBaseline.alphabetic,
+                            children: [
+                              Container(
+                                width: 60.0,
+                                height: 90.0,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  borderRadius: BorderRadius.circular(6.0),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment:
+                                      (FFMainAxisAlignment.start).flutterValue,
+                                  crossAxisAlignment:
+                                      (FFCrossAxisAlignment.start).flutterValue,
+                                  textBaseline: TextBaseline.alphabetic,
+                                  children: [
+                                    Container(
+                                      width: 160.0,
+                                      height: 14.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(6.0),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 110.0,
+                                      height: 12.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(6.0),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 80.0,
+                                      height: 12.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(6.0),
+                                      ),
+                                    ),
+                                  ].divide(SizedBox(height: 10.0)),
+                                ),
+                              ),
+                            ].divide(SizedBox(width: 16.0)),
+                          ),
+                        ),
+                      ).animateOnPageLoad(
+                          animationsMap['containerOnPageLoadAnimation1']!),
+                      Container(
+                        height: 122.0,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).alternate,
+                          borderRadius: BorderRadius.circular(16.0),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment:
+                                (FFMainAxisAlignment.start).flutterValue,
+                            crossAxisAlignment:
+                                (FFCrossAxisAlignment.start).flutterValue,
+                            textBaseline: TextBaseline.alphabetic,
+                            children: [
+                              Container(
+                                width: 60.0,
+                                height: 90.0,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  borderRadius: BorderRadius.circular(6.0),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment:
+                                      (FFMainAxisAlignment.start).flutterValue,
+                                  crossAxisAlignment:
+                                      (FFCrossAxisAlignment.start).flutterValue,
+                                  textBaseline: TextBaseline.alphabetic,
+                                  children: [
+                                    Container(
+                                      width: 160.0,
+                                      height: 14.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(6.0),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 110.0,
+                                      height: 12.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(6.0),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 80.0,
+                                      height: 12.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(6.0),
+                                      ),
+                                    ),
+                                  ].divide(SizedBox(height: 10.0)),
+                                ),
+                              ),
+                            ].divide(SizedBox(width: 16.0)),
+                          ),
+                        ),
+                      ).animateOnPageLoad(
+                          animationsMap['containerOnPageLoadAnimation2']!),
+                      Container(
+                        height: 122.0,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).alternate,
+                          borderRadius: BorderRadius.circular(16.0),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment:
+                                (FFMainAxisAlignment.start).flutterValue,
+                            crossAxisAlignment:
+                                (FFCrossAxisAlignment.start).flutterValue,
+                            textBaseline: TextBaseline.alphabetic,
+                            children: [
+                              Container(
+                                width: 60.0,
+                                height: 90.0,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  borderRadius: BorderRadius.circular(6.0),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment:
+                                      (FFMainAxisAlignment.start).flutterValue,
+                                  crossAxisAlignment:
+                                      (FFCrossAxisAlignment.start).flutterValue,
+                                  textBaseline: TextBaseline.alphabetic,
+                                  children: [
+                                    Container(
+                                      width: 160.0,
+                                      height: 14.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(6.0),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 110.0,
+                                      height: 12.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(6.0),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 80.0,
+                                      height: 12.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(6.0),
+                                      ),
+                                    ),
+                                  ].divide(SizedBox(height: 10.0)),
+                                ),
+                              ),
+                            ].divide(SizedBox(width: 16.0)),
+                          ),
+                        ),
+                      ).animateOnPageLoad(
+                          animationsMap['containerOnPageLoadAnimation3']!),
+                    ].divide(SizedBox(height: 12.0)),
+                  ),
+                ),
               Expanded(
                 flex: 1,
                 child: Padding(
@@ -1051,6 +1423,14 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
                                           ParamType.int,
                                         ),
                                       }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        '__transition_info__': TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.rightToLeft,
+                                          duration: Duration(milliseconds: 300),
+                                        ),
+                                      },
                                     );
                                   },
                                   child: Container(
@@ -1093,20 +1473,29 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
                                               borderRadius:
                                                   BorderRadius.circular(12.0),
                                             ),
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                              child: CachedNetworkImage(
-                                                fadeInDuration:
-                                                    Duration(milliseconds: 500),
-                                                fadeOutDuration:
-                                                    Duration(milliseconds: 500),
-                                                imageUrl: ((String? v) {
-                                                  return (v ?? '');
-                                                }(bookRowItem.coverUrl)),
-                                                width: 60.0,
-                                                height: 90.0,
-                                                fit: BoxFit.cover,
+                                            child: Hero(
+                                              tag: ((String? v, int? i) {
+                                                return '${v ?? ''}#book-${i}';
+                                              }(bookRowItem.coverUrl,
+                                                  bookRowItem.id)),
+                                              transitionOnUserGestures: true,
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                                child: CachedNetworkImage(
+                                                  fadeInDuration: Duration(
+                                                      milliseconds: 500),
+                                                  fadeOutDuration: Duration(
+                                                      milliseconds: 500),
+                                                  imageUrl:
+                                                      ((String? v, int? i) {
+                                                    return '${v ?? ''}#book-${i}';
+                                                  }(bookRowItem.coverUrl,
+                                                          bookRowItem.id)),
+                                                  width: 60.0,
+                                                  height: 90.0,
+                                                  fit: BoxFit.cover,
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -1406,253 +1795,292 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
                                                                 0) >
                                                             0) ??
                                                         true)
-                                                      FFButtonWidget(
-                                                        onPressed: () async {
-                                                          var confirmDialogResponse =
-                                                              await showDialog<
-                                                                      bool>(
-                                                                    context:
-                                                                        context,
-                                                                    builder:
-                                                                        (alertDialogContext) {
-                                                                      return AlertDialog(
-                                                                        title: Text(
-                                                                            'Buy this book?'),
-                                                                        content:
-                                                                            Text('\"${bookRowItem.title}\" for ${(double? p) {
-                                                                          return '${(p ?? 0).toStringAsFixed(3)} DT';
-                                                                        }(bookRowItem.price)}.'),
-                                                                        actions: [
-                                                                          TextButton(
-                                                                            onPressed: () =>
-                                                                                Navigator.pop(alertDialogContext, false),
-                                                                            child:
-                                                                                Text('Cancel'),
-                                                                          ),
-                                                                          TextButton(
-                                                                            onPressed: () =>
-                                                                                Navigator.pop(alertDialogContext, true),
-                                                                            child:
-                                                                                Text('Buy'),
-                                                                          ),
-                                                                        ],
-                                                                      );
-                                                                    },
-                                                                  ) ??
-                                                                  false;
-                                                          if (confirmDialogResponse) {
-                                                            _model.rows =
-                                                                await BoughtBooksTable()
-                                                                    .insert({
-                                                              'user_id':
-                                                                  currentUserUid,
-                                                              'book_id':
+                                                      Builder(
+                                                        builder: (context) =>
+                                                            FFButtonWidget(
+                                                          onPressed: () async {
+                                                            if (animationsMap[
+                                                                    'buttonOnActionTriggerAnimation'] !=
+                                                                null) {
+                                                              safeSetState(() =>
+                                                                  hasButtonTriggered =
+                                                                      true);
+                                                              SchedulerBinding
+                                                                  .instance
+                                                                  .addPostFrameCallback((_) async => await animationsMap[
+                                                                          'buttonOnActionTriggerAnimation']!
+                                                                      .controller
+                                                                      .forward(
+                                                                          from:
+                                                                              0.0));
+                                                            }
+                                                            var confirmDialogResponse =
+                                                                await showDialog<
+                                                                        bool>(
+                                                                      context:
+                                                                          context,
+                                                                      builder:
+                                                                          (alertDialogContext) {
+                                                                        return AlertDialog(
+                                                                          title:
+                                                                              Text('Buy this book?'),
+                                                                          content:
+                                                                              Text('\"${bookRowItem.title}\" for ${(double? p) {
+                                                                            return '${(p ?? 0).toStringAsFixed(3)} DT';
+                                                                          }(bookRowItem.price)}.'),
+                                                                          actions: [
+                                                                            TextButton(
+                                                                              onPressed: () => Navigator.pop(alertDialogContext, false),
+                                                                              child: Text('Cancel'),
+                                                                            ),
+                                                                            TextButton(
+                                                                              onPressed: () => Navigator.pop(alertDialogContext, true),
+                                                                              child: Text('Buy'),
+                                                                            ),
+                                                                          ],
+                                                                        );
+                                                                      },
+                                                                    ) ??
+                                                                    false;
+                                                            if (confirmDialogResponse) {
+                                                              _model.rows =
+                                                                  await BoughtBooksTable()
+                                                                      .insert({
+                                                                'user_id':
+                                                                    currentUserUid,
+                                                                'book_id':
+                                                                    bookRowItem
+                                                                        .id,
+                                                                'quantity': 1,
+                                                                'price_paid':
+                                                                    bookRowItem
+                                                                            .price ??
+                                                                        0,
+                                                              });
+                                                              await BooksTable()
+                                                                  .update(
+                                                                data: {
+                                                                  'book_count':
+                                                                      (int? c) {
+                                                                    return (c ??
+                                                                                0) >
+                                                                            0
+                                                                        ? (c ?? 0) -
+                                                                            1
+                                                                        : 0;
+                                                                  }(bookRowItem
+                                                                          .bookCount),
+                                                                },
+                                                                matchingRows:
+                                                                    (rows) => rows
+                                                                        .eqOrNull(
+                                                                  'id',
                                                                   bookRowItem
                                                                       .id,
-                                                              'quantity': 1,
-                                                              'price_paid':
-                                                                  bookRowItem
-                                                                          .price ??
-                                                                      0,
-                                                            });
-                                                            await BooksTable()
-                                                                .update(
-                                                              data: {
-                                                                'book_count': (int?
-                                                                    c) {
-                                                                  return (c ??
-                                                                              0) >
-                                                                          0
-                                                                      ? (c ?? 0) -
-                                                                          1
-                                                                      : 0;
-                                                                }(bookRowItem
-                                                                    .bookCount),
-                                                              },
-                                                              matchingRows:
-                                                                  (rows) => rows
-                                                                      .eqOrNull(
-                                                                'id',
-                                                                bookRowItem.id,
-                                                              ),
-                                                            );
-                                                            _model.isLoading =
-                                                                true;
-                                                            safeSetState(() {});
-                                                            _model.booksAfterBuy =
-                                                                await BooksTable()
-                                                                    .queryRows(
-                                                              queryFn: (q) => q
-                                                                  .orGroupOrNull(
-                                                                      orFilterGroup([
-                                                                    orFilterLeaf(
-                                                                        'title',
-                                                                        'ilike',
-                                                                        (String?
-                                                                            q) {
-                                                                          return '%${(q ?? '').trim()}%';
-                                                                        }(_model
-                                                                            .searchQuery)),
-                                                                    orFilterLeaf(
-                                                                        'author',
-                                                                        'ilike',
-                                                                        (String?
-                                                                            q) {
-                                                                          return '%${(q ?? '').trim()}%';
-                                                                        }(_model
-                                                                            .searchQuery)),
-                                                                    orFilterLeaf(
-                                                                        'category',
-                                                                        'ilike',
-                                                                        (String?
-                                                                            q) {
-                                                                          return '%${(q ?? '').trim()}%';
-                                                                        }(_model
-                                                                            .searchQuery)),
-                                                                  ],
-                                                                          isAnd:
-                                                                              false))
-                                                                  .orGroupOrNull(
-                                                                      orFilterGroup([
-                                                                    orFilterLeaf(
-                                                                        'category',
-                                                                        'ilike',
-                                                                        (String?
-                                                                            f) {
-                                                                          return (f ?? 'All') == 'All'
-                                                                              ? '%'
-                                                                              : f!;
-                                                                        }(_model
-                                                                            .categoryFilter)),
-                                                                    orFilterLeaf(
-                                                                        'title',
-                                                                        'ilike',
-                                                                        (String?
-                                                                            f) {
-                                                                          return (f ?? 'All') == 'All'
-                                                                              ? '%'
-                                                                              : '';
-                                                                        }(_model
-                                                                            .categoryFilter)),
-                                                                  ],
-                                                                          isAnd:
-                                                                              false))
-                                                                  .order(
-                                                                      'created_at',
-                                                                      ascending:
-                                                                          true),
-                                                            );
-                                                            _model.allRows = _model
-                                                                .booksAfterBuy!
-                                                                .toList()
-                                                                .cast<
-                                                                    BooksRow>();
-                                                            safeSetState(() {});
-                                                            _model
-                                                                .pageIndex = (int?
-                                                                        p,
-                                                                    List<BooksRow>?
-                                                                        a) {
-                                                              return (p ?? 0) >=
-                                                                      (((a ?? []).length +
-                                                                              5 -
-                                                                              1) ~/
-                                                                          5)
-                                                                  ? ((((a ?? []).length + 5 - 1) ~/
-                                                                              5) -
-                                                                          1)
-                                                                      .clamp(
-                                                                          0,
-                                                                          1 <<
-                                                                              30)
-                                                                  : (p ?? 0);
-                                                            }(
-                                                                _model
-                                                                    .pageIndex,
-                                                                _model.allRows
-                                                                    .toList());
-                                                            safeSetState(() {});
-                                                            _model
-                                                                .bookRows = ((List<BooksRow>?
-                                                                            a,
-                                                                        int? p) {
-                                                              return (a ?? [])
-                                                                  .skip(
-                                                                      (p ?? 0) *
-                                                                          5)
-                                                                  .take(5)
-                                                                  .toList();
-                                                            }(
-                                                                    _model
-                                                                        .allRows
-                                                                        .toList(),
-                                                                    _model
-                                                                        .pageIndex))
-                                                                .toList()
-                                                                .cast<
-                                                                    BooksRow>();
-                                                            safeSetState(() {});
-                                                            _model.isLoading =
-                                                                false;
-                                                            safeSetState(() {});
-                                                            ScaffoldMessenger
-                                                                    .of(context)
-                                                                .showSnackBar(
-                                                              SnackBar(
-                                                                content: Text(
-                                                                  'Book bought! See it in My purchases.',
-                                                                  style:
-                                                                      TextStyle(),
                                                                 ),
-                                                                duration: Duration(
-                                                                    milliseconds:
-                                                                        4000),
-                                                              ),
-                                                            );
-                                                          }
+                                                              );
+                                                              _model.isLoading =
+                                                                  true;
+                                                              safeSetState(
+                                                                  () {});
+                                                              _model.booksAfterBuy =
+                                                                  await BooksTable()
+                                                                      .queryRows(
+                                                                queryFn: (q) => q
+                                                                    .orGroupOrNull(orFilterGroup([
+                                                                      orFilterLeaf(
+                                                                          'title',
+                                                                          'ilike',
+                                                                          (String?
+                                                                              q) {
+                                                                            return '%${(q ?? '').trim()}%';
+                                                                          }(_model
+                                                                              .searchQuery)),
+                                                                      orFilterLeaf(
+                                                                          'author',
+                                                                          'ilike',
+                                                                          (String?
+                                                                              q) {
+                                                                            return '%${(q ?? '').trim()}%';
+                                                                          }(_model
+                                                                              .searchQuery)),
+                                                                      orFilterLeaf(
+                                                                          'category',
+                                                                          'ilike',
+                                                                          (String?
+                                                                              q) {
+                                                                            return '%${(q ?? '').trim()}%';
+                                                                          }(_model
+                                                                              .searchQuery)),
+                                                                    ], isAnd: false))
+                                                                    .orGroupOrNull(orFilterGroup([
+                                                                      orFilterLeaf(
+                                                                          'category',
+                                                                          'ilike',
+                                                                          (String?
+                                                                              f) {
+                                                                            return (f ?? 'All') == 'All'
+                                                                                ? '%'
+                                                                                : f!;
+                                                                          }(_model
+                                                                              .categoryFilter)),
+                                                                      orFilterLeaf(
+                                                                          'title',
+                                                                          'ilike',
+                                                                          (String?
+                                                                              f) {
+                                                                            return (f ?? 'All') == 'All'
+                                                                                ? '%'
+                                                                                : '';
+                                                                          }(_model
+                                                                              .categoryFilter)),
+                                                                    ], isAnd: false))
+                                                                    .order('created_at', ascending: true),
+                                                              );
+                                                              _model.allRows = _model
+                                                                  .booksAfterBuy!
+                                                                  .toList()
+                                                                  .cast<
+                                                                      BooksRow>();
+                                                              safeSetState(
+                                                                  () {});
+                                                              _model.pageIndex = (int?
+                                                                          p,
+                                                                      List<BooksRow>?
+                                                                          a) {
+                                                                return (p ?? 0) >=
+                                                                        (((a ?? []).length +
+                                                                                5 -
+                                                                                1) ~/
+                                                                            5)
+                                                                    ? ((((a ?? []).length + 5 - 1) ~/
+                                                                                5) -
+                                                                            1)
+                                                                        .clamp(
+                                                                            0,
+                                                                            1 <<
+                                                                                30)
+                                                                    : (p ?? 0);
+                                                              }(
+                                                                  _model
+                                                                      .pageIndex,
+                                                                  _model.allRows
+                                                                      .toList());
+                                                              safeSetState(
+                                                                  () {});
+                                                              _model
+                                                                  .bookRows = ((List<BooksRow>?
+                                                                              a,
+                                                                          int? p) {
+                                                                return (a ?? [])
+                                                                    .skip((p ??
+                                                                            0) *
+                                                                        5)
+                                                                    .take(5)
+                                                                    .toList();
+                                                              }(
+                                                                      _model
+                                                                          .allRows
+                                                                          .toList(),
+                                                                      _model
+                                                                          .pageIndex))
+                                                                  .toList()
+                                                                  .cast<
+                                                                      BooksRow>();
+                                                              safeSetState(
+                                                                  () {});
+                                                              _model.isLoading =
+                                                                  false;
+                                                              safeSetState(
+                                                                  () {});
+                                                              await showDialog(
+                                                                barrierDismissible:
+                                                                    false,
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (dialogContext) {
+                                                                  return Dialog(
+                                                                    elevation:
+                                                                        0,
+                                                                    insetPadding:
+                                                                        EdgeInsets
+                                                                            .zero,
+                                                                    backgroundColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    alignment: AlignmentDirectional(
+                                                                            0.0,
+                                                                            0.0)
+                                                                        .resolve(
+                                                                            Directionality.of(context)),
+                                                                    child:
+                                                                        GestureDetector(
+                                                                      onTap:
+                                                                          () {
+                                                                        FocusScope.of(dialogContext)
+                                                                            .unfocus();
+                                                                        FocusManager
+                                                                            .instance
+                                                                            .primaryFocus
+                                                                            ?.unfocus();
+                                                                      },
+                                                                      child:
+                                                                          BuySuccessDialogWidget(),
+                                                                    ),
+                                                                  );
+                                                                },
+                                                              );
+                                                            }
 
-                                                          safeSetState(() {});
-                                                        },
-                                                        text:
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                          '701z5q75' /* Buy */,
-                                                        ),
-                                                        icon: Icon(
-                                                          Icons.shopping_cart,
-                                                          size: 20.0,
-                                                        ),
-                                                        options:
-                                                            FFButtonOptions(
-                                                          height: 38.0,
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          iconPadding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          iconColor:
-                                                              Colors.white,
-                                                          color: FlutterFlowTheme
+                                                            safeSetState(() {});
+                                                          },
+                                                          text: FFLocalizations
                                                                   .of(context)
-                                                              .primary,
-                                                          textStyle: TextStyle(
-                                                            color: Colors.white,
+                                                              .getText(
+                                                            '701z5q75' /* Buy */,
                                                           ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      12.0),
-                                                        ),
+                                                          icon: Icon(
+                                                            Icons.shopping_cart,
+                                                            size: 20.0,
+                                                          ),
+                                                          options:
+                                                              FFButtonOptions(
+                                                            height: 38.0,
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            iconPadding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            iconColor:
+                                                                Colors.white,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            textStyle:
+                                                                TextStyle(
+                                                              color:
+                                                                  Colors.white,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        12.0),
+                                                          ),
+                                                        ).animateOnActionTrigger(
+                                                                animationsMap[
+                                                                    'buttonOnActionTriggerAnimation']!,
+                                                                hasBeenTriggered:
+                                                                    hasButtonTriggered),
                                                       ),
                                                     if (!((bookRowItem
                                                                 .bookCount ??
@@ -1834,7 +2262,8 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
                                   ),
                                 ),
                               ),
-                            ),
+                            ).animateOnPageLoad(animationsMap[
+                                'containerOnPageLoadAnimation4']!),
                           );
                         },
                       );
@@ -2772,6 +3201,17 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
                             return !(l ?? false) && (a ?? []).isEmpty;
                           }(_model.isLoading, _model.allRows.toList())) ??
                           true)
+                        Lottie.network(
+                          'https://assets9.lottiefiles.com/packages/lf20_wnqlfojb.json',
+                          width: 200.0,
+                          height: 140.0,
+                          fit: BoxFit.contain,
+                          animate: true,
+                        ),
+                      if (((bool? l, List<BooksRow>? a) {
+                            return !(l ?? false) && (a ?? []).isEmpty;
+                          }(_model.isLoading, _model.allRows.toList())) ??
+                          true)
                         Text(
                           FFLocalizations.of(context).getText(
                             'rtqc407h' /* No books found */,
@@ -2797,13 +3237,14 @@ class _BrowsebooksforuserWidgetState extends State<BrowsebooksforuserWidget> {
                                     .bodyMedium
                                     .fontStyle,
                               ),
-                        ),
+                        ).animateOnPageLoad(
+                            animationsMap['textOnPageLoadAnimation']!),
                     ].divide(SizedBox(height: 8.0)),
                   ),
                 ),
               ),
             ],
-          ),
+          ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
         ),
       ),
     );

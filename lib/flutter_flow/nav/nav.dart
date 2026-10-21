@@ -186,6 +186,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.int,
             ),
           ),
+        ),
+        FFRoute(
+          name: DefilectureWidget.routeName,
+          path: DefilectureWidget.routePath,
+          builder: (context, params) => DefilectureWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

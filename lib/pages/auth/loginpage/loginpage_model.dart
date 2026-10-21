@@ -47,6 +47,8 @@ class LoginpageModel extends FlutterFlowModel<LoginpageWidget> {
     return null;
   }
 
+  // Stores action output result for [Custom Action - loginWithEmail] action in LoginButton widget.
+  bool? loginOk;
   // Stores action output result for [Backend Call - Query Rows] action in LoginButton widget.
   List<UsersRow>? userData;
 

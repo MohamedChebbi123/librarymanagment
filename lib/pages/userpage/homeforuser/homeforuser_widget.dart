@@ -1,11 +1,13 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'homeforuser_model.dart';
 export 'homeforuser_model.dart';
@@ -20,10 +22,13 @@ class HomeforuserWidget extends StatefulWidget {
   State<HomeforuserWidget> createState() => _HomeforuserWidgetState();
 }
 
-class _HomeforuserWidgetState extends State<HomeforuserWidget> {
+class _HomeforuserWidgetState extends State<HomeforuserWidget>
+    with TickerProviderStateMixin {
   late HomeforuserModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -73,6 +78,28 @@ class _HomeforuserWidgetState extends State<HomeforuserWidget> {
       }(_model.userLangRows?.toList()))) {
         setAppLanguage(context, 'en');
       }
+    });
+
+    animationsMap.addAll({
+      'columnOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(0.0, 30.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
     });
   }
 
@@ -266,7 +293,16 @@ class _HomeforuserWidgetState extends State<HomeforuserWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          context.pushNamed(BrowsebooksforuserWidget.routeName);
+                          context.pushNamed(
+                            BrowsebooksforuserWidget.routeName,
+                            extra: <String, dynamic>{
+                              '__transition_info__': TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.rightToLeft,
+                                duration: Duration(milliseconds: 300),
+                              ),
+                            },
+                          );
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -383,8 +419,16 @@ class _HomeforuserWidgetState extends State<HomeforuserWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          context
-                              .pushNamed(FavoritebooksforuserWidget.routeName);
+                          context.pushNamed(
+                            FavoritebooksforuserWidget.routeName,
+                            extra: <String, dynamic>{
+                              '__transition_info__': TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.rightToLeft,
+                                duration: Duration(milliseconds: 300),
+                              ),
+                            },
+                          );
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -501,7 +545,16 @@ class _HomeforuserWidgetState extends State<HomeforuserWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          context.pushNamed(BoughtbooksforuserWidget.routeName);
+                          context.pushNamed(
+                            BoughtbooksforuserWidget.routeName,
+                            extra: <String, dynamic>{
+                              '__transition_info__': TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.rightToLeft,
+                                duration: Duration(milliseconds: 300),
+                              ),
+                            },
+                          );
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -618,7 +671,142 @@ class _HomeforuserWidgetState extends State<HomeforuserWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          context.pushNamed(ProfileforuserWidget.routeName);
+                          context.pushNamed(
+                            DefilectureWidget.routeName,
+                            extra: <String, dynamic>{
+                              '__transition_info__': TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.rightToLeft,
+                                duration: Duration(milliseconds: 300),
+                              ),
+                            },
+                          );
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 16.0,
+                                color: Color(0x12000000),
+                                offset: Offset(
+                                  0.0,
+                                  6.0,
+                                ),
+                                spreadRadius: 0.0,
+                              )
+                            ],
+                            borderRadius: BorderRadius.circular(20.0),
+                            border: Border.all(
+                              color: FlutterFlowTheme.of(context).alternate,
+                              width: 1.0,
+                            ),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(16.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment:
+                                  (FFMainAxisAlignment.start).flutterValue,
+                              crossAxisAlignment:
+                                  (FFCrossAxisAlignment.start).flutterValue,
+                              textBaseline: TextBaseline.alphabetic,
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    color: Color(0x1F1B4D3E),
+                                    borderRadius: BorderRadius.circular(12.0),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(10.0),
+                                    child: Icon(
+                                      Icons.quiz,
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      size: 24.0,
+                                    ),
+                                  ),
+                                ),
+                                Text(
+                                  FFLocalizations.of(context).getText(
+                                    '3ed2bdu3' /* Reading challenge */,
+                                  ),
+                                  maxLines: 1,
+                                  style: FlutterFlowTheme.of(context)
+                                      .titleMedium
+                                      .override(
+                                        font: GoogleFonts.inter(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleMedium
+                                                  .fontStyle,
+                                        ),
+                                        letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .fontStyle,
+                                      ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                Text(
+                                  FFLocalizations.of(context).getText(
+                                    '1uqw3jgy' /* Play a quick guessing game */,
+                                  ),
+                                  maxLines: 2,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .override(
+                                        font: GoogleFonts.inter(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodySmall
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodySmall
+                                                  .fontStyle,
+                                        ),
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodySmall
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodySmall
+                                            .fontStyle,
+                                      ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ].divide(SizedBox(height: 12.0)),
+                            ),
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed(
+                            ProfileforuserWidget.routeName,
+                            extra: <String, dynamic>{
+                              '__transition_info__': TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.rightToLeft,
+                                duration: Duration(milliseconds: 300),
+                              ),
+                            },
+                          );
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -808,7 +996,7 @@ class _HomeforuserWidgetState extends State<HomeforuserWidget> {
                 ),
               ],
             ),
-          ),
+          ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
         ),
       ),
     );

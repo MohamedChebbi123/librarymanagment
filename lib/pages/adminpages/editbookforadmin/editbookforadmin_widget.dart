@@ -1,5 +1,6 @@
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -10,6 +11,7 @@ import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'editbookforadmin_model.dart';
 export 'editbookforadmin_model.dart';
@@ -29,10 +31,13 @@ class EditbookforadminWidget extends StatefulWidget {
   State<EditbookforadminWidget> createState() => _EditbookforadminWidgetState();
 }
 
-class _EditbookforadminWidgetState extends State<EditbookforadminWidget> {
+class _EditbookforadminWidgetState extends State<EditbookforadminWidget>
+    with TickerProviderStateMixin {
   late EditbookforadminModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  var hasButtonTriggered = false;
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -92,6 +97,47 @@ class _EditbookforadminWidgetState extends State<EditbookforadminWidget> {
 
     _model.editBookPublishYearFieldTextController ??= TextEditingController();
     _model.editBookPublishYearFieldFocusNode ??= FocusNode();
+
+    animationsMap.addAll({
+      'columnOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(0.0, 30.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'buttonOnActionTriggerAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: false,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 160.0.ms,
+            begin: Offset(0.95, 0.95),
+            end: Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+    });
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
   }
 
   @override
@@ -826,6 +872,15 @@ class _EditbookforadminWidgetState extends State<EditbookforadminWidget> {
                       ),
                       FFButtonWidget(
                         onPressed: () async {
+                          if (animationsMap['buttonOnActionTriggerAnimation'] !=
+                              null) {
+                            safeSetState(() => hasButtonTriggered = true);
+                            SchedulerBinding.instance.addPostFrameCallback(
+                                (_) async => await animationsMap[
+                                        'buttonOnActionTriggerAnimation']!
+                                    .controller
+                                    .forward(from: 0.0));
+                          }
                           if (_model.formKey.currentState == null ||
                               !_model.formKey.currentState!.validate()) {
                             return;
@@ -862,8 +917,16 @@ class _EditbookforadminWidgetState extends State<EditbookforadminWidget> {
                           if (Navigator.of(context).canPop()) {
                             context.pop();
                           }
-                          context
-                              .pushNamed(BrowsebooksforadminWidget.routeName);
+                          context.pushNamed(
+                            BrowsebooksforadminWidget.routeName,
+                            extra: <String, dynamic>{
+                              '__transition_info__': TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.rightToLeft,
+                                duration: Duration(milliseconds: 300),
+                              ),
+                            },
+                          );
 
                           safeSetState(() {});
                         },
@@ -889,7 +952,9 @@ class _EditbookforadminWidgetState extends State<EditbookforadminWidget> {
                           ),
                           borderRadius: BorderRadius.circular(14.0),
                         ),
-                      ),
+                      ).animateOnActionTrigger(
+                          animationsMap['buttonOnActionTriggerAnimation']!,
+                          hasBeenTriggered: hasButtonTriggered),
                       Container(
                         height: 12.0,
                       ),
@@ -925,7 +990,7 @@ class _EditbookforadminWidgetState extends State<EditbookforadminWidget> {
                 ),
               ],
             ),
-          ),
+          ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
         ),
       ),
     );

@@ -51,6 +51,7 @@ dependencies:
   hive: 2.2.3
   intl: 0.20.3
   json_path: 0.7.2
+  lottie: 3.1.2
   page_transition: 2.2.2
   path_provider: 2.1.4
   path_provider_android: 2.2.10
