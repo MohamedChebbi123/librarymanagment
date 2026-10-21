@@ -568,7 +568,9 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                                         _model.passwordFieldVisibility =
                                             !_model.passwordFieldVisibility);
                                   },
-                                  focusNode: FocusNode(skipTraversal: true),
+                                  focusNode: _model
+                                      .passwordFieldPasswordVisibilityFocusNode
+                                    ..skipTraversal = !(false),
                                   child: Icon(
                                     _model.passwordFieldVisibility
                                         ? Icons.visibility_outlined
@@ -654,8 +656,11 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                             FlutterFlowDropDown<String>(
                               controller:
                                   _model.languageFieldValueController ??=
-                                      FormFieldController<String>(null),
-                              options: [
+                                      FormFieldController<String>(
+                                _model.languageFieldValue ??= '',
+                              ),
+                              options: List<String>.from(['fr', 'en', 'ar']),
+                              optionLabels: [
                                 FFLocalizations.of(context).getText(
                                   'qqjmu6uf' /* Français */,
                                 ),
@@ -762,6 +767,7 @@ class _RegisterpageWidgetState extends State<RegisterpageWidget> {
                             'id': currentUserUid,
                             'email': _model.emailFieldTextController.text,
                           });
+                          setAppLanguage(context, _model.languageFieldValue!);
 
                           context.goNamedAuth(
                               LoginpageWidget.routeName, context.mounted);

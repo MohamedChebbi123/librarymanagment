@@ -434,7 +434,14 @@ class _AddbookforadminWidgetState extends State<AddbookforadminWidget> {
                               controller:
                                   _model.bookCategoryFieldValueController ??=
                                       FormFieldController<String>(null),
-                              options: [
+                              options: List<String>.from([
+                                'Informatique',
+                                'Sciences',
+                                'Littérature',
+                                'Histoire',
+                                'Économie'
+                              ]),
+                              optionLabels: [
                                 FFLocalizations.of(context).getText(
                                   'x4t424hq' /* Informatique */,
                                 ),

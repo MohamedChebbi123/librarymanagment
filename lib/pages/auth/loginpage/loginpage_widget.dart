@@ -383,7 +383,9 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                             .loginPasswordFieldVisibility =
                                         !_model.loginPasswordFieldVisibility);
                                   },
-                                  focusNode: FocusNode(skipTraversal: true),
+                                  focusNode: _model
+                                      .loginPasswordFieldPasswordVisibilityFocusNode
+                                    ..skipTraversal = !(false),
                                   child: Icon(
                                     _model.loginPasswordFieldVisibility
                                         ? Icons.visibility_outlined

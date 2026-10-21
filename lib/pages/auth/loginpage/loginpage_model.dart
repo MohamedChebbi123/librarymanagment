@@ -30,6 +30,7 @@ class LoginpageModel extends FlutterFlowModel<LoginpageWidget> {
   }
 
   // State field(s) for LoginPasswordField widget.
+  late FocusNode loginPasswordFieldPasswordVisibilityFocusNode;
   FocusNode? loginPasswordFieldFocusNode;
   TextEditingController? loginPasswordFieldTextController;
   late bool loginPasswordFieldVisibility;
@@ -53,6 +54,7 @@ class LoginpageModel extends FlutterFlowModel<LoginpageWidget> {
   void initState(BuildContext context) {
     loginEmailFieldTextControllerValidator =
         _loginEmailFieldTextControllerValidator;
+    loginPasswordFieldPasswordVisibilityFocusNode = FocusNode();
     loginPasswordFieldVisibility = false;
     loginPasswordFieldTextControllerValidator =
         _loginPasswordFieldTextControllerValidator;
@@ -65,5 +67,6 @@ class LoginpageModel extends FlutterFlowModel<LoginpageWidget> {
 
     loginPasswordFieldFocusNode?.dispose();
     loginPasswordFieldTextController?.dispose();
+    loginPasswordFieldPasswordVisibilityFocusNode.dispose();
   }
 }

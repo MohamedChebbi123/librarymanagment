@@ -71,6 +71,7 @@ class RegisterpageModel extends FlutterFlowModel<RegisterpageWidget> {
   }
 
   // State field(s) for PasswordField widget.
+  late FocusNode passwordFieldPasswordVisibilityFocusNode;
   FocusNode? passwordFieldFocusNode;
   TextEditingController? passwordFieldTextController;
   late bool passwordFieldVisibility;
@@ -102,6 +103,7 @@ class RegisterpageModel extends FlutterFlowModel<RegisterpageWidget> {
         _usernameFieldTextControllerValidator;
     emailFieldTextControllerValidator = _emailFieldTextControllerValidator;
     phoneFieldTextControllerValidator = _phoneFieldTextControllerValidator;
+    passwordFieldPasswordVisibilityFocusNode = FocusNode();
     passwordFieldVisibility = false;
     passwordFieldTextControllerValidator =
         _passwordFieldTextControllerValidator;
@@ -120,5 +122,6 @@ class RegisterpageModel extends FlutterFlowModel<RegisterpageWidget> {
 
     passwordFieldFocusNode?.dispose();
     passwordFieldTextController?.dispose();
+    passwordFieldPasswordVisibilityFocusNode.dispose();
   }
 }

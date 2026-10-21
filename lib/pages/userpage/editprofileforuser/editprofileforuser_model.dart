@@ -71,6 +71,7 @@ class EditprofileforuserModel
   String? userProfileLanguageFieldValue;
   FormFieldController<String>? userProfileLanguageFieldValueController;
   // State field(s) for UserProfilePasswordField widget.
+  late FocusNode userProfilePasswordFieldPasswordVisibilityFocusNode;
   FocusNode? userProfilePasswordFieldFocusNode;
   TextEditingController? userProfilePasswordFieldTextController;
   late bool userProfilePasswordFieldVisibility;
@@ -85,6 +86,7 @@ class EditprofileforuserModel
         _userProfileUsernameFieldTextControllerValidator;
     userProfilePhoneFieldTextControllerValidator =
         _userProfilePhoneFieldTextControllerValidator;
+    userProfilePasswordFieldPasswordVisibilityFocusNode = FocusNode();
     userProfilePasswordFieldVisibility = false;
   }
 
@@ -98,5 +100,6 @@ class EditprofileforuserModel
 
     userProfilePasswordFieldFocusNode?.dispose();
     userProfilePasswordFieldTextController?.dispose();
+    userProfilePasswordFieldPasswordVisibilityFocusNode.dispose();
   }
 }

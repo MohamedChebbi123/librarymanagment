@@ -473,11 +473,15 @@ class _EditbookforadminWidgetState extends State<EditbookforadminWidget> {
                             FlutterFlowDropDown<String>(
                               controller: _model
                                       .editBookCategoryFieldValueController ??=
-                                  FormFieldController<String>(
-                                _model.editBookCategoryFieldValue ??=
-                                    widget.book?.category,
-                              ),
-                              options: [
+                                  FormFieldController<String>(null),
+                              options: List<String>.from([
+                                'Informatique',
+                                'Sciences',
+                                'Littérature',
+                                'Histoire',
+                                'Économie'
+                              ]),
+                              optionLabels: [
                                 FFLocalizations.of(context).getText(
                                   'msbhemd9' /* Informatique */,
                                 ),

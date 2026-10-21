@@ -1,3 +1,5 @@
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -5,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'homeforadmin_model.dart';
 export 'homeforadmin_model.dart';
@@ -28,6 +31,51 @@ class _HomeforadminWidgetState extends State<HomeforadminWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => HomeforadminModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.adminLangRows = await UsersTable().queryRows(
+        queryFn: (q) => q.eqOrNull(
+          'id',
+          currentUserUid,
+        ),
+      );
+      if (((List<UsersRow>? r) {
+        return (const {
+                  'Français': 'fr',
+                  'English': 'en',
+                  'العربية': 'ar'
+                }[((r ?? []).isEmpty ? null : r!.first.preferredLanguage)] ??
+                ((r ?? []).isEmpty ? null : r!.first.preferredLanguage) ??
+                'en') ==
+            'ar';
+      }(_model.adminLangRows?.toList()))) {
+        setAppLanguage(context, 'ar');
+      }
+      if (((List<UsersRow>? r) {
+        return (const {
+                  'Français': 'fr',
+                  'English': 'en',
+                  'العربية': 'ar'
+                }[((r ?? []).isEmpty ? null : r!.first.preferredLanguage)] ??
+                ((r ?? []).isEmpty ? null : r!.first.preferredLanguage) ??
+                'en') ==
+            'fr';
+      }(_model.adminLangRows?.toList()))) {
+        setAppLanguage(context, 'fr');
+      }
+      if (((List<UsersRow>? r) {
+        return !['fr', 'ar'].contains((const {
+              'Français': 'fr',
+              'English': 'en',
+              'العربية': 'ar'
+            }[((r ?? []).isEmpty ? null : r!.first.preferredLanguage)] ??
+            ((r ?? []).isEmpty ? null : r!.first.preferredLanguage) ??
+            'en'));
+      }(_model.adminLangRows?.toList()))) {
+        setAppLanguage(context, 'en');
+      }
+    });
   }
 
   @override

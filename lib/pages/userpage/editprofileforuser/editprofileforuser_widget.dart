@@ -57,6 +57,27 @@ class _EditprofileforuserWidgetState extends State<EditprofileforuserWidget> {
           return (r == null || r.isEmpty) ? '' : (r.first.studentNumber ?? '');
         }(_model.profileRows.toList()));
       });
+      safeSetState(() {
+        _model.userProfileLanguageFieldValueController?.value =
+            ((List<UsersRow>? r) {
+          return (const {
+                'Français': 'fr',
+                'English': 'en',
+                'العربية': 'ar'
+              }[((r ?? []).isEmpty ? null : r!.first.preferredLanguage)] ??
+              ((r ?? []).isEmpty ? null : r!.first.preferredLanguage) ??
+              'en');
+        }(_model.profileRows.toList()));
+        _model.userProfileLanguageFieldValue = ((List<UsersRow>? r) {
+          return (const {
+                'Français': 'fr',
+                'English': 'en',
+                'العربية': 'ar'
+              }[((r ?? []).isEmpty ? null : r!.first.preferredLanguage)] ??
+              ((r ?? []).isEmpty ? null : r!.first.preferredLanguage) ??
+              'en');
+        }(_model.profileRows.toList()));
+      });
     });
 
     _model.userProfileUsernameFieldTextController ??= TextEditingController();
@@ -439,7 +460,8 @@ class _EditprofileforuserWidgetState extends State<EditprofileforuserWidget> {
                               controller: _model
                                       .userProfileLanguageFieldValueController ??=
                                   FormFieldController<String>(null),
-                              options: [
+                              options: List<String>.from(['fr', 'en', 'ar']),
+                              optionLabels: [
                                 FFLocalizations.of(context).getText(
                                   'js6fj1dx' /* Français */,
                                 ),
@@ -452,6 +474,7 @@ class _EditprofileforuserWidgetState extends State<EditprofileforuserWidget> {
                               ],
                               onChanged: (val) => safeSetState(() =>
                                   _model.userProfileLanguageFieldValue = val),
+                              height: 56.0,
                               textStyle: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -482,11 +505,13 @@ class _EditprofileforuserWidgetState extends State<EditprofileforuserWidget> {
                               ),
                               fillColor: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              elevation: 2.0,
+                              elevation: 0.0,
                               borderColor:
                                   FlutterFlowTheme.of(context).alternate,
-                              borderWidth: 1.0,
-                              borderRadius: 8.0,
+                              focusBorderColor:
+                                  FlutterFlowTheme.of(context).primary,
+                              borderWidth: 1.2,
+                              borderRadius: 14.0,
                               margin: EdgeInsetsDirectional.fromSTEB(
                                   12.0, 0.0, 12.0, 0.0),
                               hidesUnderline: true,
@@ -590,7 +615,9 @@ class _EditprofileforuserWidgetState extends State<EditprofileforuserWidget> {
                                         !_model
                                             .userProfilePasswordFieldVisibility);
                                   },
-                                  focusNode: FocusNode(skipTraversal: true),
+                                  focusNode: _model
+                                      .userProfilePasswordFieldPasswordVisibilityFocusNode
+                                    ..skipTraversal = !(false),
                                   child: Icon(
                                     _model.userProfilePasswordFieldVisibility
                                         ? Icons.visibility_outlined
@@ -685,6 +712,41 @@ class _EditprofileforuserWidgetState extends State<EditprofileforuserWidget> {
                               context: context,
                             );
                             safeSetState(() {});
+                          }
+                          if (((String? v) {
+                            return (const {
+                                      'Français': 'fr',
+                                      'English': 'en',
+                                      'العربية': 'ar'
+                                    }[v] ??
+                                    v ??
+                                    'en') ==
+                                'ar';
+                          }(_model.userProfileLanguageFieldValue))) {
+                            setAppLanguage(context, 'ar');
+                          }
+                          if (((String? v) {
+                            return (const {
+                                      'Français': 'fr',
+                                      'English': 'en',
+                                      'العربية': 'ar'
+                                    }[v] ??
+                                    v ??
+                                    'en') ==
+                                'fr';
+                          }(_model.userProfileLanguageFieldValue))) {
+                            setAppLanguage(context, 'fr');
+                          }
+                          if (((String? v) {
+                            return !['fr', 'ar'].contains((const {
+                                  'Français': 'fr',
+                                  'English': 'en',
+                                  'العربية': 'ar'
+                                }[v] ??
+                                v ??
+                                'en'));
+                          }(_model.userProfileLanguageFieldValue))) {
+                            setAppLanguage(context, 'en');
                           }
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(

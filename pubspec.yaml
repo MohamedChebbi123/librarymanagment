@@ -58,6 +58,7 @@ dependencies:
   path_provider_linux: 2.2.1
   path_provider_platform_interface: 2.1.2
   path_provider_windows: 2.3.0
+  percent_indicator: 4.2.2
   postgrest: 2.4.2
   provider: 6.1.5
   realtime_client: 2.5.0
@@ -78,6 +79,7 @@ dependencies:
   supabase: 2.7.0
   supabase_flutter: 2.9.0
   timeago: 3.7.1
+  tutorial_coach_mark: 1.2.11
   url_launcher: 6.3.1
   url_launcher_android: 6.3.16
   url_launcher_ios: 6.3.3

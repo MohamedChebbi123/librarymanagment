@@ -1,8 +1,11 @@
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'homeforuser_model.dart';
 export 'homeforuser_model.dart';
@@ -26,6 +29,51 @@ class _HomeforuserWidgetState extends State<HomeforuserWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => HomeforuserModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.userLangRows = await UsersTable().queryRows(
+        queryFn: (q) => q.eqOrNull(
+          'id',
+          currentUserUid,
+        ),
+      );
+      if (((List<UsersRow>? r) {
+        return (const {
+                  'Français': 'fr',
+                  'English': 'en',
+                  'العربية': 'ar'
+                }[((r ?? []).isEmpty ? null : r!.first.preferredLanguage)] ??
+                ((r ?? []).isEmpty ? null : r!.first.preferredLanguage) ??
+                'en') ==
+            'ar';
+      }(_model.userLangRows?.toList()))) {
+        setAppLanguage(context, 'ar');
+      }
+      if (((List<UsersRow>? r) {
+        return (const {
+                  'Français': 'fr',
+                  'English': 'en',
+                  'العربية': 'ar'
+                }[((r ?? []).isEmpty ? null : r!.first.preferredLanguage)] ??
+                ((r ?? []).isEmpty ? null : r!.first.preferredLanguage) ??
+                'en') ==
+            'fr';
+      }(_model.userLangRows?.toList()))) {
+        setAppLanguage(context, 'fr');
+      }
+      if (((List<UsersRow>? r) {
+        return !['fr', 'ar'].contains((const {
+              'Français': 'fr',
+              'English': 'en',
+              'العربية': 'ar'
+            }[((r ?? []).isEmpty ? null : r!.first.preferredLanguage)] ??
+            ((r ?? []).isEmpty ? null : r!.first.preferredLanguage) ??
+            'en'));
+      }(_model.userLangRows?.toList()))) {
+        setAppLanguage(context, 'en');
+      }
+    });
   }
 
   @override
@@ -503,7 +551,7 @@ class _HomeforuserWidgetState extends State<HomeforuserWidget> {
                                 ),
                                 Text(
                                   FFLocalizations.of(context).getText(
-                                    '3mb7ven4' /* My purchases */,
+                                    'zn5arnki' /* My purchases */,
                                   ),
                                   maxLines: 1,
                                   style: FlutterFlowTheme.of(context)
@@ -531,7 +579,7 @@ class _HomeforuserWidgetState extends State<HomeforuserWidget> {
                                 ),
                                 Text(
                                   FFLocalizations.of(context).getText(
-                                    'gfahdm8k' /* Books you bought */,
+                                    'itx118p6' /* Books you bought */,
                                   ),
                                   maxLines: 2,
                                   style: FlutterFlowTheme.of(context)

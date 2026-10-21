@@ -400,7 +400,8 @@ class _EditprofileforadminWidgetState extends State<EditprofileforadminWidget> {
                               controller:
                                   _model.profileLanguageFieldValueController ??=
                                       FormFieldController<String>(null),
-                              options: [
+                              options: List<String>.from(['fr', 'en', 'ar']),
+                              optionLabels: [
                                 FFLocalizations.of(context).getText(
                                   'hj50jvfw' /* Français */,
                                 ),
@@ -545,7 +546,9 @@ class _EditprofileforadminWidgetState extends State<EditprofileforadminWidget> {
                                             .profilePasswordFieldVisibility =
                                         !_model.profilePasswordFieldVisibility);
                                   },
-                                  focusNode: FocusNode(skipTraversal: true),
+                                  focusNode: _model
+                                      .profilePasswordFieldPasswordVisibilityFocusNode
+                                    ..skipTraversal = !(false),
                                   child: Icon(
                                     _model.profilePasswordFieldVisibility
                                         ? Icons.visibility_outlined
@@ -641,6 +644,41 @@ class _EditprofileforadminWidgetState extends State<EditprofileforadminWidget> {
                               context: context,
                             );
                             safeSetState(() {});
+                          }
+                          if (((String? v) {
+                            return (const {
+                                      'Français': 'fr',
+                                      'English': 'en',
+                                      'العربية': 'ar'
+                                    }[v] ??
+                                    v ??
+                                    'en') ==
+                                'ar';
+                          }(_model.profileLanguageFieldValue))) {
+                            setAppLanguage(context, 'ar');
+                          }
+                          if (((String? v) {
+                            return (const {
+                                      'Français': 'fr',
+                                      'English': 'en',
+                                      'العربية': 'ar'
+                                    }[v] ??
+                                    v ??
+                                    'en') ==
+                                'fr';
+                          }(_model.profileLanguageFieldValue))) {
+                            setAppLanguage(context, 'fr');
+                          }
+                          if (((String? v) {
+                            return !['fr', 'ar'].contains((const {
+                                  'Français': 'fr',
+                                  'English': 'en',
+                                  'العربية': 'ar'
+                                }[v] ??
+                                v ??
+                                'en'));
+                          }(_model.profileLanguageFieldValue))) {
+                            setAppLanguage(context, 'en');
                           }
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
